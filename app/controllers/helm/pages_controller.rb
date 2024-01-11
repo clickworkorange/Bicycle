@@ -53,6 +53,6 @@ class Helm::PagesController < Helm::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def page_params
-      params.require(:page).permit(:title, :body)
+      params.require(:page).permit(:title, :body, :live)
     end
 end

@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   require "kramdown"
+  require "rouge"
+  
   before_action :set_page, only: %i[ show ]
 
   # GET /pages
