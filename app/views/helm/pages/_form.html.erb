@@ -1,43 +1,36 @@
+
 <%= form_with(model: [:helm, page]) do |form| %>
-  <% if page.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
-
-      <ul>
-        <% page.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render partial: "errors", locals: {model: page} %>
   <div>
-    <%= form.label :live, style: "display: block" %>
+    <%= form.label :live %>
     <%= form.check_box :live %>
   </div>
 
   <div>
-    <%= form.label :banner, style: "display: block" %>
+    <%= form.label :banner %>
     <%= form.file_field :banner, accept: "image/png, image/gif, image/jpeg" %>
+    <% if @page.banner.attached? %>
+      <%= image_tag url_for(page.banner.variant(resize_to_limit: [100, nil])) %>
+    <% end %>
   </div>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :abstract, style: "display: block" %>
+    <%= form.label :abstract %>
     <%= form.text_area :abstract %>
   </div>
 
   <div>
-    <%= form.label :body, style: "display: block" %>
+    <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
 
   <div>
-    <%= form.label :parent, style: "display: block" %>
+    <%= form.label :parent %>
     <%= form.collection_select(:parent_id, Page.all, :id, :title,{include_blank: ""}) %>
   <div>
     <%= form.submit %>

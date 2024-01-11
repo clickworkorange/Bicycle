@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_180537) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_215330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_180537) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "caption"
+    t.string "alt_text"
+    t.bigint "page_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "index_images_on_page_id"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -81,5 +90,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_180537) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "images", "pages"
   add_foreign_key "pages", "pages", column: "parent_id"
 end

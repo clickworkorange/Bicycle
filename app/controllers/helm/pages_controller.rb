@@ -1,6 +1,9 @@
 class Helm::PagesController < Helm::ApplicationController
   before_action :set_page, only: %i[ show edit update destroy ]
 
+  # TODO: create a separate Image model for images, which automagically handles file deletion 
+  # This model would allow things like alt text, caption and sort order.
+
   # GET /helm/pages
   def index
     @pages = Page.all
@@ -32,6 +35,9 @@ class Helm::PagesController < Helm::ApplicationController
 
   # PATCH/PUT /helm/pages/1
   def update
+    # if params[:banner_delete] & @page.banner.attached?
+    #   @page.banner.purge
+    # end
     if @page.update(page_params)
       redirect_to [:helm, @page], notice: "Page was successfully updated.", status: :see_other
     else
@@ -42,7 +48,7 @@ class Helm::PagesController < Helm::ApplicationController
   # DELETE /helm/pages/1
   def destroy
     @page.destroy!
-    redirect_to helm_pages_url, notice: "Page was successfully destroyed.", status: :see_other
+    redirect_to helm_pages_url, notice: "Page was successfully deleted.", status: :see_other
   end
 
   private
@@ -53,6 +59,6 @@ class Helm::PagesController < Helm::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def page_params
-      params.require(:page).permit(:live, :title, :abstract, :body, :parent_id, :banner)
+      params.require(:page).permit(:live, :title, :abstract, :body, :parent_id, :banner, :banner_delete)
     end
 end

@@ -1,0 +1,10 @@
+<h1>Editing image</h1>
+
+<%= render "form", image: @image %>
+
+<br>
+
+<div>
+  <%= link_to "Show this image", [:helm, @page, @image] %> |
+  <%= link_to "Back to images", helm_page_images_path %>
+</div>

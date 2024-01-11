@@ -1,0 +1,23 @@
+<div id="<%= dom_id image %>">
+  <p>
+    <% if image.image_file.attached? %>
+      <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Caption:</strong>
+    <%= image.caption %>
+  </p>
+
+  <p>
+    <strong>Alt text:</strong>
+    <%= image.alt_text %>
+  </p>
+
+  <p>
+    <strong>Page:</strong>
+    <%= image.page.title %>
+  </p>
+
+</div>
