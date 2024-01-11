@@ -1,0 +1,2 @@
+module Helm::PagesHelper
+end
