@@ -1,11 +1,4 @@
-<div id="<%= dom_id page %>">
-  <p>
-    <strong>Title:</strong>
-    <%= page.title %>
-  </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= page.body %>
-  </p>
-</div>
+<article id="<%= dom_id page %>">
+  <h1><%= page.title %></h1>
+  <%= sanitize Kramdown::Document.new(page.body).to_html %>
+</article>

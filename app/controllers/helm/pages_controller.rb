@@ -48,7 +48,7 @@ class Helm::PagesController < Helm::ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
-      @page = Page.find(params[:id])
+      @page = Page.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

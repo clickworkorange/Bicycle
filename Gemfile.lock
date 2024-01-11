@@ -96,6 +96,8 @@ GEM
       ruby2_keywords
     error_highlight (0.6.0)
     erubi (1.12.0)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -104,6 +106,8 @@ GEM
     irb (1.11.1)
       rdoc
       reline (>= 0.4.2)
+    kramdown (2.4.0)
+      rexml
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -180,6 +184,8 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rexml (3.2.6)
+    rouge (4.2.0)
     ruby2_keywords (0.0.5)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -208,9 +214,12 @@ DEPENDENCIES
   debug
   devise (~> 4.9.2)
   error_highlight (>= 0.4.0)
+  friendly_id (~> 5.4.0)
+  kramdown (~> 2.4.0)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
+  rouge (~> 4.2.0)
   sprockets-rails
 
 RUBY VERSION
