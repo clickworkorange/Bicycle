@@ -5,6 +5,7 @@ class Page < ApplicationRecord
   friendly_id :title, use: :slugged
   has_many :children, class_name: "Page", foreign_key: "parent_id", dependent: :restrict_with_error
   belongs_to :parent, class_name: "Page", optional: true
+  has_one_attached :banner
 
   def live_children
     self.children.where(live: true)
