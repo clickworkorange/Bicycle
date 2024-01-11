@@ -22,10 +22,18 @@
   </div>
 
   <div>
+    <%= form.label :abstract, style: "display: block" %>
+    <%= form.text_area :abstract %>
+  </div>
+
+  <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
 
+  <div>
+    <%= form.label :parent, style: "display: block" %>
+    <%= form.collection_select(:parent_id, Page.all, :id, :title,{include_blank: ""}) %>
   <div>
     <%= form.submit %>
   </div>

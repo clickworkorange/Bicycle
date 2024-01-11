@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_145851) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_153615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_145851) do
     t.string "abstract"
     t.string "slug"
     t.boolean "live", default: true
+    t.integer "parent_id"
+    t.index ["parent_id"], name: "index_pages_on_parent_id"
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 
@@ -49,4 +51,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_145851) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pages", "pages", column: "parent_id"
 end

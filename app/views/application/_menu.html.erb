@@ -1,5 +1,13 @@
 <% @live_pages.each do |page| %>
   <ul>
-    <li><%= link_to page.title, page %></li>
+    <li><%= link_to page.title, page %>
+      <% if page.children.any? %>
+        <ul>
+        <% page.live_children.each do |child| %>
+          <li><%= link_to child.title, child %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    </li>
   </ul>
 <% end %>
