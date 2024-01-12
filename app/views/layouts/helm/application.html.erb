@@ -10,13 +10,10 @@
   </head>
 
   <body>
+    <%= render partial: "menu" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <p><%= current_user.email %> <%= button_to "Sign out", destroy_user_session_path, method: :delete %></p>
-    <% else %>
-      <p><%= link_to "Sign in", new_user_session_path %></p>
-    <% end %>
-    <%= yield %>
+
+    <article><%= yield %></article>
   </body>
 </html>

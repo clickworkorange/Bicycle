@@ -1,4 +1,4 @@
-<div id="<%= dom_id image %>">
+<figure>
   <p>
     <% if image.image_file.attached? %>
       <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
@@ -20,4 +20,4 @@
     <%= image.page.title %>
   </p>
 
-</div>
+</figure>

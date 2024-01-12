@@ -1,0 +1,34 @@
+<nav>
+  <% if user_signed_in? %>
+    <p><%= current_user.email %> <%= button_to "Sign out", destroy_user_session_path, method: :delete %></p>
+  <% end %>
+  <ul>
+    <li>Pages:
+    <% @pages.each do |page| %>
+      <ul>
+        <li><%= link_to page.title, edit_helm_page_path(page) %>
+          <% if page.children.any? %>
+            <ul>
+            <% page.children.each do |child| %>
+              <li><%= link_to child.title, edit_helm_page_path(child) %></li>
+            <% end %>
+            </ul>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+      <li>
+        <ul>
+          <li><%= link_to :new_page, new_helm_page_path %></li>
+        </ul>
+      </li>
+    </li>
+    <li>Users:
+    <% @users.each do |user| %>
+      <ul>
+        <li><%= link_to user.email, edit_helm_user_path(user) %></li>
+      </ul>
+    <% end %>
+    </li>
+  </ul>
+</nav>

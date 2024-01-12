@@ -2,9 +2,10 @@
 
 <%= render "form", page: @page %>
 
-<br>
+<%= button_to "Destroy this page", [:helm, @page], method: :delete %>
 
-<div>
-  <%= link_to "Show this page", [:helm, @page] %> |
-  <%= link_to "Back to pages", helm_pages_path %>
-</div>
+<% @page.images.each do |image| %>
+  <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
+<% end %>
+
+<%= link_to "New image", new_helm_page_image_path(@page) %>

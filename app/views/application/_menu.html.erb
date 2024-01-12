@@ -1,13 +1,16 @@
-<% @live_pages.each do |page| %>
+
+<nav>
   <ul>
+  <% @live_pages.each do |page| %>
     <li><%= link_to page.title, page %>
       <% if page.children.any? %>
         <ul>
         <% page.live_children.each do |child| %>
-          <li><%= link_to child.title, child %></li>
+          <li><%= link_to child.title, [page, child] %></li>
         <% end %>
         </ul>
       <% end %>
     </li>
+  <% end %>
   </ul>
-<% end %>
+</nav>

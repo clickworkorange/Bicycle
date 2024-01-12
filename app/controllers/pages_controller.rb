@@ -18,9 +18,4 @@ class PagesController < ApplicationController
     def set_page
       @page = Page.friendly.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
-    def page_params
-      params.require(:page).permit(:title, :body)
-    end
 end

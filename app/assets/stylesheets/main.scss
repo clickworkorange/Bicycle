@@ -40,6 +40,8 @@ font-family: "Fira Sans", "fira";
 background-color: $colour-bg;
 color: #C1BEB3;
 font-size: 100%;
+display: grid;
+grid-template-columns: [nav] 20em [main] 1fr [end];
 }
 h1 {
 font-family: "Fira Sans ExtraBold", "fira-xbi";
@@ -50,12 +52,44 @@ h2 {
 font-family: "Fira Sans Light", "fira-light";
 font-weight: normal; 
 }
+p {
+    
+}
 a {
 color: #259CC8;
 }
         a:visited, a:active {
         color: #4ABB32;
         }
+
+form {
+display: flex;
+flex-direction: column; 
+}
+input, textarea {
+width: 100%;
+}
+textarea {
+height: 100%;
+}
+label {
+display: block;
+}
+    label input {
+    float: left;
+    width: auto;
+    }
+
+
+nav {
+grid-area: nav;
+background-color: $colour-bg-dark;
+}
+
+article {
+grid-area: main;
+padding: 1em;
+}
 
 pre.highlight {
 padding: 1em;

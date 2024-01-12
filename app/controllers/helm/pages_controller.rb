@@ -12,7 +12,7 @@ class Helm::PagesController < Helm::ApplicationController
 
   # GET /helm/pages/new
   def new
-    @page = Page.new
+    @page = Page.build
   end
 
   # GET /helm/pages/1/edit
@@ -24,7 +24,7 @@ class Helm::PagesController < Helm::ApplicationController
     @page = Page.new(page_params)
 
     if @page.save
-      redirect_to [:helm, @page], notice: "Page was successfully created."
+      redirect_to edit_helm_page_path(@page), notice: "Page was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Helm::PagesController < Helm::ApplicationController
     #   @page.banner.purge
     # end
     if @page.update(page_params)
-      redirect_to [:helm, @page], notice: "Page was successfully updated.", status: :see_other
+      redirect_to edit_helm_page_path(@page), notice: "Page was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
