@@ -1,9 +1,6 @@
 class Helm::PagesController < Helm::ApplicationController
   before_action :set_page, only: %i[ show edit update destroy ]
 
-  # TODO: create a separate Image model for images, which automagically handles file deletion 
-  # This model would allow things like alt text, caption and sort order.
-
   # GET /helm/pages
   def index
     @pages = Page.all

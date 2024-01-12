@@ -1,6 +1,9 @@
 class Helm::ImagesController < Helm::ApplicationController
   before_action :get_page
   before_action :set_image, only: %i[ show edit update destroy ]
+  
+  # TODO: sort order
+  # TODO: "role"? (e.g. "banner")
 
   # GET /images
   def index
