@@ -6,11 +6,14 @@ class PagesController < ApplicationController
 
   # GET /pages
   def index
+    # TODO: live root pages
     @pages = Page.all
   end
 
   # GET /pages/1
+  # TODO: process image tokens
   def show
+    # TODO: deny access to non-live pages (unless admin)
   end
 
   private

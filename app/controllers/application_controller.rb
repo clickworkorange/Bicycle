@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
   def fetch_live_pages
+    # TODO: scope
   	@live_pages = Page.where(live: true, parent_id: nil)
   end
 end

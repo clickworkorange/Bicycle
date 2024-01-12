@@ -10,8 +10,15 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  # TODO: surely there's a better way? 
   resources :pages, only: :show, path: "" do
     resources :images, only: :show
+    resources :pages, only: :show, path: "" do
+      resources :images, only: :show
+      resources :pages, only: :show, path: "" do
+        resources :images, only: :show
+      end
+    end
   end
 
   root "pages#index"

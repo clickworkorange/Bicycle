@@ -75,6 +75,10 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    acts_as_list (1.1.0)
+      activerecord (>= 4.2)
+    awesome_nested_set (3.6.0)
+      activerecord (>= 4.0.0, < 7.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.5)
@@ -231,6 +235,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts_as_list (~> 1.1.0)
+  awesome_nested_set (~> 3.6.0)
   dartsass-sprockets (~> 3.1.0)
   debug
   devise (~> 4.9.2)

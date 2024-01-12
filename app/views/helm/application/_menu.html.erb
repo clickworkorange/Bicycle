@@ -4,19 +4,20 @@
   <% end %>
   <ul>
     <li>Pages:
-    <% @pages.each do |page| %>
-      <ul>
-        <li><%= link_to page.title, edit_helm_page_path(page) %>
-          <% if page.children.any? %>
-            <ul>
-            <% page.children.each do |child| %>
-              <li><%= link_to child.title, edit_helm_page_path(child) %></li>
-            <% end %>
-            </ul>
+    <ul>
+    <% Page.roots.each do |page| %>
+      <li><%= link_to page.title, edit_helm_page_path(page) %>
+        <% if page.children.any? %>
+          <ul>
+          <% page.children.each do |child| %>
+            <li><%= link_to child.title, edit_helm_page_path(child) %></li>
           <% end %>
-        </li>
-      </ul>
+          </ul>
+        <% end %>
+      </li>
     <% end %>
+    </ul>
+    </li>
       <li>
         <ul>
           <li><%= link_to :new_page, new_helm_page_path %></li>

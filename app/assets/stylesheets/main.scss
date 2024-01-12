@@ -53,10 +53,12 @@ font-family: "Fira Sans Light", "fira-light";
 font-weight: normal; 
 }
 p {
-    
+margin: 0;
+margin-bottom: 1em;
 }
 a {
 color: #259CC8;
+text-decoration: none;
 }
         a:visited, a:active {
         color: #4ABB32;
