@@ -1,9 +1,13 @@
 class ImagesController < ApplicationController
+  require "kramdown"
   before_action :get_page
   before_action :set_image, only: %i[ show  ]
 
-  # GET /images/1
   def show
+    unless @page.live || (current_user && current_user.admin)
+      flash[:alert] = "You can't be here!"
+      redirect_to root_path
+    end
   end
 
   private
@@ -11,7 +15,6 @@ class ImagesController < ApplicationController
       @page = Page.friendly.find(params[:page_id])
     end
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = @page.images.find(params[:id])
     end

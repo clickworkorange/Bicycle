@@ -1,0 +1,2 @@
+module Helm::ImagesHelper
+end

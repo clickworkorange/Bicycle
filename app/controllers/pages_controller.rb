@@ -1,23 +1,21 @@
 class PagesController < ApplicationController
   require "kramdown"
   require "rouge"
-  
   before_action :set_page, only: %i[ show ]
 
-  # GET /pages
   def index
-    # TODO: live root pages
     @pages = Page.all
   end
 
-  # GET /pages/1
-  # TODO: process image tokens
   def show
-    # TODO: deny access to non-live pages (unless admin)
+    # TODO: process image tokens
+    unless @page.live || (current_user && current_user.admin)
+      flash[:alert] = "You can't be here!"
+      redirect_to root_path
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.friendly.find(params[:id])
     end

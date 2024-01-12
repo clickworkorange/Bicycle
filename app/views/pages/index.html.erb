@@ -2,8 +2,6 @@
 
 <div id="pages">
   <% @pages.each do |page| %>
-    <p>
-      <%= link_to page.title, page %>
-    </p>
+    <p><%= link_to page.title, page %></p>
   <% end %>
 </div>

@@ -1,25 +1,20 @@
 class Helm::PagesController < Helm::ApplicationController
   before_action :set_page, only: %i[ show edit update destroy ]
 
-  # GET /helm/pages
   def index
     @pages = Page.all
   end
 
-  # GET /helm/pages/1
   def show
   end
 
-  # GET /helm/pages/new
   def new
     @page = Page.build
   end
 
-  # GET /helm/pages/1/edit
   def edit
   end
 
-  # POST /helm/pages
   def create
     @page = Page.new(page_params)
 
@@ -30,8 +25,8 @@ class Helm::PagesController < Helm::ApplicationController
     end
   end
 
-  # PATCH/PUT /helm/pages/1
   def update
+    # TODO: drop banner and use Image instead
     # if params[:banner_delete] & @page.banner.attached?
     #   @page.banner.purge
     # end
@@ -42,19 +37,16 @@ class Helm::PagesController < Helm::ApplicationController
     end
   end
 
-  # DELETE /helm/pages/1
   def destroy
     @page.destroy!
     redirect_to helm_pages_url, notice: "Page was successfully deleted.", status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.friendly.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def page_params
       params.require(:page).permit(:live, :title, :abstract, :body, :parent_id, :banner, :banner_delete)
     end

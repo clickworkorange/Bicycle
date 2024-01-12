@@ -25,7 +25,7 @@
       </li>
     </li>
     <li>Users:
-    <% @users.each do |user| %>
+    <% User.all.each do |user| %>
       <ul>
         <li><%= link_to user.email, edit_helm_user_path(user) %></li>
       </ul>
