@@ -216,6 +216,12 @@ Devise.setup do |config|
   # Warn on the last attempt before the account is locked.
   # config.last_attempt_warning = true
 
+  config.lock_strategy = :failed_attempts
+  config.unlock_keys = [ :time ]
+  config.unlock_strategy = :time
+  config.maximum_attempts = 3
+  config.unlock_in = 2.hours
+
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account

@@ -26,10 +26,6 @@ class Helm::PagesController < Helm::ApplicationController
   end
 
   def update
-    # TODO: drop banner and use Image instead
-    # if params[:banner_delete] & @page.banner.attached?
-    #   @page.banner.purge
-    # end
     if @page.update(page_params)
       redirect_to edit_helm_page_path(@page), notice: "Page was successfully updated.", status: :see_other
     else
@@ -48,6 +44,6 @@ class Helm::PagesController < Helm::ApplicationController
     end
 
     def page_params
-      params.require(:page).permit(:live, :title, :abstract, :body, :parent_id, :banner, :banner_delete)
+      params.require(:page).permit(:live, :title, :abstract, :body, :parent_id)
     end
 end

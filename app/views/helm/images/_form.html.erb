@@ -2,25 +2,30 @@
 <%= form_with(model: [:helm, @page, @image]) do |form| %>
   <%= render partial: "errors", locals: {model: image} %>
 
-  <div>
+  <p>
     <%= form.label :image_file %>
     <%= form.file_field :image_file, accept: "image/png, image/gif, image/jpeg" %>
     <% if @image.image_file.attached? %>
       <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
     <% end %>
-  </div>
+  </p>
 
-  <div>
+  <p>
+    <%= form.label :role %>
+    <%= form.select(:role, Image::ROLES) %>
+  <p>
+
+  <p>
     <%= form.label :caption, style: "display: block" %>
     <%= form.text_field :caption %>
-  </div>
+  </p>
 
-  <div>
+  <p>
     <%= form.label :alt_text, style: "display: block" %>
     <%= form.text_field :alt_text %>
-  </div>
+  </p>
 
-  <div>
+  <p>
     <%= form.submit %>
-  </div>
+  </p>
 <% end %>

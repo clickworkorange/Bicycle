@@ -8,14 +8,6 @@
   </p>
 
   <p>
-    <%= form.label :banner %>
-    <%= form.file_field :banner, accept: "image/png, image/gif, image/jpeg" %>
-    <% if @page.banner.attached? %>
-      <%= image_tag url_for(page.banner.variant(resize_to_limit: [100, nil])) %>
-    <% end %>
-  </p>
-
-  <p>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </p>

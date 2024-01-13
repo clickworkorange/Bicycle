@@ -5,6 +5,9 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
+  config.i18n.available_locales = :en
+  config.i18n.raise_on_missing_translations = false
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 

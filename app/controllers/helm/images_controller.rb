@@ -51,6 +51,6 @@ class Helm::ImagesController < Helm::ApplicationController
     end
 
     def image_params
-      params.require(:image).permit(:image_file, :caption, :alt_text, :page_id)
+      params.require(:image).permit(:image_file, :role, :caption, :alt_text, :page_id)
     end
 end

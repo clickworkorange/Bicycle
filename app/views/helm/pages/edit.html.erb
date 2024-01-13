@@ -6,6 +6,7 @@
 
 <% @page.images.each do |image| %>
   <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
+  <%= link_to "Edit image", edit_helm_page_image_path(@page, image) %>
 <% end %>
 
 <%= link_to "New image", new_helm_page_image_path(@page) %>

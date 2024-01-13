@@ -23,10 +23,12 @@ gem "dartsass-sprockets", "~> 3.1.0"
 gem "image_processing", "~> 1.12.2"
 gem "acts_as_list", "~> 1.1.0"
 gem "awesome_nested_set", "~> 3.6.0"
+gem "rails-i18n", "~> 7.0.8"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem "i18n-debug", "~> 1.2.0"
 end
 
 group :development do

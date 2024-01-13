@@ -1,9 +1,6 @@
-<article>
-  <h1><%= page.title %></h1>
-  <%= image_tag(url_for(page.banner.variant(resize_to_limit: [100, nil]))) if @page.banner.attached? %>
-  <%= sanitize Kramdown::Document.new(page.body, syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
+<h1><%= page.title %></h1>
+<%= sanitize Kramdown::Document.new(page.body, syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
 
-  <% page.images.each do |image| %>
-    <%= link_to(image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), page_image_path(page, image)) %>
-  <% end %>
-</article>
+<% page.images.each do |image| %>
+  <%= link_to(image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), page_image_path(page, image)) %>
+<% end %>

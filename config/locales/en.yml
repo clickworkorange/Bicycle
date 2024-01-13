@@ -28,4 +28,48 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  go_back: "Go back"
+  are_you_sure: "Are you sure?"
+  errors:
+    format: "%{message}"
+    #format: "%{attribute} %{message}"
+  user:
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    sign_up: "Register"
+    forgot_password: "I forgot my password!"
+    send_password_reset: "Reset my password"
+    change_password: "Change password"
+    resend_unlock_instructions: "Resend unlock instructions"
+    missed_confirmation: "I didn't receive a confirmation email"
+    missed_unlock_instructions: "I haven't received unlock instructions"
+    password_requirement: "Minimum %{length} characters"
+    edit: "Edit %{resource}"
+    update: "Update"
+    new_password: "New password"
+    confirm_new_password: "Confirm new password"
+    awaiting_confirmation: "Currently awaiting confirmation for: %{email)"
+    cancel_account: "Cancel my account"
+    cancel_details: "Your account and all associated information will be permanently deleted."
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        email: "Email address"
+        password: "Password"
+        password_confirmation: "Confirm password"
+        remember_me: "Remember me"
+        current_password: "Current password (required)"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "You must enter an %{attribute}"
+            password:
+              blank: "%{attribute} cannot be blank"
+              too_short: "%{attribute} is too short"
+            password_confirmation:
+              confirmation: "%{attribute}s do not match"
+          not_found: "Email address not found"

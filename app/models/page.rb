@@ -1,7 +1,6 @@
 class Page < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
-  has_one_attached :banner
   has_many :images, dependent: :destroy
   validates :title, presence: true
   scope :live, -> { where(live: true) }
