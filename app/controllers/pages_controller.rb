@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    # TODO: add a path property to override content on static pages
     # TODO: process image tokens
     unless @page.live || (current_user && current_user.admin)
       flash[:alert] = "You can't be here!"

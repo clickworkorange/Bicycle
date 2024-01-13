@@ -1,6 +1,9 @@
 <h1><%= page.title %></h1>
-<%= sanitize Kramdown::Document.new(page.body, syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
 
-<% page.images.each do |image| %>
+<%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
+
+<%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
+
+<% page.images.gallery.each do |image| %>
   <%= link_to(image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), page_image_path(page, image)) %>
 <% end %>

@@ -41,13 +41,18 @@ background-color: $colour-bg;
 color: $text_colour;
 font-size: 100%;
 display: grid;
-grid-template-columns: [nav] 20em [main] 1fr [end];
+grid-template-columns: [nav] 15em [main] 1fr [end];
 }
+body > header {
+height: 2em;
+}
+    body > header object {
+    width: 15em;
+    }
 h1 {
-font-family: "Fira Sans ExtraBold", "fira-xbi";
+font-family: "Fira Sans Light", "fira-light";
 font-size: 2em;
 font-weight: normal; 
-font-style: italic;
 margin-bottom: .5em;
 }
 h2 {
@@ -55,6 +60,9 @@ font-family: "Fira Sans Light", "fira-light";
 font-size: 1.5em;
 font-weight: normal; 
 margin-bottom: .5em;
+}
+pre.highlight {
+font-family: "Fira Code", "fira-code";
 }
 p {
 margin: 0;
@@ -84,17 +92,28 @@ label {
 display: block;
 }
 
-
-
 nav {
 grid-area: nav;
 background-color: $colour-bg-dark;
 }
+    nav ul {
+    list-style-type: none;
+    padding: 0 1em;
+    }
 
 article {
 grid-area: main;
 padding: 1em;
 }
+    article section.abstract {
+    font-weight: bolder;
+    }
+    article p img {
+    float: left;
+    clear: left;
+    width: 12em;
+    margin-right: .5em;
+    }
     article form {
     max-width: 20em;
     }
@@ -104,7 +123,6 @@ margin: 0;
 pre.highlight {
 padding: 1em;
 overflow: auto;
-font-family: "Fira Code", "fira-code";
 background-color: $colour-bg-dark;
 }
     pre pre {
