@@ -1,8 +1,10 @@
 class Page < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
+  TEMPLATES = ["article","section","gallery"]
   has_many :images, dependent: :destroy
   validates :title, presence: true
+  validates_inclusion_of :template, :in => TEMPLATES
   scope :live, -> { where(live: true) }
   acts_as_nested_set
 

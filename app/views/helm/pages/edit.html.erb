@@ -1,12 +1,11 @@
-<h1>Editing page</h1>
+<h1><%= t("helm.page.edit") %></h1>
 
 <%= render "form", page: @page %>
 
-<%= button_to "Destroy this page", [:helm, @page], method: :delete %>
+<%= button_to t("helm.page.destroy"), [:helm, @page], method: :delete, class: "no" %>
 
 <% @page.images.each do |image| %>
-  <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
-  <%= link_to "Edit image", edit_helm_page_image_path(@page, image) %>
+  <%= link_to image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), edit_helm_page_image_path(@page, image) %>
 <% end %>
 
-<%= link_to "New image", new_helm_page_image_path(@page) %>
+<%= link_to t("helm.image.new"), new_helm_page_image_path(@page), class: "button" %>

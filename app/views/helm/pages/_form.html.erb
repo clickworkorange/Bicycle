@@ -1,32 +1,46 @@
 
 <%= form_with(model: [:helm, page]) do |form| %>
   <%= render partial: "errors", locals: {model: page} %>
-  <p>
-    <%= form.label :live do %>
-      Live <%= form.check_box :live, { checked: page.live } %> 
-    <% end %>
-  </p>
 
-  <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </p>
+  <div>
+    <div style="width: 45%; float: left;">
+      <p>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </p>
 
-  <p>
-    <%= form.label :abstract %>
-    <%= form.text_area :abstract %>
-  </p>
+      <p>
+        <%= form.label :parent %>
+        <%= form.collection_select(:parent_id, Page.all.excluding(page), :id, :title,{include_blank: ""}) %>
+      </p>
+
+      <p>
+        <%= form.label :template %>
+        <%= form.select(:template, Page::TEMPLATES.map {|template| [t(template, scope: "page.templates"), template]}) %>
+      <p>
+
+      <p>
+        <%= form.label :live do %>
+          Live <%= form.check_box :live, { checked: page.live } %> 
+        <% end %>
+      </p>
+    </div>
+
+    <div style="width: 50%; float: left; margin-left: 5%;">
+      <p>
+        <%= form.label :abstract %>
+        <%= form.text_area :abstract, rows: 8 %>
+      </p>
+    </div>
+  </div>
 
   <p>
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, rows: 12 %>
     <em> use %1$s, %2$s, etc to insert inline images</em>
   </p>
 
   <p>
-    <%= form.label :parent %>
-    <%= form.collection_select(:parent_id, Page.all, :id, :title,{include_blank: ""}) %>
-  <p>
-    <%= form.submit %>
+    <%= form.submit class: "yes" %>
   </p>
 <% end %>

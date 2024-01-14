@@ -1,4 +1,12 @@
+<h2><%= link_to(page.parent.title, page.parent) if page.parent.present? %></h2>
 <h1><%= page.title %></h1>
+
+<%= content_tag(:p, class: "date") do 
+  concat(content_tag(:span, "#{t("created_at")}: #{l(page.created_at, format: :short)}", class: "created_at"))
+  if page.updated_at > page.created_at
+    concat(content_tag(:span, " #{t("updated_at")}: #{l(page.updated_at, format: :short)}", class: "updated_at"))
+  end
+end %>
 
 <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
 

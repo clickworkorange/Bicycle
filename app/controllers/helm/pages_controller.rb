@@ -44,6 +44,6 @@ class Helm::PagesController < Helm::ApplicationController
     end
 
     def page_params
-      params.require(:page).permit(:live, :title, :abstract, :body, :parent_id)
+      params.require(:page).permit(:title, :abstract, :body, :live, :template, :parent_id)
     end
 end

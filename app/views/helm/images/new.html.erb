@@ -1,9 +1,7 @@
-<h1>New image</h1>
+<h1><%= t("helm.image.new") %></h1>
 
 <%= render "form", image: @image %>
 
-<br>
-
-<div>
-  <%= link_to "Back to images", helm_page_images_path %>
-</div>
+<p>
+  <%= link_to t("helm.image.cancel"), edit_helm_page_path(@page), class: "button no" %>
+</p>

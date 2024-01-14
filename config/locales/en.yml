@@ -28,6 +28,11 @@
 #       enabled: "ON"
 
 en:
+  time:
+    formats:
+      short: "%d %b %Y"
+  created_at: "Published"
+  updated_at: "Updated"
   go_back: "Go back"
   are_you_sure: "Are you sure?"
   errors:
@@ -51,9 +56,32 @@ en:
     awaiting_confirmation: "Currently awaiting confirmation for: %{email)"
     cancel_account: "Cancel my account"
     cancel_details: "Your account and all associated information will be permanently deleted."
+  page: 
+    templates:
+      article: "Article"
+      section: "Section"
+      gallery: "Gallery"
+  image:
+    roles:
+      inline: "Inline"
+      banner: "Banner"
+      gallery: "Gallery"
+  helm:
+    page:
+      new: "New page"
+      edit: "Edit page"
+      destroy: "Delete page"
+      create_before_images: "You need to create the page before you can add images."
+    image:
+      new: "New image"
+      edit: "Edit image"
+      destroy: "Delete image"
+      cancel: "Cancel"
   activerecord:
     models:
       user: "User"
+      page: "Page"
+      image: "Image"
     attributes:
       user:
         email: "Email address"
@@ -61,6 +89,17 @@ en:
         password_confirmation: "Confirm password"
         remember_me: "Remember me"
         current_password: "Current password (required)"
+      page:
+        title: "Page title"
+        abstract: "Abstract"
+        body: "Content"
+        parent: "Section"
+        template: "Template"
+      image:
+        image_file: "Image file"
+        role: "Role"
+        caption: "Caption"
+        alt_text: "Alt text"
     errors:
       models:
         user:

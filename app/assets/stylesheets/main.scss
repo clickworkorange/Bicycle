@@ -1,12 +1,17 @@
 
 $colour-bg: #1F2F43;
-$colour-bg-dark: darken($colour-bg, 5%);
+$colour-bg-dark: #17222D;
 $text_colour: #C1BEB3;
 $orange: #DC5B00;
+$blue: #259CC8;
+$green: #4ABB32;
+$darker: #275461;
 
 @font-face {
     font-family: "fira";
     src: local("Fira Sans");
+    src: local("FiraSans-Regular");
+    src: local("Fira Sans Regular");
     src: url("firasans-regular-cwo.woff2") format("woff2"),
          url("firasans-regular-cwo.woff") format("woff");
     font-weight: normal;
@@ -16,6 +21,7 @@ $orange: #DC5B00;
 @font-face {
     font-family: "fira-light";
     src: local("Fira Sans Light");
+    src: local("FiraSans-Light");
     src: url("firasans-light-cwo.woff2") format("woff2"),
          url("firasans-light-cwo.woff") format("woff");
     font-weight: normal;
@@ -25,19 +31,22 @@ $orange: #DC5B00;
 @font-face {
     font-family: "fira-code";
     src: local("Fira Code");
+    src: local("FiraCode-Regular");
+    src: local("Fira Code Regular");
     src: url("firacode-regular-cwo.woff2") format("woff2"),
          url("firacode-regular-cwo.woff") format("woff");
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
 
 body {
-font-family: "fira";
+font-family: "Fira Sans", "fira";
 background-color: $colour-bg;
 color: $text_colour;
 font-size: 120%;
 // font-size: clamp(3rem, 25vmin, 8rem)
-line-height: 1.3em;
+line-height: 1.2em;
 display: grid;
 grid-template-rows: auto 1fr;
 grid-template-columns: 15em 1fr;
@@ -47,8 +56,9 @@ grid-template-areas:
 }
 
 h1, h2 {
-font-family: "fira-light";
+font-family: "Fira Sans Light", "fira-light";
 font-weight: normal; 
+margin: 0;
 margin-bottom: .5em;
 }
     h1 {
@@ -62,11 +72,11 @@ margin: 0;
 margin-bottom: 1em;
 }
 a {
-color: #259CC8;
+color: $blue;
 text-decoration: none;
 }
         a:visited, a:active {
-        color: #4ABB32;
+        color: $green;
         }
 b {
 font-weight: bolder;
@@ -84,17 +94,55 @@ width: 100%;
 label {
 display: block;
 }
-
-
+option {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+textarea, select, option, input, button {
+font-family: "Fira Sans", "fira";
+font-size: 1em;
+}
+textarea, select, option, input:not([type=button],[type=submit]) {
+padding: .5em;
+color: $text_colour;
+background-color: $colour-bg-dark;
+border: 1px solid $darker;
+}
+button, input[type=submit], input[type=button], a.button {
+display: block;
+padding: .5em;
+border: none;
+border-radius: .2em;
+background-color: $blue;
+color: black;
+text-align: center;
+cursor: pointer;
+}
+    button:hover, input[type=submit]:hover, input[type=button]:hover, a.button:hover {
+    background-color: lighten($blue, 10%);
+    }
+    button.yes, input[type=submit].yes, input[type=button].yes, a.button.yes {
+    background-color: $green;
+    }
+        button.yes:hover, input[type=submit].yes:hover, input[type=button].yes:hover, a.button.yes:hover {
+        background-color: lighten($green, 10%);
+        }
+    button.no, input[type=submit].no, input[type=button].no, a.button.no {
+    background-color: $orange;
+    }
+        button.no:hover, input[type=submit].no:hover, input[type=button].no:hover, a.button.no:hover {
+        background-color: lighten($orange, 10%);
+        }
 
 body > header {
 grid-area: header;
 padding: .5em 0;
 }
     body > header h1 {
-    font-family: "fira-code";
+    font-family: "Fira Code", "fira-code";
     font-size: 1.5em;
-    font-weight: bold;
+    //font-weight: 800;
     margin: 0;
     }
         body > header h1 a {
@@ -114,15 +162,24 @@ padding: .5em 0;
                 30% { background-position: 120%; }
                 100% { background-position: 120%; }
                 }
+            body > header h1 a:active {
+            color: lighten($orange, 10%);
+            }
 nav {
 grid-area: nav;
 background-color: $colour-bg-dark;
+padding: .5em;
 }
     nav ul {
     list-style-type: none;
-    padding: 0 1em;
+    padding: 0;
     }
+        nav ul ul {
+        padding-left: 1em;
+        }
 
+// TODO: some of these are front-end specific, move them out
+// TODO: Stylelint
 article {
 grid-area: main;
 padding: 1em;
@@ -136,9 +193,16 @@ padding: 1em;
     width: 12em;
     margin-right: .5em;
     }
-    article form {
-    max-width: 20em;
+    // article form {
+    // max-width: 20em;
+    // }
+    article p.date {
+    font-size: .8em;
     }
+        article p.date span {
+        display: block;
+        }
+
 figure {
 margin: 0;
 }

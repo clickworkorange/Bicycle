@@ -2,17 +2,18 @@
 <%= form_with(model: [:helm, @page, @image]) do |form| %>
   <%= render partial: "errors", locals: {model: image} %>
 
+  <% if @image.image_file.attached? %>
+    <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
+  <% end %>
+
   <p>
     <%= form.label :image_file %>
     <%= form.file_field :image_file, accept: "image/png, image/gif, image/jpeg" %>
-    <% if @image.image_file.attached? %>
-      <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
-    <% end %>
   </p>
 
   <p>
     <%= form.label :role %>
-    <%= form.select(:role, Image::ROLES) %>
+    <%= form.select(:role, Image::ROLES.map {|role| [t(role, scope: "image.roles"), role]}) %>
   <p>
 
   <p>
@@ -26,6 +27,6 @@
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: "yes" %>
   </p>
 <% end %>

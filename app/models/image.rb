@@ -7,5 +7,4 @@ class Image < ApplicationRecord
   scope :gallery, -> { where(role: "gallery") }
   validates :image_file, presence: true
   validates_inclusion_of :role, :in => ROLES
-
 end

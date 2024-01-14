@@ -2,34 +2,25 @@
   <% if user_signed_in? %>
     <p><%= current_user.email %> <%= button_to "Sign out", destroy_user_session_path, method: :delete %></p>
   <% end %>
+  <h3>Pages:</h3>
   <ul>
-    <li>Pages:
-    <ul>
-    <% Page.roots.each do |page| %>
-      <li><%= link_to page.title, edit_helm_page_path(page) %>
-        <% if page.children.any? %>
-          <ul>
-          <% page.children.each do |child| %>
-            <li><%= link_to child.title, edit_helm_page_path(child) %></li>
-          <% end %>
-          </ul>
-        <% end %>
-      </li>
-    <% end %>
-    </ul>
-    </li>
-      <li>
+  <% Page.roots.each do |page| %>
+    <li><%= link_to page.title, edit_helm_page_path(page) %>
+      <% if page.children.any? %>
         <ul>
-          <li><%= link_to :new_page, new_helm_page_path %></li>
+        <% page.children.each do |child| %>
+          <li><%= link_to child.title, edit_helm_page_path(child) %></li>
+        <% end %>
         </ul>
-      </li>
+      <% end %>
     </li>
-    <li>Users:
-    <% User.all.each do |user| %>
-      <ul>
-        <li><%= link_to user.email, edit_helm_user_path(user) %></li>
-      </ul>
-    <% end %>
-    </li>
+  <% end %>
   </ul>
+  <%= link_to t("helm.page.new"), new_helm_page_path, class: "button" %></li>
+  <h3>Users:</h3>
+  <% User.all.each do |user| %>
+    <ul>
+      <li><%= link_to user.email, edit_helm_user_path(user) %></li>
+    </ul>
+  <% end %>
 </nav>

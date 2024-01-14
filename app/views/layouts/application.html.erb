@@ -14,8 +14,8 @@
     <header><h1><a href="/">=clickworkorange=</a></h1></header>
     <%= render partial: "menu" %>
     <article>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= content_tag(:p, notice, class: "notice") if notice.present? %>
+      <%= content_tag(:p, alert, class: "alert") if alert.present? %>
       <%= yield %>
     </article>
   </body>

@@ -7,14 +7,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "helm" %>
     <% # javascript_include_tag "application" %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= render partial: "menu" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <article><%= yield %></article>
+    <article>
+      <%= content_tag(:p, notice, class: "notice") if notice.present? %>
+      <%= content_tag(:p, alert, class: "alert") if alert.present? %>
+      <%= yield %>
+    </article>
   </body>
 </html>

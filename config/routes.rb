@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   namespace :helm do
     root "pages#index"
-    resources :pages do
-      resources :images
+    resources :pages, only: [:new, :edit, :destroy] do
+      resources :images, only: [:new, :edit, :destroy]
     end
     resources :users
   end
