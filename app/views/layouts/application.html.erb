@@ -11,11 +11,12 @@
   </head>
 
   <body>
-  <!--<object type="image/svg+xml" data="<%= asset_path("logo.svg") %>">-->
-    <header><div id="logo"><a href="#"></a><%= image_tag("logo.svg") %></div></header>
+    <header><h1><a href="/">=clickworkorange=</a></h1></header>
     <%= render partial: "menu" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <article><%= yield %></article>
+    <article>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </article>
   </body>
 </html>
