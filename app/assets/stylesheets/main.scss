@@ -39,16 +39,30 @@ body {
 font-family: "Fira Sans", "fira";
 background-color: $colour-bg;
 color: $text_colour;
-font-size: 100%;
+font-size: 120%;
+line-height: 1.3em;
 display: grid;
 grid-template-columns: [nav] 15em [main] 1fr [end];
 }
-body > header {
-height: 2em;
-}
-    body > header object {
-    width: 15em;
+    body > header {
+    height: 2em;
     }
+        body > header div#logo {
+        width: 15em;
+        position: relative;
+        }
+            body > header div#logo a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            }
+            body > header div#logo img {
+            width: 100%;
+            }
+                body > header div#logo a:hover + img {
+                content:url("logo_swish.svg");
+                }
+
 h1 {
 font-family: "Fira Sans Light", "fira-light";
 font-size: 2em;

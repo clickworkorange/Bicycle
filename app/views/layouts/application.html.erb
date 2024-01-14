@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <header><object type="image/svg+xml" data="<%= asset_path("logo.svg") %>"></object></header>
+  <!--<object type="image/svg+xml" data="<%= asset_path("logo.svg") %>">-->
+    <header><div id="logo"><a href="#"></a><%= image_tag("logo.svg") %></div></header>
     <%= render partial: "menu" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
