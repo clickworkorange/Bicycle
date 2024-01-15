@@ -1,0 +1,10 @@
+<%= content_tag :li do %>
+  <%= link_to raw("#{svg_icon(page.template)} #{page.title}"), edit_helm_page_path(page), class: @page.id == page.id ? "current" : nil %>
+  <% if page.children.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
+    <%= content_tag :ul do %>
+      <% page.children.each do |child| %>
+        <%= render :partial => "menu_tree", :locals => {:page => child }%>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

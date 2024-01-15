@@ -5,19 +5,10 @@
   <h3>Pages:</h3>
   <ul>
   <% Page.roots.each do |page| %>
-    <!-- TODO: leverage awesome_nested_set to traverse the entire tree of pages -->
-    <li><%= link_to raw("#{svg_icon(page.template)} #{page.title}"), edit_helm_page_path(page) %>
-      <% if @page.children.any? || @page.parent_id == page.id %>
-        <ul>
-        <% page.children.each do |child| %>
-          <li><%= link_to raw("#{svg_icon(child.template)} #{child.title}"), edit_helm_page_path(child) %></li>
-        <% end %>
-        </ul>
-      <% end %>
-    </li>
+    <%= render partial: "menu_tree", locals: {page: page} %>
   <% end %>
   </ul>
-  <%= link_to t("helm.page.new"), new_helm_page_path, class: "button" %></li>
+  <p><%= link_to t("helm.page.new"), new_helm_page_path, class: "button" %></p>
   <h3>Users:</h3>
   <% User.all.each do |user| %>
     <ul>

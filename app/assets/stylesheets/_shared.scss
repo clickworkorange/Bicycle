@@ -43,14 +43,14 @@ font-size: 120%;
 line-height: 1.2em;
 display: grid;
 grid-template-rows: auto 1fr auto;
-grid-template-columns: 15em 1fr;
+grid-template-columns: 19em 1fr;
 grid-template-areas: 
 "header header"
 "nav main"
 "footer footer";
 }
 
-h1, h2 {
+h1, h2, h3 {
 font-family: "Fira Sans Light", "fira-light";
 font-weight: normal; 
 margin: 0;
@@ -149,7 +149,7 @@ border-radius: 1em;
     display: block;
     padding: .2em;
     }
-        nav ul li a:hover {
+        nav ul li a.current, nav ul li a:hover {
         color: white;
         background-color: black;
         }
