@@ -29,6 +29,6 @@ test:
 
 production:
   <<: *default
-  database: clickworkorange_production
+  database: clickworkorange_development
   username: <%= Rails.application.credentials.dig(:postgresql, :user) %>
   password: <%= Rails.application.credentials.dig(:postgresql, :pass) %>

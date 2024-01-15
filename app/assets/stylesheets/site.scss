@@ -1,0 +1,71 @@
+@use "shared" as *;
+@use "monokai";
+
+body > header h1 {
+font-family: "Fira Code", "fira-code";
+font-size: 2em;
+//font-weight: 800;
+margin: 0;
+}
+    body > header h1 a {
+    display: block;
+    float: left;
+    padding: .5em 0;
+    color: transparent;
+    background: linear-gradient(75deg, $orange 0 90%, white 95%, $orange 100%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-position: 0%;
+    }
+        body > header h1 a:hover {
+        animation: swish 3s infinite linear;
+        }
+            @keyframes swish {
+            30% { background-position: -150%; }
+            100% { background-position: -150%; }
+            }
+        body > header h1 a:active {
+        color: lighten($orange, 10%);
+        }
+
+article section.abstract {
+font-weight: bolder;
+}
+	article p img {
+	float: left;
+	clear: left;
+	width: 12em;
+	margin-right: .5em;
+	}
+	article form {
+	max-width: 20em;
+	}
+	article p.date {
+	font-size: .8em;
+	}
+	    article p.date span {
+	    display: block;
+	    }
+
+figure {
+margin: 0;
+}
+
+pre.highlight {
+padding: 1em;
+overflow: auto;
+font-family: "fira-code";
+background-color: $colour-bg-dark;
+}
+    pre pre {
+    float: left;
+    margin-right: 1em;
+    }
+    pre.lineno {
+    color: #C1BEB3;
+    }
+
+ul.address {
+list-style-type: none;
+}

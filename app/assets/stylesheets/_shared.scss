@@ -1,11 +1,5 @@
-
-$colour-bg: #1F2F43;
-$colour-bg-dark: #17222D;
-$text_colour: #C1BEB3;
-$orange: #DC5B00;
-$blue: #259CC8;
-$green: #4ABB32;
-$darker: #275461;
+@use "global" as *;
+@forward "global";
 
 @font-face {
     font-family: "fira";
@@ -48,11 +42,12 @@ font-size: 120%;
 // font-size: clamp(3rem, 25vmin, 8rem)
 line-height: 1.2em;
 display: grid;
-grid-template-rows: auto 1fr;
+grid-template-rows: auto 1fr auto;
 grid-template-columns: 15em 1fr;
 grid-template-areas: 
 "header header"
-"nav main";
+"nav main"
+"footer footer";
 }
 
 h1, h2 {
@@ -95,9 +90,6 @@ label {
 display: block;
 }
 option {
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
 }
 textarea, select, option, input, button {
 font-family: "Fira Sans", "fira";
@@ -139,84 +131,39 @@ body > header {
 grid-area: header;
 padding: .5em 0;
 }
-    body > header h1 {
-    font-family: "Fira Code", "fira-code";
-    font-size: 1.5em;
-    //font-weight: 800;
-    margin: 0;
-    }
-        body > header h1 a {
-        display: block;
-        padding: .5em 0;
-        color: transparent;
-        background: linear-gradient(75deg, $orange 0 90%, white 95%, $orange 100%);
-        background-size: 30em;
-        -webkit-background-clip: text;
-        background-clip: text;
-        background-position: 0%;
-        }
-            body > header h1 a:hover {
-            animation: swish 4s infinite linear;
-            }
-                @keyframes swish {
-                30% { background-position: 120%; }
-                100% { background-position: 120%; }
-                }
-            body > header h1 a:active {
-            color: lighten($orange, 10%);
-            }
-nav {
+
+body > nav {
 grid-area: nav;
 background-color: $colour-bg-dark;
 padding: .5em;
+border-radius: 1em;
 }
     nav ul {
     list-style-type: none;
     padding: 0;
     }
         nav ul ul {
-        padding-left: 1em;
+        padding-left: .75em;
+        }
+    nav ul li a {
+    display: block;
+    padding: .2em;
+    }
+        nav ul li a:hover {
+        color: white;
+        background-color: black;
         }
 
-// TODO: some of these are front-end specific, move them out
+body > footer {
+grid-area: footer;
+margin-top: 1em;
+background-color: $colour-bg-dark;
+padding: .5em;
+border-radius: 1em;
+}
+
 // TODO: Stylelint
 article {
 grid-area: main;
 padding: 1em;
 }
-    article section.abstract {
-    font-weight: bolder;
-    }
-    article p img {
-    float: left;
-    clear: left;
-    width: 12em;
-    margin-right: .5em;
-    }
-    // article form {
-    // max-width: 20em;
-    // }
-    article p.date {
-    font-size: .8em;
-    }
-        article p.date span {
-        display: block;
-        }
-
-figure {
-margin: 0;
-}
-
-pre.highlight {
-padding: 1em;
-overflow: auto;
-font-family: "fira-code";
-background-color: $colour-bg-dark;
-}
-    pre pre {
-    float: left;
-    margin-right: 1em;
-    }
-    pre.lineno {
-    color: #C1BEB3;
-    }

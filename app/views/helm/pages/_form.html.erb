@@ -10,6 +10,7 @@
       </p>
 
       <p>
+        <!-- TODO: order and indent pages and children (and children's children...) -->
         <%= form.label :parent %>
         <%= form.collection_select(:parent_id, Page.all.excluding(page), :id, :title,{include_blank: ""}) %>
       </p>

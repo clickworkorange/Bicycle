@@ -13,4 +13,9 @@ module PagesHelper
 		url = page_image_path(page, image)
 		"[![#{alt}](#{img})](#{url})"
 	end
+
+	def svg_icon(icon)
+		path = File.join(Rails.root, "app", "assets", "images", "icons", icon)
+		sanitize(File.read(path + ".svg"), tags: %w(svg g path), attributes: %w(xmlns width height viewBox d))
+	end
 end

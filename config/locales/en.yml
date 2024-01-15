@@ -61,6 +61,7 @@ en:
       article: "Article"
       section: "Section"
       gallery: "Gallery"
+      home: "Homepage"
   image:
     roles:
       inline: "Inline"

@@ -6,11 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "site" %>
     <% # javascript_include_tag "application" %>
   </head>
 
-  <body>
+  <body class="<%= @page.template if @page.present? %>">
     <header><h1><a href="/">=clickworkorange=</a></h1></header>
     <%= render partial: "menu" %>
     <article>
@@ -18,5 +18,11 @@
       <%= content_tag(:p, alert, class: "alert") if alert.present? %>
       <%= yield %>
     </article>
+    <footer>
+      <ul class="address">
+        <li>clickworkorange Ltd</li>
+        <li>info@clickworkorange.com</li>
+      </ul>
+    </footer>
   </body>
 </html>

@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
-  TEMPLATES = ["article","section","gallery"]
+  TEMPLATES = ["article","section","gallery","home"]
   has_many :images, dependent: :destroy
   validates :title, presence: true
   validates_inclusion_of :template, :in => TEMPLATES
