@@ -54,9 +54,11 @@ margin-bottom: .5em;
 }
     h1 {
     font-size: 2em;
+    line-height: 1em;
     }
     h2 {
     font-size: 1.5em;
+    line-height: 1em;
     }
 p {
 margin: 0;
@@ -97,7 +99,7 @@ color: $text_colour;
 background-color: $colour-bg-dark;
 border: 1px solid $darker;
 }
-button, input[type=submit], input[type=button], a.button {
+button, input[type=submit], input[type=button], a.button, body > nav label {
 display: block;
 padding: .5em;
 border: none;

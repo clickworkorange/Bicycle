@@ -1,0 +1,42 @@
+
+@media (max-width: 850px) {
+    body > header h1 {
+    margin-left: 1.5em;
+    }
+    body.helm article h1 {
+    margin-left: 1em;
+    }
+
+    body > nav {
+    position: fixed;
+    top: .5em;
+    left: .5em;
+    float: none;
+    width: auto;
+    }
+        body > nav label {
+        display: block;
+        width: 2em;
+        height: 2em;
+        padding: 0;
+        }
+            body > nav label svg {
+            fill: currentColor;
+            }
+        body > nav > div {
+        display: none;
+        position: fixed;
+        margin-top: .5em;
+        width: 90%;
+        max-width: 23em;
+        box-shadow: .5em 1em 1em black;
+        }
+            body > nav input#menu:checked + div {
+            display: block;
+            }
+
+    body > article {
+    margin-left: 0;
+    padding: 1em 0;
+    }
+}
