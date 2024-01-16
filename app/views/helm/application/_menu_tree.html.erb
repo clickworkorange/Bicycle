@@ -8,7 +8,7 @@
       <%= page.title %>
     <% end %>
   <% end %>
-  <% if @page.present? && page.children.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
+  <% if @page.persisted? && page.children.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
     <%= content_tag :ul do %>
       <% page.children.each do |child| %>
         <%= render :partial => "menu_tree", :locals => {:page => child} %>
