@@ -1,9 +1,17 @@
-<%= content_tag :li do %>
-  <%= link_to raw("#{svg_icon(page.template)} #{page.title}"), edit_helm_page_path(page), class: @page.id == page.id ? "current" : nil %>
+<%= content_tag :li, class: @page.id == page.id ? "current" : nil do %>
+  <%= content_tag(:span) do %>
+    <% if page.child? %>
+      <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
+    <% end %>
+    <%= link_to edit_helm_page_path(page) do %>
+      <%= svg_icon(page.template) %>
+      <%= page.title %>
+    <% end %>
+  <% end %>
   <% if page.children.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
     <%= content_tag :ul do %>
       <% page.children.each do |child| %>
-        <%= render :partial => "menu_tree", :locals => {:page => child }%>
+        <%= render :partial => "menu_tree", :locals => {:page => child} %>
       <% end %>
     <% end %>
   <% end %>

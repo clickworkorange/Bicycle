@@ -143,15 +143,33 @@ border-radius: 1em;
     padding: 0;
     }
         nav ul ul {
-        padding-left: .75em;
+        padding-left: .7em;
         }
-    nav ul li a {
-    display: block;
-    padding: .2em;
+            nav ul ul ul {
+            padding-left: 1.2em;
+            }
+    nav ul li  {
+    padding: 0;
+    margin: 0;
     }
-        nav ul li a.current, nav ul li a:hover {
+        nav ul li span {
+        display: block;
+        height: 1.6em;
+        line-height: 1.6em;
+        }
+            nav ul li span > svg { 
+            float: left;
+            height: 100%;
+            width: auto;
+            fill: $darker;
+            }
+            nav ul li a svg {
+            fill: currentColor;
+            vertical-align: text-bottom;
+            margin-left: .1em;
+            }
+        nav ul li.current > span a, nav ul li a:hover {
         color: white;
-        background-color: black;
         }
 
 body > footer {
