@@ -1,5 +1,5 @@
 <%= content_tag :li, class: @page.id == page.id ? "current" : nil do %>
-  <%= content_tag(:span) do %>
+  <%= content_tag(:div) do %>
     <% if page.child? %>
       <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
     <% end %>
