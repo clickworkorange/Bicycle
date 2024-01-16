@@ -1,4 +1,4 @@
-<%= content_tag :li, class: @page.id == page.id ? "current" : nil do %>
+<%= content_tag :li, class: @page.present? && @page.id == page.id ? "current" : nil do %>
   <%= content_tag(:div) do %>
     <% if page.child? %>
       <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
@@ -8,7 +8,7 @@
       <%= page.title %>
     <% end %>
   <% end %>
-  <% if page.children.live.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
+  <% if @page.present? && page.children.live.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
     <%= content_tag :ul do %>
       <% page.children.live.each do |child| %>
         <%= render :partial => "menu_tree", :locals => {:page => child }%>

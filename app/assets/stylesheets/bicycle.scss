@@ -4,4 +4,13 @@ body.images.edit article img {
 width: 100px;
 }
 
+li form {
+display: inline-block;
+overflow: auto;
+}
+	li form button {
+	display: inline-block;
+	float: right;
+	}
+
 @import "mobile"

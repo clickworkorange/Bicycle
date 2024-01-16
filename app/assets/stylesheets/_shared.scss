@@ -125,6 +125,11 @@ cursor: pointer;
         background-color: lighten($orange, 10%);
         }
 
+    button:disabled, input[type=submit]:disabled, input[type=button]:disabled, a.button.disabled {
+    background-color: $gray;
+    cursor: default;
+    }
+
 body > header, body > article {
 box-sizing: border-box;
 }

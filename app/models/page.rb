@@ -6,6 +6,7 @@ class Page < ApplicationRecord
   validates :title, presence: true
   validates_inclusion_of :template, :in => TEMPLATES
   scope :live, -> { where(live: true) }
+  self.implicit_order_column = "lft"
   acts_as_nested_set
 
   def should_generate_new_friendly_id?

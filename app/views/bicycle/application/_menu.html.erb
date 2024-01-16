@@ -7,12 +7,6 @@
     <% if user_signed_in? %>
       <p><%= current_user.email %> <%= button_to "Sign out", destroy_user_session_path, method: :delete %></p>
     <% end %>
-    <h3>Pages:</h3>
-    <ul>
-    <% Page.roots.each do |page| %>
-      <%= render partial: "menu_tree", locals: {page: page} %>
-    <% end %>
-    </ul>
     <p><%= link_to t("bicycle.page.new"), new_bicycle_page_path, class: "button" %></p>
     <h3>Users:</h3>
     <% User.all.each do |user| %>

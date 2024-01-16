@@ -1,8 +1,8 @@
 class Bicycle::PagesController < Bicycle::ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy ]
+  before_action :set_page, only: %i[ show edit update destroy move ]
 
   def index
-    @pages = Page.all
+    @pages = Page.roots
   end
 
   def show
@@ -38,9 +38,18 @@ class Bicycle::PagesController < Bicycle::ApplicationController
     redirect_to bicycle_pages_url, notice: "Page was successfully deleted.", status: :see_other
   end
 
+  def move
+    if params[:dir] == "up"
+      @page.move_left
+    elsif params[:dir] == "dn"
+      @page.move_right
+    end
+    redirect_to bicycle_pages_url
+  end
+
   private
     def set_page
-      @page = Page.friendly.find(params[:id])
+      @page = Page.friendly.find(params[:id] || params[:page_id])
     end
 
     def page_params

@@ -1,0 +1,5 @@
+<ul>
+<% @pages.each do |page| %>
+	<%= render partial: "index_tree", locals: {page: page} %> 
+<% end %>
+</ul>
