@@ -1,5 +1,5 @@
 class Bicycle::PagesController < Bicycle::ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy move ]
+  before_action :set_page, only: %i[ show edit update destroy move toggle ]
 
   def index
     @pages = Page.roots
@@ -44,6 +44,14 @@ class Bicycle::PagesController < Bicycle::ApplicationController
     elsif params[:dir] == "dn"
       @page.move_right
     end
+    redirect_to bicycle_pages_url
+  end
+
+  def toggle
+    if @page.live && @page.children.any? 
+      @page.descendants.update_all({live: false})
+    end
+    @page.update({live: @page.live.!})
     redirect_to bicycle_pages_url
   end
 

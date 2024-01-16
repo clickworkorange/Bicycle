@@ -4,13 +4,22 @@ body.images.edit article img {
 width: 100px;
 }
 
-li form {
-display: inline-block;
-overflow: auto;
+body.pages.index table {
+// width: 100%;
 }
-	li form button {
-	display: inline-block;
-	float: right;
+	body.pages.index table svg {
+	fill: currentColor;
+	margin-top: .2em;
+	margin-bottom: -.2em;
 	}
+	body.pages.index table form {
+	display: inline-block;
+	}
+		body.pages.index table button {
+		margin: .1em;
+		padding: .2em;
+		width: 2em;
+		height: 2em;
+		}
 
 @import "mobile"

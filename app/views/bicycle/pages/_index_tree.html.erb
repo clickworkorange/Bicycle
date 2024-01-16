@@ -1,17 +1,27 @@
-<%= content_tag :li do %>
-  <%= content_tag(:div) do %>
+
+<% # TODO: This is generating an awful lot of DB queries... %>
+<%= content_tag :tr do %>
+  <%= content_tag(:td, style: "padding-left: #{level * 1}em;") do %>
     <%= link_to edit_bicycle_page_path(page) do %>
       <%= svg_icon(page.template) %>
       <%= page.title %>
     <% end %>
-    <%= button_to("up", bicycle_page_move_path(page), params: {dir: "up"}, disabled: page.self_and_siblings.first == page) %>
-    <%= button_to("dn", bicycle_page_move_path(page), params: {dir: "dn"}, disabled: page.self_and_siblings.last == page) %>
   <% end %>
-  <% if page.children.any? %>
-    <%= content_tag :ul do %>
-      <% page.children.each do |child| %>
-        <%= render :partial => "index_tree", :locals => {:page => child} %>
-      <% end %>
-    <% end %>
+  <%= content_tag(:td) do %>
+    <%= button_to(svg_icon("up"), bicycle_page_move_path(page), params: {dir: "up"}, disabled: page.self_and_siblings.first == page) %>
+    <%= button_to(svg_icon("down"), bicycle_page_move_path(page), params: {dir: "dn"}, disabled: page.self_and_siblings.last == page) %>
+  <% end %>
+  <%= content_tag(:td) do %>
+    <%= button_to svg_icon("live"), bicycle_page_toggle_path(page), class: page.live ? "yes" : "no" %>
+  <% end %>
+  <%= content_tag(:td) do %>
+    <%= button_to svg_icon("delete"), [:bicycle, page], method: :delete, class: "no" %>
+  <% end %>
+<% end %>
+
+<% if page.children.any? %>
+  <% level += 1 %>
+  <% page.children.each do |child| %>
+    <%= render :partial => "index_tree", locals: {page: child, level: level} %>
   <% end %>
 <% end %>

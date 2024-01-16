@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   namespace :bicycle do
     root "pages#index"
-    resources :pages, only: [:new, :create, :edit, :update, :destroy] do
+    resources :pages, only: [:index, :new, :create, :edit, :update, :destroy] do
+      post "move"
+      post "toggle"
       resources :images, only: [:new, :create, :edit, :update, :destroy]
     end
     resources :users
