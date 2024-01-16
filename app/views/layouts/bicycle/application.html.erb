@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "helm" %>
+    <%= stylesheet_link_tag "bicycle" %>
     <% # javascript_include_tag "application" %>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -15,7 +15,7 @@
     <link rel="manifest" href="/site.webmanifest">
   </head>
 
-  <body class="helm <%= controller_name %> <%= action_name %>">
+  <body class="bicycle <%= controller_name %> <%= action_name %>">
     <%= render partial: "menu" %>
     <article>
       <%= content_tag(:p, notice, class: "notice") if notice.present? %>

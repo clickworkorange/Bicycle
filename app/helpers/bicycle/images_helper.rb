@@ -1,0 +1,2 @@
+module Bicycle::ImagesHelper
+end

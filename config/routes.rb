@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  namespace :helm do
+  namespace :bicycle do
     root "pages#index"
     resources :pages, only: [:new, :create, :edit, :update, :destroy] do
       resources :images, only: [:new, :create, :edit, :update, :destroy]

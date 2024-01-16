@@ -1,5 +1,5 @@
 <h2><%= @page.title %></h2>
-<%= form_with(model: [:helm, @page, @image]) do |form| %>
+<%= form_with(model: [:bicycle, @page, @image]) do |form| %>
   <%= render partial: "errors", locals: {model: image} %>
 
   <% if @image.image_file.attached? %>

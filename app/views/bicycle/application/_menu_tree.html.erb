@@ -3,7 +3,7 @@
     <% if page.child? %>
       <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
     <% end %>
-    <%= link_to edit_helm_page_path(page) do %>
+    <%= link_to edit_bicycle_page_path(page) do %>
       <%= svg_icon(page.template) %>
       <%= page.title %>
     <% end %>

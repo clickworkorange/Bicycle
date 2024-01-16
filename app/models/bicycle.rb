@@ -1,5 +1,5 @@
-module Helm
+module Bicycle
   def self.table_name_prefix
-    "helm_"
+    "bicycle_"
   end
 end

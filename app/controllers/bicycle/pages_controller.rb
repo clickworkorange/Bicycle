@@ -1,4 +1,4 @@
-class Helm::PagesController < Helm::ApplicationController
+class Bicycle::PagesController < Bicycle::ApplicationController
   before_action :set_page, only: %i[ show edit update destroy ]
 
   def index
@@ -19,7 +19,7 @@ class Helm::PagesController < Helm::ApplicationController
     @page = Page.new(page_params)
 
     if @page.save
-      redirect_to edit_helm_page_path(@page), notice: "Page was successfully created."
+      redirect_to edit_bicycle_page_path(@page), notice: "Page was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Helm::PagesController < Helm::ApplicationController
 
   def update
     if @page.update(page_params)
-      redirect_to edit_helm_page_path(@page), notice: "Page was successfully updated.", status: :see_other
+      redirect_to edit_bicycle_page_path(@page), notice: "Page was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class Helm::PagesController < Helm::ApplicationController
 
   def destroy
     @page.destroy!
-    redirect_to helm_pages_url, notice: "Page was successfully deleted.", status: :see_other
+    redirect_to bicycle_pages_url, notice: "Page was successfully deleted.", status: :see_other
   end
 
   private

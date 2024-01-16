@@ -13,11 +13,11 @@
       <%= render partial: "menu_tree", locals: {page: page} %>
     <% end %>
     </ul>
-    <p><%= link_to t("helm.page.new"), new_helm_page_path, class: "button" %></p>
+    <p><%= link_to t("bicycle.page.new"), new_bicycle_page_path, class: "button" %></p>
     <h3>Users:</h3>
     <% User.all.each do |user| %>
       <ul>
-        <li><%= link_to user.email, edit_helm_user_path(user) %></li>
+        <li><%= link_to user.email, edit_bicycle_user_path(user) %></li>
       </ul>
     <% end %>
   </div>

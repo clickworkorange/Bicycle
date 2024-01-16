@@ -1,0 +1,2 @@
+module Bicycle::PagesHelper
+end

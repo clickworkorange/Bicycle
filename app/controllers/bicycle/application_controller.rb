@@ -1,4 +1,4 @@
-class Helm::ApplicationController < ApplicationController
+class Bicycle::ApplicationController < ApplicationController
 	before_action :check_admin_user
 
   private

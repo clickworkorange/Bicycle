@@ -1,4 +1,4 @@
-class Helm::ImagesController < Helm::ApplicationController
+class Bicycle::ImagesController < Bicycle::ApplicationController
   before_action :get_page
   before_action :set_image, only: %i[ show edit update destroy ]
   
@@ -22,7 +22,7 @@ class Helm::ImagesController < Helm::ApplicationController
     @image = @page.images.build(image_params)
 
     if @image.save
-      redirect_to edit_helm_page_path(@page), notice: "Image was successfully created."
+      redirect_to edit_bicycle_page_path(@page), notice: "Image was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class Helm::ImagesController < Helm::ApplicationController
 
   def update
     if @image.update(image_params)
-      redirect_to edit_helm_page_path(@page), notice: "Image was successfully updated.", status: :see_other
+      redirect_to edit_bicycle_page_path(@page), notice: "Image was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class Helm::ImagesController < Helm::ApplicationController
 
   def destroy
     @image.destroy!
-    redirect_to edit_helm_page_path(@page), notice: "Image was successfully destroyed.", status: :see_other
+    redirect_to edit_bicycle_page_path(@page), notice: "Image was successfully destroyed.", status: :see_other
   end
 
   private
