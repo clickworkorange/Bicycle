@@ -4,3 +4,6 @@ body.images.edit article img {
 width: 100px;
 }
 
+@media (max-width: 50rem) {
+    @import "mobile"
+}

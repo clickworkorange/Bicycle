@@ -15,7 +15,9 @@
   </head>
 
   <body class="<%= @page.template if @page.present? %>">
-    <header><h1><a href="/">=clickworkorange=</a></h1></header>
+    <header>
+      <h1><a href="/">=clickworkorange=</a></h1>
+    </header>
     <%= render partial: "menu" %>
     <article>
       <%= content_tag(:p, notice, class: "notice") if notice.present? %>

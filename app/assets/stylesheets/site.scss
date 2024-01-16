@@ -3,14 +3,13 @@
 
 body > header h1 {
 font-family: "Fira Code", "fira-code";
-font-size: 2em;
+//font-size: clamp(1em, 8.5vw, 2em);
 //font-weight: 800;
 margin: 0;
 }
     body > header h1 a {
     display: block;
-    float: left;
-    padding: .5em 0;
+    padding: .2em 0;
     color: transparent;
     background: linear-gradient(75deg, $orange 0 90%, white 95%, $orange 100%);
     background-size: 200%;
@@ -28,6 +27,10 @@ margin: 0;
         body > header h1 a:active {
         color: lighten($orange, 10%);
         }
+
+body > article {
+padding-top: 1em;
+}
 
 article section.abstract {
 font-weight: bolder;
@@ -68,4 +71,8 @@ background-color: $colour-bg-dark;
 
 ul.address {
 list-style-type: none;
+}
+
+@media (max-width: 50rem) {
+    @import "mobile"
 }

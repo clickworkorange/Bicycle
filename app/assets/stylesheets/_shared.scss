@@ -38,16 +38,12 @@ body {
 font-family: "Fira Sans", "fira";
 background-color: $colour-bg;
 color: $text_colour;
-font-size: 120%;
+font-size: 110%;
 // font-size: clamp(3rem, 25vmin, 8rem)
 line-height: 1.2em;
-display: grid;
-grid-template-rows: auto 1fr auto;
-grid-template-columns: 19em 1fr;
-grid-template-areas: 
-"header header"
-"nav main"
-"footer footer";
+}
+
+header{
 }
 
 h1, h2, h3 {
@@ -127,52 +123,58 @@ cursor: pointer;
         background-color: lighten($orange, 10%);
         }
 
-body > header {
-grid-area: header;
-padding: .5em 0;
+body > header, body > article {
+box-sizing: border-box;
 }
 
 body > nav {
-grid-area: nav;
-background-color: $colour-bg-dark;
-padding: .5em;
-border-radius: 1em;
+float: left;
+width: 20em;
 }
-    nav ul {
-    list-style-type: none;
-    padding: 0;
+    body > nav label, body > nav input#menu {
+    display: none;
     }
-        nav ul ul {
-        padding-left: .7em;
-        }
-            nav ul ul ul {
-            padding-left: 1.2em;
-            }
-    nav ul li  {
-    padding: 0;
+    body > nav > div {
     margin: 0;
+    padding: .5em;
+    background-color: $colour-bg-dark;
+    border-radius: 1em;
     }
-        nav ul li div {
-        height: 1.6em;
-        line-height: 1.6em;
+        nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0
         }
-            nav ul li div > svg { 
-            float: left;
-            height: 100%;
-            width: auto;
-            fill: $darker;
+            nav ul ul {
+            padding-left: .7em;
             }
-            nav ul li a svg {
-            fill: currentColor;
-            vertical-align: text-bottom;
-            margin-left: .1em;
-            }
-        nav ul li.current > div a, nav ul li a:hover {
-        color: white;
+                nav ul ul ul {
+                padding-left: 1.2em;
+                }
+        nav ul li  {
+        padding: 0;
+        margin: 0;
         }
+            nav ul li div {
+            height: 1.6em;
+            line-height: 1.6em;
+            }
+                nav ul li div > svg { 
+                float: left;
+                height: 100%;
+                width: auto;
+                fill: $darker;
+                }
+                nav ul li a svg {
+                fill: currentColor;
+                vertical-align: text-bottom;
+                margin-left: .1em;
+                }
+            nav ul li.current > div a, nav ul li a:hover {
+            color: white;
+            }
 
 body > footer {
-grid-area: footer;
 margin-top: 1em;
 background-color: $colour-bg-dark;
 padding: .5em;
@@ -181,6 +183,6 @@ border-radius: 1em;
 
 // TODO: Stylelint
 article {
-grid-area: main;
-padding: 1em;
+margin-left: 20em;
+padding: .5em;
 }
