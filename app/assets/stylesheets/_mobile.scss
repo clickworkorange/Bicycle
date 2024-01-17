@@ -60,4 +60,8 @@
         body > article header {
         padding-bottom: .5em;
         }
+
+    article section#child_pages nav, article section#gallery nav {
+    grid-column-gap: .5em;
+    }
 }
