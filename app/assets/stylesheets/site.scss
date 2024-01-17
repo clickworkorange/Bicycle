@@ -33,6 +33,21 @@ body > article {
 padding-top: 1em;
 }
 
+body > article > header {
+height: 15vw;
+min-height: 7.5em;
+margin-bottom: 1em;
+overflow: hidden;
+padding: .5em;
+background-color: $colour-bg-dark;
+background-position: 50% 25%;
+}
+    body > article > header h1, body > article > header h2, body > article > header p {
+    float: left;
+    clear: left;
+    background-color: rgba(0,0,0,0.5);
+    }
+
 article section.abstract {
 font-weight: bolder;
 }
@@ -51,6 +66,27 @@ font-weight: bolder;
 	    article p.date span {
 	    display: block;
 	    }
+
+article section#child_pages {
+// TODO: crop banner
+}
+    article section#child_pages nav {
+    display: grid;
+    grid-column-gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+    }
+        article section#child_pages nav a {
+        display: block;
+        max-width: 20em;
+        }
+            article section#child_pages nav a img {
+            width: 100%;
+            }
+            article section#child_pages nav a p {
+            margin: 0;
+            }
+
+// TODO: line-clamp for linked sub-pages abstract
 
 figure {
 margin: 0;

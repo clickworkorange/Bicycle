@@ -6,6 +6,7 @@
     <%= link_to page do %>
       <%= svg_icon(page.template) %>
       <%= page.title %>
+      <% # TODO: text-overflow: ellipsis; %>
     <% end %>
   <% end %>
   <% if @page.present? && page.children.live.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>

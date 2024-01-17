@@ -51,6 +51,7 @@ font-family: "Fira Sans Light", "fira-light";
 font-weight: normal; 
 margin: 0;
 margin-bottom: .5em;
+//text-wrap: balance;
 }
     h1 {
     font-size: 2em;
@@ -150,7 +151,7 @@ width: 20em;
         nav ul {
         list-style-type: none;
         padding: 0;
-        margin: 0
+        margin: 0;
         }
             nav ul ul {
             padding-left: .7em;
@@ -165,6 +166,9 @@ width: 20em;
             nav ul li div {
             height: 1.6em;
             line-height: 1.6em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             }
                 nav ul li div > svg { 
                 float: left;
@@ -182,7 +186,8 @@ width: 20em;
             }
 
 body > footer {
-margin-top: 1em;
+clear: left;
+margin-top: 3em;
 background-color: $colour-bg-dark;
 padding: .5em;
 border-radius: 1em;

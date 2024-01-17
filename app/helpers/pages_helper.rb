@@ -1,13 +1,22 @@
 module PagesHelper
 
-	def inline_images(page) 
+	def inline_images(page, width=480) 
 		# TODO: handle case of too few images
-		page.body % page.images.inline.map { |image| image_to_md(page, image, 480) }
+		page.body % page.images.inline.map { |image| image_to_md(page, image, width) }
 	end
 	
+	def first_banner_or_blank(page, width=400)
+		# TODO: different blank banner depending on template
+		if page.images.banner.any?
+			path = url_for(page.images.banner.first.image_file.variant(resize_to_limit: [width, nil]))
+		else
+			path = asset_path("blank_banner.png")
+		end
+		path
+	end
+
 	# TODO: def gallery_images(), def banner_images()
 	# TODO: define a comprehensive set of tokens for image/gallery/banner insertion
-	# TODO: allow overriding the default image size
 
 	def image_to_md(page, image, width)
 		alt = image.alt_text

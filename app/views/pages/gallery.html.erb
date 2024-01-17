@@ -1,5 +1,4 @@
-<h2><%= link_to(page.parent.title, page.parent) if page.parent.present? %></h2>
-<h1><%= page.title %></h1>
+<%= render partial: "header", locals: {page: page} %>
 
 <%= content_tag(:p, class: "date") do 
   concat(content_tag(:span, "#{t("created_at")}: #{l(page.created_at, format: :short)}", class: "created_at"))
@@ -15,3 +14,5 @@ end %>
 <% page.images.gallery.each do |image| %>
   <%= link_to(image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), page_image_path(page, image)) %>
 <% end %>
+
+<%= render partial: "children", locals: {page: page} %>

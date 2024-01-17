@@ -1,8 +1,4 @@
 <table>
-	<colgroup>
-		<col width="min-content" />
-		<col width="min-content" />
-	</colgroup>
 	<% @pages.each do |page| %>
 		<%= render partial: "index_tree", locals: {page: page, level: 0} %> 
 	<% end %>

@@ -1,15 +1,14 @@
-<h1><%= page.title %></h1>
+<%= render partial: "header", locals: {page: page} %>
 
 <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
 
 <%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
 
-<% page.children.each do |child| %>
-  <%= link_to(child.title, child) %>
-<% end %>
+<%= render partial: "children", locals: {page: page} %>
 
 <% page.images.gallery.each do |image| %>
   <%= link_to(image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), page_image_path(page, image)) %>
 <% end %>
 
 <%= content_tag(:p, content_tag(:span, " #{t("updated_at")}: #{l(page.updated_at, format: :short)}", class: "updated_at"), class: "date") %>
+
