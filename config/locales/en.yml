@@ -70,6 +70,7 @@ en:
       gallery: "Gallery"
   bicycle:
     page:
+      index: "Pages"
       new: "New page"
       edit: "Edit page"
       destroy: "Delete page"

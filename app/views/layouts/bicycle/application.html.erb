@@ -16,11 +16,12 @@
   </head>
 
   <body class="bicycle <%= controller_name %> <%= action_name %>">
-    <%= render partial: "menu" %>
+    <%= render partial: "header" %>
     <article>
       <%= content_tag(:p, notice, class: "notice") if notice.present? %>
       <%= content_tag(:p, alert, class: "alert") if alert.present? %>
       <%= yield %>
     </article>
+    <%= render partial: "footer" %>
   </body>
 </html>

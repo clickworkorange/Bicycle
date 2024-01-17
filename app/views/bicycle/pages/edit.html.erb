@@ -4,6 +4,9 @@
 
 <%= button_to t("bicycle.page.destroy"), [:bicycle, @page], method: :delete, class: "no" %>
 
+
+<h2>Images</h2>
+
 <% @page.images.each do |image| %>
   <%= link_to image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), edit_bicycle_page_image_path(@page, image) %>
 <% end %>

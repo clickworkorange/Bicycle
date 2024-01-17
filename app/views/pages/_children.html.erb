@@ -1,8 +1,8 @@
-<% if page.children.any? %>
+<% if page.children.live.any? %>
   <section id="child_pages">
     <h2><%= t("page.read_more") %></h2>
     <nav>
-      <% page.children.each do |child| %>
+      <% page.children.live.each do |child| %>
         <%= render partial: "child_page", locals: {child: child} %>
       <% end %>
     </nav>

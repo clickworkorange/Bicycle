@@ -1,33 +1,65 @@
 @use "shared" as *;
 
+body.bicycle {
+background-image: url("bicycle.png");
+}
+
+body > header, article, body > footer {
+max-width: 1000px;
+margin: 1em auto;
+}
+
+body > header {
+overflow: auto;
+}
+	body > header nav {
+	}
+		body > header form, body > header nav {
+		float: left;
+		}
+		body > header button, body > header a.button {
+		display: inline-block;
+		margin-right: .5em;
+		}
+
+article {
+padding: .5em;
+background-color: $colour-bg;
+border-radius: 1em;
+}
+
 body.images.edit article img {
 width: 100px;
 }
 
 body.pages.index table {
 table-layout: fixed;
+box-sizing: border-box;
 width: 100%;
 max-width: 40em;
-white-space: nowrap;
+border-spacing: 0;
 }
+	body.pages.index table tr:nth-child(odd) {
+	}
 	body.pages.index table td {
-	width: 2.2em;
+	padding: .2em;
+	white-space: nowrap;
+	border-bottom: 1px dashed black;
 	}
 	body.pages.index table td:first-child {
-	overflow: hidden;
-	text-overflow: ellipsis;
 	width: 100%;
 	}
 	body.pages.index table td:last-child {
-	width: 4.2em;
+	width: 6.5em;
+	text-align: right;
 	}
-	// body.pages.index table td a {
-	// display: inline-block;
-	// overflow: hidden;
-	// text-overflow: ellipsis;
-	// white-space: nowrap;
-	// max-width: 100%;
-	// }
+	body.pages.index table td a {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+	}
 	body.pages.index table svg {
 	fill: currentColor;
 	margin-top: .2em;
@@ -36,11 +68,10 @@ white-space: nowrap;
 	body.pages.index table form {
 	display: inline-block;
 	}
-		body.pages.index table button {
-		margin: .1em;
-		padding: .2em;
-		width: 2em;
-		height: 2em;
-		}
+	body.pages.index table button {
+	padding: .2em;
+	width: 2em;
+	height: 2em;
+	}
 
-@import "mobile"
+//@import "mobile"

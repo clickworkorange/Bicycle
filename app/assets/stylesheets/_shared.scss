@@ -41,6 +41,7 @@ color: $text_colour;
 font-size: 110%;
 // font-size: clamp(3rem, 25vmin, 8rem)
 line-height: 1.2em;
+min-height: 100vh;
 }
 
 header{
@@ -75,11 +76,12 @@ text-decoration: none;
 b {
 font-weight: bolder;
 }
-form {
+article > form {
 display: flex;
 flex-direction: column; 
 }
 input, textarea {
+box-sizing: border-box;
 width: 100%;
 }
     input[type=checkbox] {
@@ -131,70 +133,8 @@ cursor: pointer;
     cursor: default;
     }
 
-body > header, body > article {
+body > header, body > article, body > footer {
 box-sizing: border-box;
 }
 
-body > nav {
-float: left;
-width: 20em;
-}
-    body > nav label, body > nav input#menu {
-    display: none;
-    }
-    body > nav > div {
-    margin: 0;
-    padding: .5em;
-    background-color: $colour-bg-dark;
-    border-radius: 1em;
-    }
-        nav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        }
-            nav ul ul {
-            padding-left: .7em;
-            }
-                nav ul ul ul {
-                padding-left: 1.2em;
-                }
-        nav ul li  {
-        padding: 0;
-        margin: 0;
-        }
-            nav ul li div {
-            height: 1.6em;
-            line-height: 1.6em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            }
-                nav ul li div > svg { 
-                float: left;
-                height: 100%;
-                width: auto;
-                fill: $darker;
-                }
-                nav ul li a svg {
-                fill: currentColor;
-                vertical-align: text-bottom;
-                margin-left: .1em;
-                }
-            nav ul li.current > div a, nav ul li a:hover {
-            color: white;
-            }
-
-body > footer {
-clear: left;
-margin-top: 3em;
-background-color: $colour-bg-dark;
-padding: .5em;
-border-radius: 1em;
-}
-
 // TODO: Stylelint
-article {
-margin-left: 20em;
-padding: .5em;
-}

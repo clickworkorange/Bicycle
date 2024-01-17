@@ -1,18 +1,3 @@
 <nav>
-  <label for="menu">
-    <%= svg_icon("menu") %>
-  </label>
-  <input type="checkbox" id="menu"/>
-  <div>
-    <% if user_signed_in? %>
-      <p><%= current_user.email %> <%= button_to "Sign out", destroy_user_session_path, method: :delete %></p>
-    <% end %>
-    <p><%= link_to t("bicycle.page.new"), new_bicycle_page_path, class: "button" %></p>
-    <h3>Users:</h3>
-    <% User.all.each do |user| %>
-      <ul>
-        <li><%= link_to user.email, edit_bicycle_user_path(user) %></li>
-      </ul>
-    <% end %>
-  </div>
+  <%= link_to t("bicycle.page.index"), bicycle_pages_path, class: "button" %><%= link_to t("bicycle.page.new"), new_bicycle_page_path, class: "button" %>
 </nav>

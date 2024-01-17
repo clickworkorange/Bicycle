@@ -7,6 +7,7 @@ module PagesHelper
 	
 	def first_banner_or_blank(page, width=400)
 		# TODO: different blank banner depending on template
+		# TODO: resize_to_fit (width*aspect)
 		if page.images.banner.any?
 			path = url_for(page.images.banner.first.image_file.variant(resize_to_limit: [width, nil]))
 		else
@@ -17,6 +18,7 @@ module PagesHelper
 
 	# TODO: def gallery_images(), def banner_images()
 	# TODO: define a comprehensive set of tokens for image/gallery/banner insertion
+	# TODO: get rid of unnecessary <div> tags around kramdown/rouge code blocks
 
 	def image_to_md(page, image, width)
 		alt = image.alt_text
