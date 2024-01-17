@@ -47,7 +47,7 @@ width: min-content;
 
 body > nav {
 position: sticky; 
-top: .5em;
+top: 0;
 float: left;
 width: 25vw;
 }
@@ -113,9 +113,9 @@ overflow: hidden;
     display: flex;
     height: 15vw;
     min-height: 7.5em;
-    margin-bottom: 1em;
+    margin: 0 -1em 1em -1em;
     overflow: hidden;
-    padding: .5em;
+    padding: 1em;
     background-color: $colour-bg-alt;
     background-position: 50% 25%;
     }
