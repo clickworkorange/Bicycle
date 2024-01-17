@@ -1,7 +1,11 @@
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
+
     body > header h1 {
     margin-left: 1.5em;
+    }
+    body > header h2 {
+    display: none;
     }
     body.bicycle article h1 {
     margin-left: 1em;
@@ -13,6 +17,7 @@
     left: .5em;
     float: none;
     width: auto;
+    z-index: 2;
     }
         body > nav label {
         display: block;
@@ -31,6 +36,7 @@
         width: 90%;
         max-width: 23em;
         box-shadow: .5em 1em 1em black;
+        //margin-left: -.5em;
         }
             body > nav input#menu:checked + div {
             display: block;

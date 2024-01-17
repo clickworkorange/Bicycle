@@ -5,14 +5,19 @@ body > header {
 display: flex;
 align-items: center;
 // TODO: annoyingly arbitrary units below! 
-min-height: 2.2em;
-margin-bottom: .4em;
+min-height: 3em;
+padding: 0 .5em;
+//background: linear-gradient(180deg, $colour-bg 0%, $colour-bg-alt 50%, $colour-bg 100%);
+box-shadow: 0 0 .5em .5em rgba(0,0,0,0.5);
+position: relative;
+z-index: 1;
 }
 
 body > header h1 {
 font-family: "Fira Code", "fira-code";
 font-size: clamp(1em, 8vw, 2em);
 margin: 0;
+margin-top: 2px;
 width: min-content;
 }
     body > header h1 a {
@@ -34,12 +39,16 @@ width: min-content;
         body > header h1 a:active {
         color: lighten($orange, 10%);
         }
+    body > header h2 {
+    margin: 0;
+    margin-left: auto;
+    }
 
 body > nav {
 position: sticky; 
 top: .5em;
 float: left;
-width: 20em;
+width: 25vw;
 }
     body > nav label, body > nav input#menu {
     display: none;
@@ -47,9 +56,8 @@ width: 20em;
     body > nav > div {
     margin: 0;
     padding: .5em;
-    background-color: $colour-bg-dark;
+    background-color: $colour-bg-alt;
     //border-radius: 1em;
-    // TODO: make this minimum 100% of page height 
     min-height: 100vh;
     margin-bottom: 8.5em;
     }
@@ -90,12 +98,12 @@ width: 20em;
                 margin-left: .1em;
                 }
             body > nav ul li.current > div a, body > nav ul li a:hover {
-            color: white;
+            color: $text_colour;
             }
 
 article {
 padding-top: 1em;
-margin-left: 20em;
+margin-left: 25vw;
 padding: 0 .5em;
 overflow: hidden;
 }
@@ -106,7 +114,7 @@ overflow: hidden;
     margin-bottom: 1em;
     overflow: hidden;
     padding: .5em;
-    background-color: $colour-bg-dark;
+    background-color: $colour-bg-alt;
     background-position: 50% 25%;
     }
         article > header > div {
@@ -155,7 +163,7 @@ overflow: hidden;
                 article section#child_pages nav a img {
                 width: 100%;
                 aspect-ratio: 2.33 / 1;
-                background-color: $colour-bg-dark;
+                background-color: $colour-bg-alt;
                 }
                 article section#child_pages nav a p {
                 // TODO: line-clamp for linked sub-pages abstract
@@ -181,7 +189,7 @@ overflow: hidden;
                 article section#gallery nav a figure img {
                 width: 100%;
                 aspect-ratio: 1 / 1;
-                background-color: $colour-bg-dark;
+                background-color: $colour-bg-alt;
                 }
                 article section#gallery nav a figure p {
                 margin: 0;
@@ -191,7 +199,7 @@ body > footer {
 clear: left;
 height: 8em;
 margin-top: 3em;
-background-color: $colour-bg-dark;
+background-color: $colour-bg-alt;
 padding: .5em;
 // border-radius: 1em;
 }
@@ -206,7 +214,7 @@ overflow: auto;
 overflow-x: scroll;
 clear: left;
 font-family: "fira-code";
-background-color: $colour-bg-dark;
+background-color: $colour-bg-alt;
 }
     pre.highlight {
     //display: table;
