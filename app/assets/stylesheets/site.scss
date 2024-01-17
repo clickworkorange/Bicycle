@@ -36,6 +36,8 @@ width: min-content;
         }
 
 body > nav {
+position: sticky; 
+top: .5em;
 float: left;
 width: 20em;
 }
@@ -48,7 +50,8 @@ width: 20em;
     background-color: $colour-bg-dark;
     //border-radius: 1em;
     // TODO: make this minimum 100% of page height 
-    //min-height: 100vh;
+    min-height: 100vh;
+    margin-bottom: 8.5em;
     }
         body > nav ul {
         list-style-type: none;
@@ -111,6 +114,7 @@ padding: 0 .5em;
         article > header h1, article > header h2 {
         float: left;
         clear: left;
+        padding: 1px 4px 5px 4px;
         background-color: rgba(0,0,0,0.75);
         }
             article > header h1 {
@@ -149,18 +153,46 @@ padding: 0 .5em;
             }
                 article section#child_pages nav a img {
                 width: 100%;
+                aspect-ratio: 2.33 / 1;
+                background-color: $colour-bg-dark;
                 }
                 article section#child_pages nav a p {
                 // TODO: line-clamp for linked sub-pages abstract
                 margin: 0;
                 }
+    article section#gallery {
+    // TODO: handle different aspect ratios (based on image.image_file.width/height)
+    // TODO: and do the same for inline images (so the layout can be precomputed)
+    }
+        article section#gallery nav {
+        display: grid;
+        grid-column-gap: 1em;
+        grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+        }
+            article section#gallery nav a {
+            display: block;
+            max-width: 20em;
+            }
+                article section#gallery nav a figure {
+                width: 100%;
+                margin-bottom: 1em;
+                }
+                article section#gallery nav a figure img {
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                background-color: $colour-bg-dark;
+                }
+                article section#gallery nav a figure p {
+                margin: 0;
+                }
 
 body > footer {
 clear: left;
+height: 8em;
 margin-top: 3em;
 background-color: $colour-bg-dark;
 padding: .5em;
-border-radius: 1em;
+// border-radius: 1em;
 }
 
 figure {

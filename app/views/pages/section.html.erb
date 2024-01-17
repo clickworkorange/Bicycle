@@ -6,8 +6,6 @@
 
 <%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
 
-<%= render partial: "children", locals: {page: page} %>
+<%= render(partial: "children", locals: {page: page}) if page.children.live.any? %>
 
-<% page.images.gallery.each do |image| %>
-  <%= link_to(image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), page_image_path(page, image)) %>
-<% end %>
+<%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>

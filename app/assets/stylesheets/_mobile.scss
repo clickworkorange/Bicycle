@@ -26,6 +26,7 @@
         body > nav > div {
         display: none;
         position: fixed;
+        min-height: min-content;
         margin-top: .5em;
         width: 90%;
         max-width: 23em;

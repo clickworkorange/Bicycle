@@ -9,9 +9,9 @@ module PagesHelper
 		# TODO: different blank banner depending on template
 		# TODO: resize_to_fit (width*aspect)
 		if page.images.banner.any?
-			path = url_for(page.images.banner.first.image_file.variant(resize_to_limit: [width, nil]))
+			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/2.33]))
 		else
-			path = asset_path("blank_banner.png")
+			path = asset_path("#{page.template}_banner.jpg")
 		end
 		path
 	end
