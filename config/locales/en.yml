@@ -57,7 +57,8 @@ en:
     cancel_account: "Cancel my account"
     cancel_details: "Your account and all associated information will be permanently deleted."
   page: 
-    read_more: "Read more"
+    children: "Read more"
+    gallery: "Gallery"
     templates:
       article: "Article"
       section: "Section"
