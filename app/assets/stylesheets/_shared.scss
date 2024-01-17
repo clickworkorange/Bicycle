@@ -37,7 +37,7 @@
 body {
 font-family: "Fira Sans", "fira";
 background-color: $colour-bg;
-color: $text_colour;
+color: $colour-text;
 font-size: 110%;
 // font-size: clamp(3rem, 25vmin, 8rem)
 line-height: 1.2em;
@@ -99,7 +99,7 @@ font-size: 1em;
 }
 textarea, select, option, input:not([type=button],[type=submit]) {
 padding: .5em;
-color: $text_colour;
+color: $colour-text;
 background-color: $colour-bg-alt;
 border: 1px solid $darker;
 }
