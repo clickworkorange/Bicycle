@@ -57,6 +57,7 @@ width: 25vw;
     body > nav > div {
     margin: 0;
     padding: .5em;
+    padding-top: 1em;
     background-color: $colour-bg-alt;
     //border-radius: 1em;
     min-height: 100vh;
@@ -79,8 +80,8 @@ width: 25vw;
         margin: 0;
         }
             body > nav ul li div {
-            height: 1.6em;
-            line-height: 1.6em;
+            height: 1.8em;
+            line-height: 1.8em;
             }
                 body > nav ul li div > svg { 
                 float: left;
