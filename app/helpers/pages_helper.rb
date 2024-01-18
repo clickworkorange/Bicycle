@@ -8,6 +8,8 @@ module PagesHelper
 	def first_banner_or_blank(page, width=400)
 		# TODO: different blank banner depending on template
 		# TODO: resize_to_fit (width*aspect)
+		# TODO: set style="aspect-ratio: n/n;"
+		# TODO: process also default banners (to get size & filesize down)
 		if page.images.banner.any?
 			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/2.33]))
 		else

@@ -1,11 +1,11 @@
 <nav>
-  <label for="menu">
+  <button>
     <%= svg_icon("menu") %>
-  </label>
-  <input type="checkbox" id="menu"/>
+  </button>
   <div>
+    <% # TODO: use <menu> tag %>
     <ul>
-    <% Page.roots.live.each do |page| %>
+    <% Page.roots.live.in_menu.each do |page| %>
       <%= render partial: "menu_tree", locals: {page: page} %> 
     <% end %>
     </ul>

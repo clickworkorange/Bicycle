@@ -1,7 +1,7 @@
 
 <%= form_with(model: [:bicycle, page]) do |form| %>
   <%= render partial: "errors", locals: {model: page} %>
-
+  <% tscope = "activerecord.attributes.page" %>
   <div>
     <div style="width: 45%; float: left;">
       <p>
@@ -21,8 +21,14 @@
       <p>
 
       <p>
-        <%= form.label :live do %>
-          Live <%= form.check_box :live, { checked: page.live } %> 
+        <%= form.label :live, :live do %>
+          <%= form.check_box :live, { checked: page.live } %> <%= t("live", scope: tscope) %>
+        <% end %>
+      </p>
+
+      <p>
+        <%= form.label :in_menu do %>
+          <%= form.check_box :in_menu, { checked: page.in_menu } %> <%= t("in_menu", scope: tscope) %>
         <% end %>
       </p>
     </div>

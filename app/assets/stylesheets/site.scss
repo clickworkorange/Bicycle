@@ -9,7 +9,7 @@ min-height: 3em;
 padding: 0 .5em;
 //background: linear-gradient(180deg, $colour-bg 0%, $colour-bg-alt 50%, $colour-bg 100%);
 box-shadow: 0 0 .5em .5em rgba(0,0,0,0.75);
-//border-bottom: 1px solid $darker;
+border-bottom: 1px solid black;
 position: relative;
 z-index: 1;
 }
@@ -51,7 +51,7 @@ top: 0;
 float: left;
 width: 25vw;
 }
-    body > nav label, body > nav input#menu {
+    body > nav button {
     display: none;
     }
     body > nav > div {
@@ -88,6 +88,7 @@ width: 25vw;
                 height: 100%;
                 width: auto;
                 fill: $darker;
+                //shape-rendering: crispEdges;
                 }
                 body > nav ul li a {
                 display: block;
@@ -99,6 +100,7 @@ width: 25vw;
                 fill: currentColor;
                 vertical-align: text-bottom;
                 margin-left: .1em;
+                //shape-rendering: crispEdges;
                 }
             body > nav ul li.current > div a, body > nav ul li a:hover {
             color: $colour-text;

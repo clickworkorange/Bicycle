@@ -8,11 +8,10 @@
       <% # TODO: text-overflow: ellipsis; %>
     <% end %>
   <% end %>
-  <%= content_tag(:td) do %>
-    <%= svg_icon("live")if page.live %>
-    <%= button_to(svg_icon("up"), bicycle_page_move_path(page), params: {dir: "up"}, disabled: page.self_and_siblings.first == page) %>
-    <%= button_to(svg_icon("down"), bicycle_page_move_path(page), params: {dir: "dn"}, disabled: page.self_and_siblings.last == page) %>
-  <% end %>
+  <%= content_tag(:td, class: "status") do %><%= svg_icon("live")if page.live %><% end %>
+  <%= content_tag(:td, class: "status") do %><%= svg_icon("menu")if page.in_menu %><% end %>
+  <%= content_tag(:td) do %><%= button_to(svg_icon("up"), bicycle_page_move_path(page), params: {dir: "up"}, disabled: page.self_and_siblings.first == page) %><% end %>
+  <%= content_tag(:td) do %><%= button_to(svg_icon("down"), bicycle_page_move_path(page), params: {dir: "dn"}, disabled: page.self_and_siblings.last == page) %><% end %>
 <% end %>
 
 <% if page.children.any? %>

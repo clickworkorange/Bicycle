@@ -99,6 +99,8 @@ en:
         body: "Content"
         parent: "Section"
         template: "Template"
+        live: "Live"
+        in_menu: "Show in menu"
       image:
         image_file: "Image file"
         role: "Role"

@@ -5,7 +5,8 @@ class Page < ApplicationRecord
   has_many :images, dependent: :destroy
   validates :title, presence: true
   validates_inclusion_of :template, :in => TEMPLATES
-  scope :live, -> { where(live: true) }
+  scope :live, -> {where(live: true)}
+  scope :in_menu, -> {where(in_menu: true)}
   self.implicit_order_column = "lft"
   acts_as_nested_set
 
