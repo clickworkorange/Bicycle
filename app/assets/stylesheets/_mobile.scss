@@ -68,6 +68,6 @@
     }
 
     body.fullscreen a.next, body.fullscreen a.prev {
-    display: none;
+    display: none !important;
     }
 }

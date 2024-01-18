@@ -212,9 +212,9 @@ overflow: hidden;
                 margin: 0;
                 }
 
-body.gallery {
+body.fullscreen {
 }
-    body.gallery > header a.back {
+    body.fullscreen > header a.back {
     display: block;
     width: 2em;
     height: 2em;
@@ -222,7 +222,7 @@ body.gallery {
     padding: 0;
     box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
     }
-        body.gallery > header a.back svg {
+        body.fullscreen > header a.back svg {
         fill: currentColor;
         //shape-rendering: crispEdges;
         }
@@ -237,7 +237,7 @@ body.gallery {
     max-width: 100%;
     }
             body.fullscreen article > figure img {
-            height: 92vh;
+            max-height: 92vh;
             max-width: 100%;
             object-fit: contain;
             object-position: top;
@@ -253,19 +253,20 @@ body.gallery {
         margin: 1em;
         }
     body.fullscreen a.next, body.fullscreen a.prev {
+    // TODO: button/svg definitions are a MESS; sort it out.
     display: none;
     position: absolute;
-    top: 50%
+    top: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    padding: .3em;
+    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
     }
         body.fullscreen a.next {
         right: .5em;
-        width: 1em;
-        height: 1em;
         }
         body.fullscreen a.prev {
         left: .5em;
-        width: 1em;
-        height: 1em;
         }
     body.fullscreen article section {
     margin: 1em;
