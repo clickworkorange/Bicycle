@@ -1,5 +1,14 @@
 module PagesHelper
 
+	def full_page_path(page)
+		path = ["/"]
+		page.ancestors.each do |parent|
+			path << parent.friendly_id
+		end
+		path << page.friendly_id
+		File.join(path)
+	end
+
 	def inline_images(page, width=480) 
 		# TODO: handle case of too few images
 		page.body % page.images.inline.map { |image| image_to_md(page, image, width) }

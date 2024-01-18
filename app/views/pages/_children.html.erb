@@ -3,9 +3,7 @@
   <section id="child_pages">
     <h2><%= t("page.children") %></h2>
     <nav>
-      <% page.children.live.each do |child| %>
-        <%= render partial: "child_page", locals: {child: child} %>
-      <% end %>
+      <%= render partial: "child_page", collection: page.children.live, as: :child %>
     </nav>
   </section>
 <% end %>

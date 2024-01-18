@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title>clickworkorange</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "site" %>
+    <% # javascript_include_tag "application" %>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="fullscreen <%= @page.template if @page.present? %>">
+    <header>
+      <% # TODO: link back to #image.id, so you return to where you were %>
+      <%= link_to(svg_icon("back"), full_page_path(@image.page), class: "button back") %>
+      <h1><a href="/">=clickworkorange=</a></h1>
+      <h2>fighting entropy since 2016</h2>
+    </header>
+    <article>
+      <%= content_tag(:p, notice, class: "notice") if notice.present? %>
+      <%= content_tag(:p, alert, class: "alert") if alert.present? %>
+      <%= yield %>
+    </article>
+    <footer>
+      <ul class="address">
+        <li>clickworkorange Ltd</li>
+        <li>info@clickworkorange.com</li>
+      </ul>
+    </footer>
+  </body>
+</html>

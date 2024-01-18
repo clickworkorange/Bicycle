@@ -18,19 +18,20 @@ body > header h1 {
 font-family: "Fira Code", "fira-code";
 font-size: clamp(1em, 8vw, 2em);
 margin: 0;
-margin-top: 2px;
 width: min-content;
 }
     body > header h1 a {
     display: block;
+    padding-top: 2px;
     color: transparent;
     background: linear-gradient(75deg, $orange 0 90%, white 95%, $orange 100%);
     background-size: 200%;
     -webkit-background-clip: text;
     background-clip: text;
     background-position: 0%;
+    // TODO: why did tabbing into the opened menu stop working? 
     }
-        body > header h1 a:hover {
+        body > header h1 a:hover, body > header h1 a:focus {
         animation: swish 3s infinite linear;
         }
             @keyframes swish {
@@ -128,11 +129,20 @@ overflow: hidden;
         article > header h1, article > header h2 {
         float: left;
         clear: left;
-        padding: 1px 4px 5px 4px;
+        padding: .2em;
+        //padding: .2em;
         background-color: rgba(0,0,0,0.75);
         }
             article > header h1 {
             margin: 0;
+            line-height: .8em;
+            padding-bottom: .3em;
+            }
+            article > header h2 a {
+            display: block;
+            line-height: .8em;
+            padding-bottom: .2em;
+            //margin-top: .2em;
             }
 
     article section.abstract {
@@ -164,6 +174,7 @@ overflow: hidden;
             article section#child_pages nav a {
             display: block;
             max-width: 20em;
+            margin-bottom: 3px; //focus-visible outline
             }
                 article section#child_pages nav a img {
                 width: 100%;
@@ -186,6 +197,7 @@ overflow: hidden;
             article section#gallery nav a {
             display: block;
             max-width: 20em;
+            margin-bottom: 3px; //focus-visible outline
             }
                 article section#gallery nav a figure {
                 width: 100%;
@@ -199,6 +211,66 @@ overflow: hidden;
                 article section#gallery nav a figure p {
                 margin: 0;
                 }
+
+body.gallery {
+}
+    body.gallery > header a.back {
+    display: block;
+    width: 2em;
+    height: 2em;
+    margin-right: .5em;
+    padding: 0;
+    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
+    }
+        body.gallery > header a.back svg {
+        fill: currentColor;
+        //shape-rendering: crispEdges;
+        }
+
+    body.fullscreen article {
+    margin-left: 0;
+    padding: 0;
+    }
+    body.fullscreen article > figure {
+    margin: 0 auto;
+    width: max-content;
+    max-width: 100%;
+    }
+            body.fullscreen article > figure img {
+            height: 92vh;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: top;
+            }
+                body.fullscreen article > figure:not(:hover) ~ a.next, body.fullscreen article > figure:not(:hover) ~ a.prev {
+                display: block;
+                // TODO: we could animate these, and other similar show/hide things (e.g. the menu)
+                }
+        body.fullscreen article > figure figcaption {
+        display: block;
+        }
+        body.fullscreen article > figure figcaption, body.fullscreen article > figure p, body.fullscreen article > figure details {
+        margin: 1em;
+        }
+    body.fullscreen a.next, body.fullscreen a.prev {
+    display: none;
+    position: absolute;
+    top: 50%
+    }
+        body.fullscreen a.next {
+        right: .5em;
+        width: 1em;
+        height: 1em;
+        }
+        body.fullscreen a.prev {
+        left: .5em;
+        width: 1em;
+        height: 1em;
+        }
+    body.fullscreen article section {
+    margin: 1em;
+    }
+
 
 body > footer {
 clear: left;

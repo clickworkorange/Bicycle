@@ -1,4 +1,4 @@
-<%= link_to(child) do %>
+<%= link_to(full_page_path(child)) do %>
 	<%= image_tag(first_banner_or_blank(child)) %>
 	<p class="date"><%= l(child.created_at, format: :short) %></p>
 	<h3><%= child.title %></h3>

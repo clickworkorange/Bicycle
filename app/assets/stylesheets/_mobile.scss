@@ -10,7 +10,7 @@
     h3 {
     font-size: 1em;
     }
-    body > header h1 {
+    body:not(.fullscreen) > header h1 {
     margin-left: 1.5em;
     }
     body > header h2 {
@@ -65,5 +65,9 @@
 
     article section#child_pages nav, article section#gallery nav {
     grid-column-gap: .5em;
+    }
+
+    body.fullscreen a.next, body.fullscreen a.prev {
+    display: none;
     }
 }

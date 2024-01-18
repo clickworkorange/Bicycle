@@ -2,6 +2,7 @@ class Image < ApplicationRecord
   ROLES = ["inline","banner","gallery"]
   belongs_to :page
   acts_as_list scope: :page, touch_on_update: false
+  self.implicit_order_column = "position"
   has_one_attached :image_file
   scope :banner, -> { where(role: "banner") }
   scope :inline, -> { where(role: "inline") }

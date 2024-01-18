@@ -74,6 +74,10 @@ text-decoration: none;
         a:visited, a:active {
         color: $green;
         }
+        *:focus-visible {
+        outline: 2px $orange dashed;
+        outline-offset: 1px;
+        }
 b {
 font-weight: bolder;
 }

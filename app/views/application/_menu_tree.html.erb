@@ -2,18 +2,21 @@
   <%= content_tag(:div) do %>
     <% if page.child? %>
       <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
-    <% end %>
-    <%= link_to page do %>
-      <%= svg_icon(page.template) %>
-      <%= page.title %>
-      <% # TODO: text-overflow: ellipsis; %>
-    <% end %>
-  <% end %>
-  <% if @page.present? && page.children.live.in_menu.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
-    <%= content_tag :ul do %>
-      <% page.children.live.in_menu.each do |child| %>
-        <%= render :partial => "menu_tree", :locals => {:page => child }%>
+      <%= link_to full_page_path(page) do %>
+        <%= svg_icon(page.template) %>
+        <%= page.title %>
+      <% end %>
+    <% else %>
+      <%= link_to full_page_path(page) do %>
+        <%= svg_icon(page.template) %>
+        <%= page.title %>
       <% end %>
     <% end %>
+  <% end %>
+<% end %>
+
+<% if @page.present? && page.children.live.in_menu.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
+  <%= content_tag :ul do %>
+    <%= render :partial => "menu_tree", collection: page.children.live.in_menu, as: :page %>
   <% end %>
 <% end %>

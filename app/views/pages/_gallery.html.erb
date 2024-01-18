@@ -2,8 +2,6 @@
 <section id="gallery">
   <h2><%= t("page.gallery") %></h2>
   <nav>
-    <% page.images.gallery.each do |image| %>
-      <%= render partial: "gallery_image", locals: {page: page, image: image} %>
-    <% end %>
+    <%= render partial: "pages/gallery_image", collection: page.images.gallery, as: :image, locals: {page: page} %>
   </nav>
 </section>
