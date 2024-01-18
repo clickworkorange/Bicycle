@@ -1,13 +1,13 @@
-<nav>
-  <button>
-    <%= svg_icon("menu") %>
-  </button>
-  <div>
-    <% # TODO: use <menu> tag %>
-    <ul>
-    <% Page.roots.live.in_menu.each do |page| %>
-      <%= render partial: "menu_tree", locals: {page: page} %> 
-    <% end %>
-    </ul>
-  </div>
-</nav>
+<% cache ["menu",@page], skip_digest: true do %>
+  <nav>
+    <button>
+      <%= svg_icon("menu") %>
+    </button>
+    <div>
+      <% # TODO: use <menu> tag %>
+      <ul>
+        <%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
+      </ul>
+    </div>
+  </nav>
+<% end %>

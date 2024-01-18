@@ -1,5 +1,6 @@
 class Bicycle::PagesController < Bicycle::ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy move toggle ]
+  before_action :set_page, only: %i[show edit update destroy move toggle]
+  after_action :expire_menu, only: %i[update destroy move toggle]
 
   def index
     @pages = Page.roots
@@ -58,6 +59,13 @@ class Bicycle::PagesController < Bicycle::ApplicationController
   private
     def set_page
       @page = Page.friendly.find(params[:id] || params[:page_id])
+    end
+
+    def expire_menu
+      Page.all.each do |page|
+        # TODO: this not just crude, but also depends on skip_digest: true 
+        expire_fragment(["menu",page])
+      end
     end
 
     def page_params

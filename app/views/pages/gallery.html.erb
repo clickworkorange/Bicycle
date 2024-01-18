@@ -1,16 +1,18 @@
-<%= render partial: "header", locals: {page: page} %>
+<% cache page do %>
+  <%= render partial: "header", locals: {page: page} %>
 
-<%= content_tag(:p, class: "date") do 
-  concat(content_tag(:span, "#{t("created_at")}: #{l(page.created_at, format: :short)}", class: "created_at"))
-  if page.updated_at > page.created_at
-    concat(content_tag(:span, " #{t("updated_at")}: #{l(page.updated_at, format: :short)}", class: "updated_at"))
-  end
-end %>
+  <%= content_tag(:p, class: "date") do 
+    concat(content_tag(:span, "#{t("created_at")}: #{l(page.created_at, format: :short)}", class: "created_at"))
+    if page.updated_at > page.created_at
+      concat(content_tag(:span, " #{t("updated_at")}: #{l(page.updated_at, format: :short)}", class: "updated_at"))
+    end
+  end %>
 
-<%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
+  <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
 
-<%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
+  <%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
 
-<%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>
+  <%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>
+<% end %>
 
 <%= render(partial: "children", locals: {page: page}) if page.children.live.any? %>
