@@ -1,23 +1,22 @@
-<% cache image do %>
-  <figure>
-    <div><%= fullscreen_image(image) %></div>
-    <figcaption><%= image.caption %></figcaption>
-    <p><%= link_to "Return to #{image.page.title}", full_page_path(image.page) %></p>
-    <details>
-      <summary>Details</summary>
-      <dl>
-        <dt>Aspect ratio</dt>
-        <dd><%= image_aspect(image) %></dd>
-      </dl>
-    </details>
-  </figure>
-  <% 
-  # TODO: include copyright, exif data?
-  # TODO: these links include ALL page images; we need to limit it to "inline" and/or "gallery", but how? 
-  # TODO: we might have to re-think the way images are linked to pages... 
-  %>
-  <%= link_to(svg_icon("left"), page_image_path(image.page, image.higher_item), class: "button prev") if image.higher_item.present? %>
-  <%= link_to(svg_icon("right"), page_image_path(image.page, image.lower_item), class: "button next") if image.lower_item.present? %>
-<% end %>
+
+<figure>
+  <div><%= fullscreen_image(image) %></div>
+  <figcaption><%= image.caption %></figcaption>
+  <p><%= link_to "Return to #{image.page.title}", full_page_path(image.page) %></p>
+  <details>
+    <summary>Details</summary>
+    <dl>
+      <dt>Aspect ratio</dt>
+      <dd><%= image_aspect(image) %></dd>
+    </dl>
+  </details>
+</figure>
+<% 
+# TODO: include copyright, exif data?
+# TODO: these links include ALL page images; we need to limit it to "inline" and/or "gallery", but how? 
+# TODO: we might have to re-think the way images are linked to pages... 
+%>
+<%= link_to(svg_icon("left"), page_image_path(image.page, image.higher_item), class: "button prev") if image.higher_item.present? %>
+<%= link_to(svg_icon("right"), page_image_path(image.page, image.lower_item), class: "button next") if image.lower_item.present? %>
 
 <%= render(partial: "pages/gallery", locals: {page: @page, images: @page.images.gallery}) if @page.images.gallery.any? %>

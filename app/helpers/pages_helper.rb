@@ -70,12 +70,7 @@ module PagesHelper
 		img = url_for(image.image_file.variant(resize_to_limit: base))
 		image_tag(
 			img,
-			srcset: "#{url_for(image.image_file.variant(resize_to_limit: up))} 1200w," \
-					"#{img} 800w," \
-					"#{url_for(image.image_file.variant(resize_to_limit: down))} 400w",
-			#sizes: "100vw,?,?", # this makes no sense since the required information is not known beforehand;
-			# we would need both the viewport width in pixels and the width of the img tag in pixels, and both
-			# of these are fluid. On top of that they vary depending on the image proportions. Sorry W3C, no can do!
+			srcset: [[url_for(image.image_file.variant(resize_to_limit: up)), "1200w"], [img, "800w"], [url_for(image.image_file.variant(resize_to_limit: down)), "400w"]],
 			alt: image.alt_text, 
 			style: css_aspect(image)
 		)
