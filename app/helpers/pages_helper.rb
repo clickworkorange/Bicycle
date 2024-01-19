@@ -51,22 +51,21 @@ module PagesHelper
 		)
 	end
 
-	def first_banner_path(page, width=320)
+	def first_banner_path(page, width=320, ratio=2.33)
 		if page.images.banner.any?
-			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/2.33]))
+			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/ratio]))
 		else
 			path = nil
 		end
 		path
 	end
 
-	def banner_background(page, widths=[1200,800], switch=900, ratio=2.33)
-		banner = page.images.banner.first
+	def banner_background_css(page, widths=[1200,800], switch=900, ratio=2.33)
 		style = ""
-		if banner.present?
-			large = url_for(banner.image_file.variant(resize_to_fill: [widths[0], widths[0]/ratio]))
-			small = url_for(banner.image_file.variant(resize_to_fill: [widths[1], widths[1]/ratio]))
-		else
+		large = first_banner_path(page, widths[0], ratio)
+		small = first_banner_path(page, widths[1], ratio)
+		unless large && small
+			# fall back to default banners
 			large = asset_path("#{page.template}_banner.jpg")
 			small = asset_path("#{page.template}_banner_small.jpg")
 		end
@@ -79,26 +78,6 @@ module PagesHelper
 		end
 		style.html_safe
 	end
-
-	# def background_banner(page, widths=[1200,600,320])
-	# 	# TODO: because image_set presently only accepts density (x) as selector (and not screen width in pixels)
-	# 	# we cannot use this yet - check back in a few years. 
-	# 	css = ""
-	# 	if page.images.banner.any?
-	# 		banner = page.images.banner.first
-	# 		css += "background-image: url(\"#{url_for(banner.image_file.variant(resize_to_fill: [widths[0], widths[0]/2.33]))}\");"
-	# 		css += "background-image: -webkit-image-set("
-	# 		widths.each_with_index do |width,index|
-	# 			css += "url(\"#{url_for(banner.image_file.variant(resize_to_fill: [width, width/2.33]))}\") #{index}x,"
-	# 		end
-	# 		css += ");background-image: image-set("
-	# 		widths.each_with_index do |width,index|
-	# 			css += "url(\"#{url_for(banner.image_file.variant(resize_to_fill: [width, width/2.33]))}\") #{index}x,"
-	# 		end
-	# 		css += ");"
-	# 	end
-	# 	css
-	# end
 
 	def fullscreen_image(image, size=800)
 		# TODO: investigate using <picture> instead of <img>
