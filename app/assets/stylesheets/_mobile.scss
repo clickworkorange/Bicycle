@@ -67,6 +67,10 @@
     grid-column-gap: .5em;
     }
 
+    body.fullscreen article > figure img {
+    height: auto;
+    width: 100%;
+    }
     body.fullscreen a.next, body.fullscreen a.prev {
     display: none !important;
     }

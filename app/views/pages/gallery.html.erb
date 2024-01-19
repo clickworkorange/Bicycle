@@ -12,7 +12,8 @@
 
   <%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
 
-  <%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>
 <% end %>
+
+<%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>
 
 <%= render(partial: "children", locals: {page: page}) if page.children.live.any? %>

@@ -3,7 +3,7 @@
   <section id="child_pages">
     <h2><%= t("page.children") %></h2>
     <nav>
-      <%= render partial: "child_page", collection: page.children.live, as: :child %>
+      <%= render partial: "child_page", collection: page.children.live, as: :child, cached: true %>
     </nav>
   </section>
 <% end %>

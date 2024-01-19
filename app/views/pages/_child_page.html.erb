@@ -1,5 +1,5 @@
 <%= link_to(full_page_path(child)) do %>
-	<%= image_tag(first_banner_or_blank(child)) %>
+	<%= image_tag(first_banner_path(child) || asset_path("#{child.template}_banner_small.jpg"), style: "aspect-ratio: 2.33/1;") %>
 	<p class="date"><%= l(child.created_at, format: :short) %></p>
 	<h3><%= child.title %></h3>
 <% end %>

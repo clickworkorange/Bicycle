@@ -1,6 +1,7 @@
 <%= link_to(page_image_path(page, image)) do %>
   <figure>
-    <%= image_tag(url_for(image.image_file.variant(resize_to_fill: [240, 240])), alt: image.alt_text) %>
+    <% # image_tag(url_for(image.image_file.variant(resize_to_limit: [240, nil])), alt: image.alt_text, style: css_aspect(image)) %>
+    <%= thumbnail_image(image, 240) %>
     <p class="date"><%= l(image.created_at, format: :short) %></p>
     <figcaption><%= image.caption %></figcaption>
   </figure>

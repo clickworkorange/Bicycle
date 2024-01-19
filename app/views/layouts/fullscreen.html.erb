@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
-    <title>clickworkorange</title>
+    <title>clickworkorange - <%= @page.title %></title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
@@ -18,7 +18,7 @@
   <body class="fullscreen <%= @page.template if @page.present? %>">
     <header>
       <% # TODO: link back to #image.id, so you return to where you were %>
-      <%= link_to(svg_icon("back"), full_page_path(@image.page), class: "button back") %>
+      <%= link_to(svg_icon("back"), full_page_path(@image.page), class: "button back", title: t("return_to", title: @image.page.title)) %>
       <h1><a href="/">=clickworkorange=</a></h1>
       <h2>fighting entropy since 2016</h2>
     </header>

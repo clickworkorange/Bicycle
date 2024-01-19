@@ -1,16 +1,18 @@
 <% cache image do %>
   <figure>
-    <%= image_tag(url_for(image.image_file.variant(resize_to_limit: [800, nil])), alt: image.alt_text) %>
+    <div><%= fullscreen_image(image) %></div>
     <figcaption><%= image.caption %></figcaption>
     <p><%= link_to "Return to #{image.page.title}", full_page_path(image.page) %></p>
     <details>
       <summary>Details</summary>
-      <p>
-        We should make use of this!
-      </p>
+      <dl>
+        <dt>Aspect ratio</dt>
+        <dd><%= image_aspect(image) %></dd>
+      </dl>
     </details>
   </figure>
   <% 
+  # TODO: include copyright, exif data?
   # TODO: these links include ALL page images; we need to limit it to "inline" and/or "gallery", but how? 
   # TODO: we might have to re-think the way images are linked to pages... 
   %>

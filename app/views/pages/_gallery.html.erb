@@ -2,6 +2,6 @@
 <section id="gallery">
   <h2><%= t("page.gallery") %></h2>
   <nav>
-    <%= render partial: "pages/gallery_image", collection: page.images.gallery, as: :image, locals: {page: page} %>
+    <%= render partial: "pages/gallery_image", collection: page.images.gallery, as: :image, locals: {page: page}, cached: true %>
   </nav>
 </section>

@@ -34,6 +34,7 @@ en:
   created_at: "Published"
   updated_at: "Updated"
   go_back: "Go back"
+  return_to: "Return to %{title}"
   are_you_sure: "Are you sure?"
   errors:
     format: "%{message}"

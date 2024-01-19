@@ -9,24 +9,84 @@ module PagesHelper
 		File.join(path)
 	end
 
-	def inline_images(page, width=480) 
-		# TODO: handle case of too few images
-		page.body % page.images.inline.map { |image| image_to_md(page, image, width) }
+	def css_aspect(image)
+		aspect = image_aspect(image)
+		"aspect-ratio: #{aspect[0]}/#{aspect[1]};"
 	end
-	
-	def first_banner_or_blank(page, width=400)
-		# TODO: different blank banner depending on template
-		# TODO: resize_to_fit (width*aspect)
-		# TODO: set style="aspect-ratio: n/n;"
-		# TODO: process also default banners (to get size & filesize down)
+
+	def image_aspect(image) 
+		calc_fraction(image.image_file.metadata['width'],image.image_file.metadata['height'])
+	end
+
+	# TODO: "private"
+	def calc_fraction(numerator, denominator)
+		result = [0,0]
+		swap = false
+		if numerator < denominator 
+			# swap places
+			numerator = numerator ^ denominator
+			denominator = numerator ^ denominator
+			numerator = numerator ^ denominator
+			swap = true
+		end
+		if numerator < 2 || denominator < 2
+			numerator *= 10
+			denominator *= 10
+		end
+		result = [1,1] if numerator === denominator 
+		gcd = numerator.gcd(denominator)
+		if swap
+			[denominator / gcd, numerator / gcd]
+		else 
+			[numerator / gcd, denominator / gcd];
+		end
+	end
+
+	def thumbnail_image(image, size=240)
+		# TODO: implement srcset 
+		image_tag(
+			url_for(image.image_file.variant(resize_to_fill: [size, size])),
+			alt: image.alt_text, 
+			style: "aspect-ratio: 1/1;"
+		)
+	end
+
+	def first_banner_path(page, width=320)
 		if page.images.banner.any?
 			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/2.33]))
 		else
-			path = asset_path("#{page.template}_banner.jpg")
+			path = nil
 		end
 		path
 	end
 
+	def fullscreen_image(image, size=800)
+		# TODO: investigate using <picture> instead of <img>
+		aspect = image_aspect(image)
+		factor = 1.5
+		base = aspect[0] > aspect[1] ? [size, nil] : [nil, size]
+		up   = aspect[0] > aspect[1] ? [size*factor, nil] : [nil, size*factor]
+		down = aspect[0] > aspect[1] ? [size/factor, nil] : [nil, size/factor] 
+		img = url_for(image.image_file.variant(resize_to_limit: base))
+		image_tag(
+			img,
+			srcset: "#{url_for(image.image_file.variant(resize_to_limit: up))} 1200w," \
+					"#{img} 800w," \
+					"#{url_for(image.image_file.variant(resize_to_limit: down))} 400w",
+			#sizes: "100vw,?,?", # this makes no sense since the required information is not known beforehand;
+			# we would need both the viewport width in pixels and the width of the img tag in pixels, and both
+			# of these are fluid. On top of that they vary depending on the image proportions. Sorry W3C, no can do!
+			alt: image.alt_text, 
+			style: css_aspect(image)
+		)
+	end
+
+	def inline_images(page, width=480) 
+		# TODO: handle case of too few images
+		page.body % page.images.inline.map { |image| image_to_md(page, image, width) }
+	end
+
+	# TODO: most of these are image helpers, not page helpers...
 	# TODO: def gallery_images(), def banner_images()
 	# TODO: define a comprehensive set of tokens for image/gallery/banner insertion
 	# TODO: get rid of unnecessary <div> tags around kramdown/rouge code blocks

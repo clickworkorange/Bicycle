@@ -121,7 +121,7 @@ overflow: hidden;
     overflow: hidden;
     padding: 1em;
     background-color: $colour-bg-alt;
-    background-position: 50% 25%;
+    background-position: 50% 10%;
     }
         article > header > div {
         align-self: end;
@@ -218,7 +218,7 @@ body.fullscreen {
     display: block;
     width: 2em;
     height: 2em;
-    margin-right: .5em;
+    margin-right: 1em;
     padding: 0;
     box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
     }
@@ -237,10 +237,11 @@ body.fullscreen {
     max-width: 100%;
     }
             body.fullscreen article > figure img {
-            max-height: 92vh;
-            max-width: 100%;
-            object-fit: contain;
-            object-position: top;
+            height: 92vh;
+            max-height: 600px;
+            //width: 100%;
+            // object-fit: contain;
+            // object-position: top;
             }
                 body.fullscreen article > figure:not(:hover) ~ a.next, body.fullscreen article > figure:not(:hover) ~ a.prev {
                 display: block;
