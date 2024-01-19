@@ -15,10 +15,10 @@ module PagesHelper
 	end
 
 	def image_aspect(image) 
-		calc_fraction(image.image_file.metadata['width'],image.image_file.metadata['height'])
+		calc_fraction(image.image_file.metadata["width"],image.image_file.metadata["height"])
 	end
 
-	# TODO: "private"
+	# TODO: "private"height
 	def calc_fraction(numerator, denominator)
 		result = [0,0]
 		swap = false
@@ -43,7 +43,7 @@ module PagesHelper
 	end
 
 	def thumbnail_image(image, size=240)
-		# TODO: implement srcset 
+		# TODO: implement srcset (not really needed)
 		image_tag(
 			url_for(image.image_file.variant(resize_to_fill: [size, size])),
 			alt: image.alt_text, 
@@ -59,6 +59,46 @@ module PagesHelper
 		end
 		path
 	end
+
+	def banner_background(page, widths=[1200,800], switch=900, ratio=2.33)
+		banner = page.images.banner.first
+		style = ""
+		if banner.present?
+			large = url_for(banner.image_file.variant(resize_to_fill: [widths[0], widths[0]/ratio]))
+			small = url_for(banner.image_file.variant(resize_to_fill: [widths[1], widths[1]/ratio]))
+		else
+			large = asset_path("#{page.template}_banner.jpg")
+			small = asset_path("#{page.template}_banner_small.jpg")
+		end
+		content_tag(:style) do
+			style += "article > header {"
+			style += "background-image: url(\"#{large}\");"
+			style += "} @media (max-width: #{switch}px) { article > header {"
+			style += "background-image: url(\"#{small}\");"
+			style += "}}"
+		end
+		style.html_safe
+	end
+
+	# def background_banner(page, widths=[1200,600,320])
+	# 	# TODO: because image_set presently only accepts density (x) as selector (and not screen width in pixels)
+	# 	# we cannot use this yet - check back in a few years. 
+	# 	css = ""
+	# 	if page.images.banner.any?
+	# 		banner = page.images.banner.first
+	# 		css += "background-image: url(\"#{url_for(banner.image_file.variant(resize_to_fill: [widths[0], widths[0]/2.33]))}\");"
+	# 		css += "background-image: -webkit-image-set("
+	# 		widths.each_with_index do |width,index|
+	# 			css += "url(\"#{url_for(banner.image_file.variant(resize_to_fill: [width, width/2.33]))}\") #{index}x,"
+	# 		end
+	# 		css += ");background-image: image-set("
+	# 		widths.each_with_index do |width,index|
+	# 			css += "url(\"#{url_for(banner.image_file.variant(resize_to_fill: [width, width/2.33]))}\") #{index}x,"
+	# 		end
+	# 		css += ");"
+	# 	end
+	# 	css
+	# end
 
 	def fullscreen_image(image, size=800)
 		# TODO: investigate using <picture> instead of <img>

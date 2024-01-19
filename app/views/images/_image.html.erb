@@ -19,5 +19,5 @@
   <%= link_to(svg_icon("left"), page_image_path(image.page, image.higher_item), class: "button prev") if image.higher_item.present? %>
   <%= link_to(svg_icon("right"), page_image_path(image.page, image.lower_item), class: "button next") if image.lower_item.present? %>
 <% end %>
-
+<% # TODO: exclude self %>
 <%= render(partial: "pages/gallery", locals: {page: @page, images: @page.images.gallery}) if @page.images.gallery.any? %>
