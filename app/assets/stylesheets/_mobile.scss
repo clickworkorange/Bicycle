@@ -67,6 +67,10 @@
     grid-column-gap: .5em;
     }
 
+    body.fullscreen article section {
+    margin: 1em .5em;
+    }
+
     body.fullscreen article > figure img {
     height: auto;
     width: 100%;
