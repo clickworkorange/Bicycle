@@ -1,4 +1,9 @@
-<%= content_tag :li, class: @page.present? && @page.id == page.id ? "current" : nil do %>
+
+<% 
+  css_class = "current" if @page.present? && (@page.id == page.id)
+  css_class = "parent" if page.is_ancestor_of?(@page)
+%>
+<%= content_tag :li, class: css_class do %>
   <%= content_tag(:div) do %>
     <% if page.child? %>
       <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
@@ -15,6 +20,7 @@
   <% end %>
 
   <% # if @page.present? && page.children.live.in_menu.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
+  <% # , class: ("current" if @page.id == page.id) %>
   <% if page.children.live.in_menu.any? %>
     <%= content_tag :ul do %>
       <%= render :partial => "menu_tree", collection: page.children.live.in_menu, as: :page %>
