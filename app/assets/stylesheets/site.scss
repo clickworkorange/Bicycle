@@ -76,10 +76,25 @@ width: 25vw;
                 body > nav ul ul ul {
                 padding-left: 1.2em;
                 }
+
         body > nav ul li  {
         padding: 0;
         margin: 0;
+        display: flex; 
+        flex-direction: column;
+        height: fit-content;
         }
+            body > nav ul li > ul {
+            max-height: 0; 
+            overflow: hidden;
+            flex-direction: column;
+            transition: max-height 1s ease-in-out;
+            }
+                body > nav ul li:hover > ul, body > nav ul li.current > ul, body > nav ul li > ul:hover {
+                max-height: 300px;
+                transition: max-height 1s ease-in-out;
+                }
+
             body > nav ul li div {
             height: 1.8em;
             line-height: 1.8em;
@@ -122,6 +137,7 @@ overflow: hidden;
     padding: 1em;
     background-color: $colour-bg-alt;
     background-position: 50% 10%;
+    background-size: cover;
     }
         article > header > div {
         align-self: end;

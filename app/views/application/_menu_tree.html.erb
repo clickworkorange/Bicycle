@@ -13,10 +13,11 @@
       <% end %>
     <% end %>
   <% end %>
-<% end %>
 
-<% if @page.present? && page.children.live.in_menu.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
-  <%= content_tag :ul do %>
-    <%= render :partial => "menu_tree", collection: page.children.live.in_menu, as: :page %>
+  <% # if @page.present? && page.children.live.in_menu.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
+  <% if page.children.live.in_menu.any? %>
+    <%= content_tag :ul do %>
+      <%= render :partial => "menu_tree", collection: page.children.live.in_menu, as: :page %>
+    <% end %>
   <% end %>
 <% end %>

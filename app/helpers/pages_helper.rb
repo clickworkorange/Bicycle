@@ -67,7 +67,7 @@ module PagesHelper
 		unless large && small
 			# fall back to default banners
 			large = asset_path("#{page.template}_banner.jpg")
-			small = asset_path("#{page.template}_banner_small.jpg")
+			small = asset_path("#{page.template}_banner_medium.jpg")
 		end
 		content_tag(:style) do
 			style += "article > header {"
