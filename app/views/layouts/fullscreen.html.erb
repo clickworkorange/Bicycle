@@ -22,11 +22,13 @@
       <h1><a href="/">=clickworkorange=</a></h1>
       <h2>fighting entropy since 2016</h2>
     </header>
-    <article>
-      <%= content_tag(:p, notice, class: "notice") if notice.present? %>
-      <%= content_tag(:p, alert, class: "alert") if alert.present? %>
-      <%= yield %>
-    </article>
+    <main>
+      <article>
+        <%= content_tag(:p, notice, class: "notice") if notice.present? %>
+        <%= content_tag(:p, alert, class: "alert") if alert.present? %>
+        <%= yield %>
+      </article>
+    </main>
     <footer>
       <ul class="address">
         <li>clickworkorange Ltd</li>

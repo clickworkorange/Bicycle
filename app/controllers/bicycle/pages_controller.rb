@@ -62,6 +62,7 @@ class Bicycle::PagesController < Bicycle::ApplicationController
     end
 
     def expire_menu
+      # TODO: this doesn't even work anymore!
       Page.all.each do |page|
         # TODO: this not just crude, but also depends on skip_digest: true 
         expire_fragment(["menu",page])

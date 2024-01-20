@@ -20,7 +20,7 @@
     margin-left: 1em;
     }
 
-    body > nav {
+    main > nav {
     position: fixed;
     top: .45em;
     left: .5em;
@@ -28,18 +28,18 @@
     width: auto;
     z-index: 2;
     }
-        body > nav button {
+        main > nav button {
         display: block;
         width: 2em;
         height: 2em;
         padding: 0;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
         }
-            body > nav button svg {
+            main > nav button svg {
             fill: currentColor;
             shape-rendering: crispEdges;
             }
-        body > nav > div {
+        main > nav > div {
         display: none;
         position: fixed;
         min-height: min-content;
@@ -51,15 +51,15 @@
         box-shadow: .5em .5em .5em 0 rgba(0,0,0,0.9);
         //margin-left: -.5em;
         }
-            body > nav:focus-within > div {
+            main > nav:focus-within > div {
             display: block;
             }
 
-    body > article {
+    main > article {
     margin-left: 0;
     padding: 0 .5em;
     }
-        body > article header {
+        main > article header {
         padding-bottom: .5em;
         }
 

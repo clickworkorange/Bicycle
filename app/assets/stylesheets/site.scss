@@ -46,81 +46,85 @@ width: min-content;
     margin-left: auto;
     }
 
-body > nav {
+main > nav {
 position: sticky; 
 top: 0;
 float: left;
 width: 25vw;
 }
-    body > nav button {
+    main > nav button {
     display: none;
     }
-    body > nav > div {
+    main > nav > div {
     margin: 0;
     padding: .5em;
     padding-top: 1em;
     background-color: $colour-bg-alt;
     //border-radius: 1em;
     min-height: 100vh;
-    margin-bottom: 8em;
     border-right: 1px solid black;
     }
-        body > nav ul {
+        main > nav ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
         }
-            body > nav ul ul {
+            main > nav ul ul {
             padding-left: .7em;
             }
-                body > nav ul ul ul {
+                main > nav ul ul ul {
                 padding-left: 1.2em;
                 }
 
-        body > nav ul li  {
+        main > nav ul li  {
         padding: 0;
         margin: 0;
         display: flex; 
         flex-direction: column;
         height: fit-content;
         }
-            body > nav ul li > ul {
+            main > nav ul li > ul {
             max-height: 0; 
             overflow: hidden;
             flex-direction: column;
             transition: max-height 1s ease-in-out;
             }
-                body > nav ul li:hover > ul, body > nav ul li.current > ul, body > nav ul li > ul:hover {
+                main > nav ul li:hover > ul, main > nav ul li.current > ul, main > nav ul li > ul:hover {
                 max-height: 300px;
                 transition: max-height 1s ease-in-out;
                 }
 
-            body > nav ul li div {
+            main > nav ul li div {
             height: 1.8em;
             line-height: 1.8em;
             }
-                body > nav ul li div > svg { 
+                main > nav ul li div > svg { 
                 float: left;
                 height: 100%;
                 width: auto;
                 fill: $darker;
                 //shape-rendering: crispEdges;
                 }
-                body > nav ul li a {
+                main > nav ul li a {
                 display: block;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 }
-                body > nav ul li a svg {
+                main > nav ul li a svg {
                 fill: currentColor;
                 vertical-align: text-bottom;
                 margin-left: .1em;
                 //shape-rendering: crispEdges;
                 }
-            body > nav ul li.current > div a, body > nav ul li a:hover {
+            main > nav ul li.current > div a, main > nav ul li a:hover {
             color: $colour-text;
             }
+
+main {
+max-width: 1400px;
+margin: 0 auto;
+}
 
 article {
 padding-top: 1em;
@@ -293,7 +297,6 @@ body.fullscreen {
 body > footer {
 clear: left;
 height: 8em;
-margin-top: 3em;
 background-color: $colour-footer;
 padding: .5em;
 // border-radius: 1em;
