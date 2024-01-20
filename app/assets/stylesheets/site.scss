@@ -1,6 +1,10 @@
 @use "shared" as *;
 @use "monokai";
 
+body {
+background-image: url("circuit.png")
+}
+
 body > header {
 display: flex;
 align-items: center;
@@ -9,7 +13,7 @@ min-height: 3em;
 padding: 0 .5em;
 //background: linear-gradient(180deg, $colour-bg 0%, $colour-bg-alt 50%, $colour-bg 100%);
 box-shadow: 0 0 .5em .5em rgba(0,0,0,0.75);
-border-bottom: 1px solid black;
+border-bottom: 1px solid $colour-edges;
 position: relative;
 z-index: 1;
 }
@@ -62,7 +66,7 @@ width: $nav-width;
     background-color: $colour-bg-alt;
     //border-radius: 1em;
     min-height: 100vh;
-    border-right: 1px solid black;
+    border-left: 1px solid $colour-edges;
     }
         main > nav ul {
         list-style-type: none;
@@ -126,10 +130,12 @@ text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
 }
 
 article {
-padding-top: 1em;
+min-height: 100vh;
 margin-left: $nav-width;
-padding: 0 1em;
+padding: 0 1em 1.5em 1em;
 overflow: hidden;
+border-left: 1px solid $colour-edges;
+border-right: 1px solid $colour-edges;
 }
     article > header {
     display: flex;
@@ -166,6 +172,10 @@ overflow: hidden;
 
     article section.abstract {
     font-weight: bolder;
+    }
+    article img {
+    background-image: url("noise.gif");
+    color: rgba(0,0,0,0);
     }
 	article p img {
 	float: left;
@@ -225,7 +235,7 @@ overflow: hidden;
                 article section#gallery nav a figure img {
                 width: 100%;
                 aspect-ratio: 1 / 1;
-                background-color: $colour-bg-alt;
+                //background-color: $colour-bg-alt;
                 }
                 article section#gallery nav a figure p {
                 margin: 0;
@@ -299,7 +309,7 @@ height: 8em;
 background-color: $colour-footer;
 padding: .5em;
 // border-radius: 1em;
-border-top: 1px solid black;
+border-top: 1px solid $colour-edges;
 }
 
 figure {
