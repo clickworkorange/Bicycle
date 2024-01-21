@@ -1,5 +1,6 @@
 <%= link_to(full_page_path(child)) do %>
-	<%= image_tag(first_banner_path(child) || asset_path("#{child.template}_banner_small.jpg"), style: "aspect-ratio: 2.33/1;") %>
+	<% # TODO: since all the other similar images are generated in helper methods we should move this one too %>
+	<%= image_tag(first_banner_path(child) || asset_path("#{child.template}_banner_small.jpg"),loading: "lazy", style: "aspect-ratio: 2.33/1;") %>
 	<p class="date"><%= l(child.created_at, format: :short) %></p>
 	<h3><%= child.title %></h3>
 <% end %>

@@ -47,7 +47,8 @@ module PagesHelper
 		image_tag(
 			url_for(image.image_file.variant(resize_to_fill: [size, size])),
 			alt: image.alt_text, 
-			style: "aspect-ratio: 1/1;"
+			style: "aspect-ratio: 1/1;",
+			loading: "lazy"
 		)
 	end
 
