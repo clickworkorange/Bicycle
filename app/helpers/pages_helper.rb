@@ -1,11 +1,16 @@
 module PagesHelper
 
 	def full_page_path(page)
-		path = ["/"]
-		page.ancestors.each do |parent|
-			path << parent.friendly_id
+		path = []
+		if page.url.present?
+			path << page.url
+		else
+			path << "/"
+			page.ancestors.each do |parent|
+				path << parent.friendly_id
+			end
+			path << page.friendly_id
 		end
-		path << page.friendly_id
 		File.join(path)
 	end
 

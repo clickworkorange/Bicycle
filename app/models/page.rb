@@ -7,10 +7,15 @@ class Page < ApplicationRecord
   validates_inclusion_of :template, :in => TEMPLATES
   scope :live, -> {where(live: true)}
   scope :in_menu, -> {where(in_menu: true)}
+  # scope :for_url, -> (url){where(url: url)}
   self.implicit_order_column = "lft"
   acts_as_nested_set
 
   def should_generate_new_friendly_id?
     title_changed? || super
+  end
+
+  def self.for_url(url)
+    Page.where(url: url)
   end
 end

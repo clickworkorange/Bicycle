@@ -22,12 +22,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  #root "pages#index"
-  # get "pages/index"
-
-  # this doesn't work :(
-  #get "*path/:id", to: "pages#show"
-  #get ":id", to: "pages#show"
-
+  
+  root "pages#index"
+  #get ":custom_url", to: "pages#show"
 end

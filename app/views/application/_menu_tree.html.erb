@@ -1,7 +1,7 @@
 
 <% 
   css_class = "current" if @page.present? && (@page.id == page.id)
-  css_class = "parent" if page.is_ancestor_of?(@page)
+  css_class = "parent" if @page.present? && page.is_ancestor_of?(@page)
 %>
 <%= content_tag :li, class: css_class do %>
   <%= content_tag(:div) do %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
-    <title>clickworkorange - <%= @page.title %></title>
+    <title>clickworkorange<%= " - #{@page.title}" if @page.present? %></title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>

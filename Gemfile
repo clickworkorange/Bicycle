@@ -16,7 +16,7 @@ gem "puma", ">= 5.0"
 
 # My gems
 gem "devise", "~> 4.9.2"
-gem "friendly_id", "~> 5.4.0"
+gem "friendly_id", "~> 5.5.0"
 gem "kramdown", "~> 2.4.0"
 gem "rouge", "~> 4.2.0"
 gem "dartsass-sprockets", "~> 3.1.0"

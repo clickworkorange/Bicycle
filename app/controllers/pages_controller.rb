@@ -1,23 +1,31 @@
 class PagesController < ApplicationController
   require "kramdown"
   require "rouge"
-  before_action :set_page, only: %i[ show ]
+  before_action :set_page, only: %i[ show]
 
   def index
-    @pages = Page.all
+    @page = Page.for_url("/").first
+    if @page
+      render @page.template, locals: {page: @page}
+    else
+      render_404
+    end
   end
 
   def show
-    # TODO: add a path property to override content on static pages
-    unless @page.live || (current_user && current_user.admin)
-      flash[:alert] = "You can't be here!"
-      redirect_to root_path
+    if @page
+      unless @page.live || (current_user && current_user.admin)
+        flash[:alert] = "You can't be here!"
+        redirect_to root_path
+      end
+      render @page.template, locals: {page: @page}
+    else
+      render_404
     end
-    render @page.template, locals: {page: @page}
   end
 
   private
     def set_page
-      @page = Page.friendly.find(params[:id])
+      @page = Page.friendly.find(params[:id], allow_nil: true) || Page.for_url("/#{params[:id]}").first
     end
 end

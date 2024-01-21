@@ -21,6 +21,11 @@
       <p>
 
       <p>
+        <%= form.label :url %>
+        <%= form.text_field :url %>
+      <p>
+
+      <p>
         <%= form.label :live, :live do %>
           <%= form.check_box :live, { checked: page.live } %> <%= t("live", scope: tscope) %>
         <% end %>
