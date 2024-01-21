@@ -97,7 +97,8 @@ module PagesHelper
 			img,
 			srcset: [[url_for(image.image_file.variant(resize_to_limit: up)), "1200w"], [img, "800w"], [url_for(image.image_file.variant(resize_to_limit: down)), "400w"]],
 			alt: image.alt_text, 
-			style: css_aspect(image)
+			style: css_aspect(image),
+			loading: "lazy"
 		)
 	end
 

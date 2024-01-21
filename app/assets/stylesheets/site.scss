@@ -64,7 +64,6 @@ width: $nav-width;
     padding: .5em;
     padding-top: 1em;
     background-color: $colour-bg-alt;
-    //border-radius: 1em;
     min-height: 100vh;
     border-left: 1px solid $colour-edges;
     }
@@ -79,7 +78,6 @@ width: $nav-width;
                 main > nav ul ul ul {
                 padding-left: 1.2em;
                 }
-
         main > nav ul li  {
         padding: 0;
         margin: 0;
@@ -90,7 +88,10 @@ width: $nav-width;
             opacity: 0;
             transition: max-height .5s ease-out 1s, opacity 1s 1s;
             }
-                main > nav ul li:hover > ul, main > nav ul li:is(.current, .parent) > ul, main > nav ul li > ul:hover {
+                main > nav ul li:hover > ul, 
+                main > nav ul li:focus-within > ul, 
+                main > nav ul li:is(.current, .parent) > ul, 
+                main > nav ul li > ul:hover {
                 max-height: 300px;
                 opacity: 1;
                 transition: opacity 1s 1s, max-height .5s ease-in 1s;
@@ -112,6 +113,7 @@ width: $nav-width;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                outline-offset: -2px !important;
                 }
                 main > nav ul li a svg {
                 fill: currentColor;
@@ -119,7 +121,7 @@ width: $nav-width;
                 margin-left: .1em;
                 //shape-rendering: crispEdges;
                 }
-            main > nav ul li.current > div a, main > nav ul li a:hover {
+            main > nav ul li.current > div a, main > nav ul li a:hover, main > nav ul li a:focus {
             color: $colour-text;
             }
 
@@ -235,7 +237,7 @@ border-right: 1px solid $colour-edges;
                 width: 100%;
                 }
             section.gallery figure button + div.zoom {
-            display: flex;
+            display: none;
             align-items: center;
             overflow: hidden;
             width: 0;
@@ -244,21 +246,27 @@ border-right: 1px solid $colour-edges;
             opacity: 0;
             transition: opacity 0.25s;
             }
+                // use keyframes to provide time for repaint after unhiding div.zoom
+                @keyframes zoom { 
+                    from {transform: scale(0.01);}
+                    1% {transform: scale(0.01);}
+                    99% {transform: scale(1);}
+                    to {transform: scale(1);}
+                }
+
                 section.gallery figure button + div.zoom img {
-                display: block;
                 margin: 0 auto;
                 max-height: 100%;
                 max-width: 100%;
-                opacity: 0;
-                transform: scale(0.01);
-                transition: transform .25s;
+                animation-name: zoom;
+                animation-duration: 0.25s;
                 }
                     section.gallery figure button:focus + div.zoom img {
-                    opacity: 1;
                     transform: scale(1);
                     }
             section.gallery figure button:focus + div.zoom {
             position: fixed;
+            display: flex;
             top: 0;
             left: 0;
             width: 100%;
