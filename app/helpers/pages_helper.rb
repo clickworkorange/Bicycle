@@ -16,7 +16,7 @@ module PagesHelper
 	end
 
 	def image_file_path(blob)
-		if Rails.env.development?
+		if Rails.env.production?
 			blob = blob.processed
     		File.join(ActiveStorage::Blob.service.path_for(blob.key), blob.filename.to_s)
     	else
