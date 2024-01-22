@@ -285,10 +285,10 @@ border-right: 1px solid $colour-edges;
                 animation-name: zoom;
                 animation-duration: 0.25s;
                 }
-                    figure button:focus:not(:focus-visible) + div.zoom img {
+                    figure button:focus + div.zoom img {
                     transform: scale(1);
                     }
-            figure button:focus:not(:focus-visible) + div.zoom {
+            figure button:focus + div.zoom {
             // TODO: enable zooming by keypress (requires JS)
             // also close with Esc
             position: fixed;
