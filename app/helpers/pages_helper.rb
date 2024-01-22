@@ -1,4 +1,5 @@
 module PagesHelper
+	require "nokogiri"
 
 	def full_page_path(page)
 		path = []
@@ -12,6 +13,15 @@ module PagesHelper
 			path << page.friendly_id
 		end
 		File.join(path)
+	end
+
+	def parse_body(page)
+		# TODO: sanitize
+		body = Kramdown::Document.new(
+			inline_images(page, page.images.inline), 
+			syntax_highlighter: "rouge", 
+			syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}
+		).to_html.html_safe
 	end
 
 	def css_aspect(image)
@@ -47,16 +57,6 @@ module PagesHelper
 		end
 	end
 
-	def thumbnail_image(image, size=240)
-		# TODO: implement srcset (not really needed)
-		image_tag(
-			url_for(image.image_file.variant(resize_to_fill: [size, size])),
-			alt: image.alt_text, 
-			style: "aspect-ratio: 1/1;",
-			loading: "lazy"
-		)
-	end
-
 	def first_banner_path(page, width=320, ratio=2.33)
 		if page.images.banner.any?
 			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/ratio]))
@@ -85,6 +85,30 @@ module PagesHelper
 		style.html_safe
 	end
 
+	def thumbnail_image(image, size, aspect)
+		# TODO: implement srcset (not really needed)
+		# TODO: define image sizes somewhere...
+		aspect = aspect || image_aspect(image)
+		css_class = ""
+		if aspect[1] > aspect[0] 
+			# portrait
+			css_class = "port"
+			height = size
+			width = (size*aspect[0])/aspect[1]
+		else
+			css_class = "lscp"
+			height = (size*aspect[1])/aspect[0]
+			width = size
+		end
+		image_tag(
+			url_for(image.image_file.variant(resize_to_fill: [width, height])),
+			alt: image.alt_text, 
+			style: "aspect-ratio: #{aspect[0]}/#{aspect[1]};",
+			class: css_class,
+			loading: "lazy"
+		)
+	end
+
 	def fullscreen_image(image, size=800)
 		# TODO: investigate using <picture> instead of <img>
 		aspect = image_aspect(image)
@@ -102,22 +126,24 @@ module PagesHelper
 		)
 	end
 
-	def inline_images(page, width=480) 
-		# TODO: handle case of too few images
-		page.body % page.images.inline.map { |image| image_to_md(page, image, width) }
+	def inline_images(page, images) 
+		images = page.images.inline
+		page.body.gsub(/fig\[(\d+)\]/).each do |fig| 
+			index = $1.to_i - 1
+			unless images[index].nil?
+				image_to_figure(page, images[index])
+			end
+		end
+	end
+
+	def image_to_figure(page, image)
+		# TODO: width
+		render partial: "figure", locals: {image: image, size: 240, aspect: nil}
 	end
 
 	# TODO: most of these are image helpers, not page helpers...
-	# TODO: def gallery_images(), def banner_images()
 	# TODO: define a comprehensive set of tokens for image/gallery/banner insertion
 	# TODO: get rid of unnecessary <div> tags around kramdown/rouge code blocks
-
-	def image_to_md(page, image, width)
-		alt = image.alt_text
-		img = url_for(image.image_file.variant(resize_to_limit: [width, nil]))
-		url = page_image_path(page, image)
-		"[![#{alt}](#{img})](#{url})"
-	end
 
 	def svg_icon(icon)
 		# TODO: add role="img" to <svg> and <title>[description]</title> inside it, translating the description

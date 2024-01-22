@@ -4,10 +4,14 @@
       <%= svg_icon("menu") %>
     </button>
     <div>
-      <% # TODO: use <menu> tag %>
+      <% # TODO: use <menu> tag? %>
       <ul>
         <%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
       </ul>
     </div>
   </nav>
+  <search>
+    <form action="">
+    </form>
+  </search>
 <% end %>

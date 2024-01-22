@@ -1,17 +1,18 @@
-
 <% cache page do %>
   <%= render partial: "header", locals: {page: page} %>
-
-  <%= content_tag(:p, class: "date") do 
-    concat(content_tag(:span, "#{t("created_at")}: #{l(page.created_at, format: :short)}", class: "created_at"))
-    if page.updated_at > page.created_at
-      concat(content_tag(:span, " #{t("updated_at")}: #{l(page.updated_at, format: :short)}", class: "updated_at"))
-    end
+  <% # TODO: find a use for the <meter> and <details> tags! %>
+  <%= content_tag(:p, class: "date created_at") do 
+    concat(content_tag(:span, "#{t("created_at")}: "))
+    concat(content_tag(:time, "#{l(page.created_at, format: :short)}", datetime: page.created_at))
   end %>
+  <%= content_tag(:p, class: "date updated_at") do 
+    concat(content_tag(:span, " | #{t("updated_at")}: "))
+    concat(content_tag(:time, "#{l(page.updated_at, format: :short)}", datetime: page.updated_at))
+  end if page.updated_at > page.created_at %>
 
   <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
 
-  <%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
+  <%= parse_body(page) %>
 <% end %>
 
 <%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>

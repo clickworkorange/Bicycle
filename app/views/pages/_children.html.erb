@@ -1,6 +1,6 @@
 
 <% cache page.children do %>
-  <section id="child_pages">
+  <section class="child_pages">
     <h2><%= t("page.children") %></h2>
     <nav>
       <%= render partial: "child_page", collection: page.children.live, as: :child, cached: true %>

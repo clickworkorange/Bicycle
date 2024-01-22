@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   require "kramdown"
   require "rouge"
-  before_action :set_page, only: %i[ show]
+  before_action :set_page, only: %i[show]
 
   def index
     @page = Page.for_url("/").first
@@ -27,5 +27,9 @@ class PagesController < ApplicationController
   private
     def set_page
       @page = Page.friendly.find(params[:id], allow_nil: true) || Page.for_url("/#{params[:id]}").first
+    end
+
+    def authorize 
+
     end
 end

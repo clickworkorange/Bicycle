@@ -189,55 +189,79 @@ border-right: 1px solid $colour-edges;
 	max-width: 20em;
 	}
 	article p.date {
+    display: inline-block;
 	font-size: .8em;
 	}
-	    article p.date span {
-	    display: block;
-	    }
-    article section#child_pages {
+
+    article section.child_pages {
     // TODO: crop banner
     }
-        article section#child_pages nav {
+        article section.child_pages nav {
         display: grid;
         grid-column-gap: 1em;
         grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
         }
-            article section#child_pages nav a {
+            article section.child_pages nav a {
             display: block;
             max-width: 15em;
             margin-bottom: 3px; //focus-visible outline
             }
-                article section#child_pages nav a img {
+                article section.child_pages nav a img {
                 width: 100%;
                 //aspect-ratio: 2.33 / 1; // now inline
                 background-color: $colour-bg-alt;
                 }
-                article section#child_pages nav a p {
+                article section.child_pages nav a p {
                 // TODO: line-clamp for linked sub-pages abstract
                 margin: 0;
                 }
 
-
-        // TODO: figure out why the right hand side of the window flickers on resize up
-        // this did not happen with previous gallery layout - in place zoom caused it
         section.gallery nav {
         display: grid;
         grid-column-gap: 1em;
+        grid-row-gap: 1em;
         grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
         }
             section.gallery figure {
             }
-            section.gallery figure button {
+                section.gallery figure figcaption {
+                display: block;
+                margin-top: .5em;
+                }
+            article > figure {
+            float: left;
+            margin-top: .2em;
+            margin-right: .5em;
+            margin-bottom: .3em;
+            }
+                article > figure figcaption {
+                font-size: .8em;
+                text-align: center;
+                }
+            figure button {
             background: transparent;
             border: none;
             width: 100%;
             padding: 0;
+            border-radius: 0;
+            cursor: zoom-in;
             }
+                figure button img {
+                display: block;
+                }
                 section.gallery figure button img {
                 width: 100%;
                 }
-            section.gallery figure button + div.zoom {
-            display: none;
+                    // TODO: define image sizes in one place
+                    figure button img.lscp {
+                    width: 240px;
+                    }
+                    figure button img.port {
+                    width: auto;
+                    height: 240px;
+                    }
+            figure button + div.zoom {
+            display: none; // must be display:none to prevent loading of lazy images within
             align-items: center;
             overflow: hidden;
             width: 0;
@@ -254,17 +278,19 @@ border-right: 1px solid $colour-edges;
                     to {transform: scale(1);}
                 }
 
-                section.gallery figure button + div.zoom img {
+                figure button + div.zoom img {
                 margin: 0 auto;
                 max-height: 100%;
                 max-width: 100%;
                 animation-name: zoom;
                 animation-duration: 0.25s;
                 }
-                    section.gallery figure button:focus + div.zoom img {
+                    figure button:focus:not(:focus-visible) + div.zoom img {
                     transform: scale(1);
                     }
-            section.gallery figure button:focus + div.zoom {
+            figure button:focus:not(:focus-visible) + div.zoom {
+            // TODO: enable zooming by keypress (requires JS)
+            // also close with Esc
             position: fixed;
             display: flex;
             top: 0;
@@ -369,7 +395,7 @@ background-color: $colour-bg-alt;
     color: #C1BEB3;
     }
 
-ul.address {
+address ul {
 list-style-type: none;
 }
 

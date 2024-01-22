@@ -1,0 +1,6 @@
+<% # TODO: handle keyboard focus without zooming (before pressing enter) %>
+<figure>
+    <button><%= thumbnail_image(image, size, aspect) %></button>
+    <div class="zoom"><%= fullscreen_image(image) %></div>
+    <figcaption><%= image.caption %></figcaption>
+</figure>

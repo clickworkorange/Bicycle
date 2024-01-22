@@ -1,11 +1,15 @@
 <% cache page do %>
   <%= render partial: "header", locals: {page: page} %>
 
-  <%= content_tag(:p, content_tag(:span, " #{t("updated_at")}: #{l(page.updated_at, format: :short)}", class: "updated_at"), class: "date") %>
+  <%= content_tag(:p, class: "date updated_at") do 
+    concat(content_tag(:span, "#{t("updated_at")}: "))
+    concat(content_tag(:time, "#{l(page.updated_at, format: :short)}", datetime: page.updated_at))
+  end %>
 
   <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
 
-  <%= sanitize Kramdown::Document.new(inline_images(page), syntax_highlighter: "rouge", syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}).to_html %>
+  <%= parse_body(page) %>
+
 <% end %>
 
 <%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>
