@@ -16,13 +16,7 @@ module PagesHelper
 	end
 
 	def image_file_path(blob)
-		if Rails.env.production?
-			blob = blob.processed
-    		path = File.join(ActiveStorage::Blob.service.path_for(blob.key), blob.filename.to_s)
-    		path.gsub(/^\/.*\/storage/,"storage")
-    	else
-    		url_for(blob)
-    	end
+		url_for(blob)
     end
 
 	def parse_body(page)
