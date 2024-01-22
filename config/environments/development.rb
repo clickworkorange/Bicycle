@@ -7,6 +7,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
   config.active_storage.service = :local
+  # config.active_storage.resolve_model_to_route = :rails_storage_proxy
 
   config.i18n.available_locales = :en
   config.i18n.raise_on_missing_translations = true

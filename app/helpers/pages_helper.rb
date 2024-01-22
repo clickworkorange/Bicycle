@@ -15,6 +15,14 @@ module PagesHelper
 		File.join(path)
 	end
 
+	def image_file_path(blob)
+		if Rails.env.production?
+    		File.join(ActiveStorage::Blob.service.path_for(blob.key), blob.filename.to_s)
+    	else
+    		url_for(blob)
+    	end
+    end
+
 	def parse_body(page)
 		# TODO: sanitize
 		body = Kramdown::Document.new(
@@ -59,7 +67,7 @@ module PagesHelper
 
 	def first_banner_path(page, width=320, ratio=2.33)
 		if page.images.banner.any?
-			path = url_for(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/ratio]))
+			path = image_file_path(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/ratio]))
 		else
 			path = nil
 		end
@@ -101,7 +109,7 @@ module PagesHelper
 			width = size
 		end
 		image_tag(
-			url_for(image.image_file.variant(resize_to_fill: [width, height])),
+			image_file_path(image.image_file.variant(resize_to_fill: [width, height])),
 			alt: image.alt_text, 
 			style: "aspect-ratio: #{aspect[0]}/#{aspect[1]};",
 			class: css_class,
@@ -116,10 +124,10 @@ module PagesHelper
 		base = aspect[0] > aspect[1] ? [size, nil] : [nil, size]
 		up   = aspect[0] > aspect[1] ? [size*factor, nil] : [nil, size*factor]
 		down = aspect[0] > aspect[1] ? [size/factor, nil] : [nil, size/factor] 
-		img = url_for(image.image_file.variant(resize_to_limit: base))
+		img = image_file_path(image.image_file.variant(resize_to_limit: base))
 		image_tag(
 			img,
-			srcset: [[url_for(image.image_file.variant(resize_to_limit: up)), "1200w"], [img, "800w"], [url_for(image.image_file.variant(resize_to_limit: down)), "400w"]],
+			srcset: [[image_file_path(image.image_file.variant(resize_to_limit: up)), "1200w"], [img, "800w"], [image_file_path(image.image_file.variant(resize_to_limit: down)), "400w"]],
 			alt: image.alt_text, 
 			style: css_aspect(image),
 			loading: "lazy"
