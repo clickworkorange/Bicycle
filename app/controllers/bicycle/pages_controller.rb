@@ -1,6 +1,6 @@
 class Bicycle::PagesController < Bicycle::ApplicationController
-  before_action :set_page, only: %i[show edit update destroy move toggle]
-  after_action :expire_menu, only: %i[update destroy move toggle]
+  before_action :set_page, only: %i[show edit update destroy move]
+  after_action :expire_menu, only: %i[update destroy move]
 
   def index
     @pages = Page.roots
@@ -48,13 +48,13 @@ class Bicycle::PagesController < Bicycle::ApplicationController
     redirect_to bicycle_pages_url
   end
 
-  def toggle
-    if @page.live && @page.children.any? 
-      @page.descendants.update_all({live: false})
-    end
-    @page.update({live: @page.live.!})
-    redirect_to bicycle_pages_url
-  end
+  # def toggle
+  #   if @page.live && @page.children.any? 
+  #     @page.descendants.update_all({live: false})
+  #   end
+  #   @page.update({live: @page.live.!})
+  #   redirect_to bicycle_pages_url
+  # end
 
   private
     def set_page

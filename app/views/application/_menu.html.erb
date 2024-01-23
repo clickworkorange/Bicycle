@@ -5,6 +5,7 @@
     </button>
     <div>
       <% # TODO: use <menu> tag? %>
+      <% # TODO: leverage self_and_descendants to reduce db queries %>
       <ul>
         <%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
       </ul>

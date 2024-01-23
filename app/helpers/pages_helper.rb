@@ -15,10 +15,6 @@ module PagesHelper
 		File.join(path)
 	end
 
-	def image_file_path(blob)
-		url_for(blob)
-    end
-
 	def parse_body(page)
 		# TODO: sanitize
 		body = Kramdown::Document.new(
@@ -28,104 +24,76 @@ module PagesHelper
 		).to_html.html_safe
 	end
 
-	def css_aspect(image)
-		aspect = image_aspect(image)
-		"aspect-ratio: #{aspect[0]}/#{aspect[1]};"
-	end
-
-	def image_aspect(image) 
-		calc_fraction(image.image_file.metadata["width"],image.image_file.metadata["height"])
-	end
-
-	# TODO: "private"height
-	def calc_fraction(numerator, denominator)
-		result = [0,0]
-		swap = false
-		if numerator < denominator 
-			# swap places
-			numerator = numerator ^ denominator
-			denominator = numerator ^ denominator
-			numerator = numerator ^ denominator
-			swap = true
-		end
-		if numerator < 2 || denominator < 2
-			numerator *= 10
-			denominator *= 10
-		end
-		result = [1,1] if numerator === denominator 
-		gcd = numerator.gcd(denominator)
-		if swap
-			[denominator / gcd, numerator / gcd]
-		else 
-			[numerator / gcd, denominator / gcd];
-		end
-	end
-
-	def first_banner_path(page, width=320, ratio=2.33)
-		if page.images.banner.any?
-			path = image_file_path(page.images.banner.first.image_file.variant(resize_to_fill: [width, width/ratio]))
-		else
-			path = nil
-		end
-		path
-	end
-
-	def banner_background_css(page, widths=[1200,800], switch=900, ratio=2.33)
+	def banner_background_css(page)
+		switch = 900
 		style = ""
-		large = first_banner_path(page, widths[0], ratio)
-		small = first_banner_path(page, widths[1], ratio)
-		unless large && small
+		if page.images.banner.any?
+			large = page.images.banner.first.image_file.large_banner.url
+			medium = page.images.banner.first.image_file.medium_banner.url
+		else
 			# fall back to default banners
 			large = asset_path("#{page.template}_banner.jpg")
-			small = asset_path("#{page.template}_banner_medium.jpg")
+			medium = asset_path("#{page.template}_banner_medium.jpg")
 		end
 		content_tag(:style) do
 			style += "article > header {"
 			style += "background-image: url(\"#{large}\");"
 			style += "} @media (max-width: #{switch}px) { article > header {"
-			style += "background-image: url(\"#{small}\");"
+			style += "background-image: url(\"#{medium}\");"
 			style += "}}"
 		end
 		style.html_safe
 	end
 
-	def thumbnail_image(image, size, aspect)
-		# TODO: implement srcset (not really needed)
-		# TODO: define image sizes somewhere...
-		aspect = aspect || image_aspect(image)
-		css_class = ""
-		if aspect[1] > aspect[0] 
-			# portrait
-			css_class = "port"
-			height = size
-			width = (size*aspect[0])/aspect[1]
+	def banner_thumb(page)
+		aspect = "2.33/1"
+		if page.images.banner.any?
+			url = page.images.banner.first.image_file.small_banner.url
 		else
-			css_class = "lscp"
-			height = (size*aspect[1])/aspect[0]
-			width = size
+			# fall back to default banners
+			url = asset_path("#{page.template}_banner_small.jpg")
 		end
 		image_tag(
-			image_file_path(image.image_file.variant(resize_to_fill: [width, height])),
+			url,
+			# alt: image.alt_text, # hmmm
+			style: "aspect-ratio: #{aspect}",
+			loading: "lazy"
+		)
+	end
+
+	def thumbnail_image(image, version="thumb")
+		if version == "square"
+			url = image.image_file.square.url
+			aspect = "1/1"
+			css_class = "square"
+		else
+			url = image.image_file.thumb.url
+			aspect = image.aspect
+			if image.height > image.width
+				css_class = "port"
+			else
+				css_class = "lscp"
+			end
+		end
+		image_tag(
+			url,
 			alt: image.alt_text, 
-			style: "aspect-ratio: #{aspect[0]}/#{aspect[1]};",
+			style: "aspect-ratio: #{aspect}",
 			class: css_class,
 			loading: "lazy"
 		)
 	end
 
-	def fullscreen_image(image, size=800)
-		# TODO: investigate using <picture> instead of <img>
-		aspect = image_aspect(image)
-		factor = 1.5
-		base = aspect[0] > aspect[1] ? [size, nil] : [nil, size]
-		up   = aspect[0] > aspect[1] ? [size*factor, nil] : [nil, size*factor]
-		down = aspect[0] > aspect[1] ? [size/factor, nil] : [nil, size/factor] 
-		img = image_file_path(image.image_file.variant(resize_to_limit: base))
+	def fullscreen_image(image)
 		image_tag(
-			img,
-			srcset: [[image_file_path(image.image_file.variant(resize_to_limit: up)), "1200w"], [img, "800w"], [image_file_path(image.image_file.variant(resize_to_limit: down)), "400w"]],
+			image.image_file.medium.url,
+			srcset: [
+				[image.image_file.large.url, "1200w"], 
+				[image.image_file.medium.url, "800w"], 
+				[image.image_file.small.url, "600w"]
+			],
 			alt: image.alt_text, 
-			style: css_aspect(image),
+			style: "aspect-ratio: #{image.aspect};",
 			loading: "lazy"
 		)
 	end
@@ -135,14 +103,13 @@ module PagesHelper
 		page.body.gsub(/fig\[(\d+)\]/).each do |fig| 
 			index = $1.to_i - 1
 			unless images[index].nil?
-				image_to_figure(page, images[index])
+				image_to_figure(page, images[index], "thumb")
 			end
 		end
 	end
 
-	def image_to_figure(page, image)
-		# TODO: width
-		render partial: "figure", locals: {image: image, size: 240, aspect: nil}
+	def image_to_figure(page, image, version)
+		render partial: "figure", locals: {image: image, version: version}
 	end
 
 	# TODO: most of these are image helpers, not page helpers...

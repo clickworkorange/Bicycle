@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root "pages#index"
     resources :pages, only: [:index, :new, :create, :edit, :update, :destroy] do
       post "move"
-      post "toggle"
+      # post "toggle"
       resources :images, only: [:new, :create, :edit, :update, :destroy]
     end
     resources :users
@@ -14,15 +14,17 @@ Rails.application.routes.draw do
 
   # TODO: surely there's a better way? 
   resources :pages, only: :show, path: "" do
-    resources :images, only: :show
+    #resources :images, only: :show
     resources :pages, only: :show, path: "" do
-      resources :images, only: :show
+      #resources :images, only: :show
       resources :pages, only: :show, path: "" do
-        resources :images, only: :show
+        #resources :images, only: :show
       end
     end
   end
-  
+
   root "pages#index"
-  #get ":custom_url", to: "pages#show"
+  # get "images/:id", to: "images#show"
+  # get "*path/:id", to: "pages#show"
+  # get "*id", to: "pages#show"
 end

@@ -171,7 +171,9 @@ border-right: 1px solid $colour-edges;
             padding-bottom: .2em;
             //margin-top: .2em;
             }
-
+    article section {
+    clear: left;
+    }
     article section.abstract {
     font-weight: bolder;
     }
@@ -208,7 +210,6 @@ border-right: 1px solid $colour-edges;
             }
                 article section.child_pages nav a img {
                 width: 100%;
-                //aspect-ratio: 2.33 / 1; // now inline
                 background-color: $colour-bg-alt;
                 }
                 article section.child_pages nav a p {
@@ -223,6 +224,7 @@ border-right: 1px solid $colour-edges;
         grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
         }
             section.gallery figure {
+            max-width: 240px;
             }
                 section.gallery figure figcaption {
                 display: block;

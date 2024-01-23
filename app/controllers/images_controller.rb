@@ -2,7 +2,6 @@ class ImagesController < ApplicationController
   require "kramdown"
   before_action :get_page
   before_action :set_image, only: %i[ show  ]
-  layout "fullscreen"
 
   def show
     unless @page.live || (current_user && current_user.admin)

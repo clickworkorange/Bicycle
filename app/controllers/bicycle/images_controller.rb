@@ -1,8 +1,6 @@
 class Bicycle::ImagesController < Bicycle::ApplicationController
   before_action :get_page
   before_action :set_image, only: %i[ show edit update destroy ]
-  
-  # TODO: "role"? (e.g. "banner")
 
   def index
     @images = @page.images

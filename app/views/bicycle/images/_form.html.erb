@@ -1,9 +1,9 @@
 <h2><%= @page.title %></h2>
-<%= form_with(model: [:bicycle, @page, @image]) do |form| %>
+<%= form_with(model: [:bicycle, @page, @image], multipart: true) do |form| %>
   <%= render partial: "errors", locals: {model: image} %>
 
-  <% if @image.image_file.attached? %>
-    <%= image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
+  <% unless @image.image_file.file.nil? %>
+    <% # image_tag url_for(image.image_file.variant(resize_to_limit: [100, nil])) %>
   <% end %>
 
   <p>

@@ -9,7 +9,7 @@
 <% # TODO: make use of the <dialog> element! %>
 
 <% @page.images.each do |image| %>
-  <%= link_to image_tag(url_for(image.image_file.variant(resize_to_limit: [100, nil]))), edit_bicycle_page_image_path(@page, image) %>
+    <%= link_to image_tag(image.image_file.square.url), edit_bicycle_page_image_path(@page, image) %>
 <% end %>
 
 <%= link_to t("bicycle.image.new"), new_bicycle_page_image_path(@page), class: "button" %>
