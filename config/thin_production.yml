@@ -14,8 +14,8 @@ timeout: 30
 max_conns: 1024
 max_persistent_conns: 100
 threadpool_size: 20
-chdir: "/home/ola/Projects/clickworkorange/site"
-log: "/home/ola/Projects/clickworkorange/site/log/thin.log"
+chdir: "/var/www/clickworkorange"
+log: "/var/www/clickworkorange/log/thin.log"
 pid: tmp/pids/thin.pid
 tag: clickworkorange
 require: []
