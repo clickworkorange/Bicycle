@@ -8,7 +8,7 @@ servers: 2
 threaded: true
 no-epoll: true
 daemonize: true
-socket: tmp/sockets/thin.sock
+socket: tmp/sockets/cwo.sock
 wait: 30
 timeout: 30
 max_conns: 1024
