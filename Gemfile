@@ -19,7 +19,7 @@ gem "friendly_id", "~> 5.5.0"
 gem "kramdown", "~> 2.4.0"
 gem "rouge", "~> 4.2.0"
 gem "dartsass-sprockets", "~> 3.1.0"
-gem "carrierwave", "~> 3.0.5"
+gem "carrierwave", git: "https://github.com/clickworkorange/carrierwave", branch: "master"
 gem "ruby-vips", "~> 2.2.0"
 gem "acts_as_list", "~> 1.1.0"
 gem "awesome_nested_set", "~> 3.6.0"
@@ -29,6 +29,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem "i18n-debug", "~> 1.2.0"
+  gem "rspec"
 end
 
 group :development do
