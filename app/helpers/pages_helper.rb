@@ -25,7 +25,7 @@ module PagesHelper
 	end
 
 	def banner_background_css(page)
-		switch = 900
+		switch = 600
 		style = ""
 		if page.images.banner.any?
 			large = page.images.banner.first.image_file.large_banner.url

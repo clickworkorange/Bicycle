@@ -32,15 +32,15 @@ class ImageFileUploader < CarrierWave::Uploader::Base
   end
 
   version :small_banner do #, if: :is_banner? do
-    process resize_to_fill: [320, 160]
+    process resize_to_fill: [320, 140]
   end
 
   version :medium_banner do #, if: :is_banner? do
-    process resize_to_fill: [800, 400]
+    process resize_to_fill: [600, 160]
   end
 
   version :large_banner do #, if: :is_banner? do
-    process resize_to_fill: [1200, 600]
+    process resize_to_fill: [900, 250]
   end
 
   def is_banner?(image)
