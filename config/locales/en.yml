@@ -36,6 +36,7 @@ en:
   go_back: "Go back"
   return_to: "Return to %{title}"
   are_you_sure: "Are you sure?"
+  menu: "Menu"
   errors:
     format: "%{message}"
     #format: "%{attribute} %{message}"

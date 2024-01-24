@@ -1,6 +1,6 @@
 <% cache ["menu",@page], skip_digest: true do %>
   <nav>
-    <button tabindex="1">
+    <button aria-label="<%= t("menu") %>" tabindex="1">
       <%= svg_icon("menu") %>
     </button>
     <div>
