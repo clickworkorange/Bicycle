@@ -3,8 +3,9 @@ class Bicycle::ImagesController < Bicycle::ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
 
   def regenerate
-    Image.all.each do |i| 
-      i.image_file.recreate_versions!
+    if request.post?
+      job = RegenerateImagesJob.perform_later 
+      redirect_to bicycle_images_regenerate_path(job_id: job.job_id)
     end
   end
 

@@ -1,2 +1,9 @@
-
-<p>Regenerating images - this will take some time...</p>
+<% if params[:job_id].present? %>
+	<% job = ActiveJob::Status.get(params[:job_id]) %>
+	<p><%= job[:status] %></p>
+	<p><%= job[:progress] %>/<%= job[:total] %></p>
+	<%= link_to t("bicycle.image.regenerate.status"), bicycle_images_regenerate_path(job_id: params[:job_id]), class: "button" %>
+<% else %>
+	<p>Are you sure?</p>
+	<%= button_to t("bicycle.image.regenerate.start"), bicycle_images_regenerate_path %>
+<% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :bicycle do
     root "pages#index"
+    get "images/regenerate(/:job_id)", to: "images#regenerate"
     post "images/regenerate", to: "images#regenerate"
     resources :pages, only: [:index, :new, :create, :edit, :update, :destroy] do
       post "move"
