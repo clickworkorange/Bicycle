@@ -1,6 +1,12 @@
 class Bicycle::ImagesController < Bicycle::ApplicationController
-  before_action :get_page
+  before_action :get_page, except: %i[ regenerate ]
   before_action :set_image, only: %i[ show edit update destroy ]
+
+  def regenerate
+    Image.all.each do |i| 
+      i.image_file.recreate_versions!
+    end
+  end
 
   def index
     @images = @page.images

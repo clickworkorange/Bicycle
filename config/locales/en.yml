@@ -83,6 +83,7 @@ en:
       edit: "Edit image"
       destroy: "Delete image"
       cancel: "Cancel"
+      regenerate: "Regenerete Images"
   activerecord:
     models:
       user: "User"
