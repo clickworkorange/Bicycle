@@ -11,6 +11,4 @@
   end %>
 <% end %>
 
-<%= render(partial: "gallery", locals: {page: page}) if page.images.gallery.any? %>
-
 <%= render(partial: "children", locals: {page: page}) if page.children.live.any? %>

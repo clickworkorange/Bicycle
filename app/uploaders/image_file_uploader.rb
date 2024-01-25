@@ -15,8 +15,8 @@ class ImageFileUploader < CarrierWave::Uploader::Base
   end
 
   version :square do
-    process resize_to_fill: [220, 220]
-    process crop: [10, 10, 200, 200]
+    process resize_to_fill: [260, 260]
+    process crop: [10, 10, 240, 240]
   end
 
   version :small do #, if: :not_banner? do

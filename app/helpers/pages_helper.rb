@@ -99,12 +99,15 @@ module PagesHelper
 	end
 
 	def inline_images(page, images) 
-		images = page.images.inline
+		inline = page.images.inline
 		page.body.gsub(/fig\[(\d+)\]/).each do |fig| 
 			index = $1.to_i - 1
-			unless images[index].nil?
-				image_to_figure(page, images[index], "thumb")
+			unless inline[index].nil?
+				image_to_figure(page, inline[index], "thumb")
 			end
+		end
+		page.body.gsub(/\[gallery\]/).each do |gallery| 
+			render(partial: "gallery", locals: {page: page, gallery: page.images.gallery}) if page.images.gallery.any?
 		end
 	end
 
