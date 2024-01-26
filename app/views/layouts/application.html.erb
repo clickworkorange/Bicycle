@@ -21,7 +21,7 @@
       <h2>connecting the dots</h2>
     </header>
     <main>
-      <%# render partial: "menu" %>
+      <%= render partial: "menu" %>
       <article>
         <%= content_tag(:p, notice, class: "notice") if notice.present? %>
         <%= content_tag(:p, alert, class: "alert") if alert.present? %>

@@ -4,13 +4,9 @@ body.bicycle {
 background-image: url("bicycle.png");
 }
 
-body > header, article, body > footer {
-max-width: 1000px;
-margin: 1em auto;
-}
-
 body > header {
-overflow: auto;
+position: fixed;
+width: 100%;
 }
 	body > header nav {
 	}
@@ -21,6 +17,10 @@ overflow: auto;
 		display: inline-block;
 		margin-right: .5em;
 		}
+
+main {
+padding-top: 3em;
+}
 
 article {
 padding: .5em;

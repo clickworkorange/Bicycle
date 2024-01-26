@@ -5,19 +5,6 @@ body {
 background-image: url("circuit.png")
 }
 
-body > header {
-display: flex;
-align-items: center;
-// TODO: annoyingly arbitrary units below! 
-min-height: 3em;
-padding: 0 .5em;
-//background: linear-gradient(180deg, $colour-bg 0%, $colour-bg-alt 50%, $colour-bg 100%);
-box-shadow: 0 0 .5em .5em rgba(0,0,0,0.75);
-border-bottom: 1px solid $colour-edges;
-position: relative;
-z-index: 1;
-}
-
 body > header h1 {
 font-family: "Fira Code", "fira-code";
 font-size: clamp(1em, 8vw, 2em);
@@ -125,12 +112,6 @@ width: $nav-width;
             color: $colour-text;
             }
 
-main {
-max-width: 1200px;
-margin: 0 auto;
-text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
-}
-
 article {
 min-height: 100vh;
 margin-left: $nav-width;
@@ -229,7 +210,7 @@ border-right: 1px solid $colour-edges;
             }
                 section.gallery figure figcaption {
                 display: block;
-                margin-top: .5em;
+                margin-top: .2em;
                 }
             article > figure {
             float: left;

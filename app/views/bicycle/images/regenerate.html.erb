@@ -1,3 +1,4 @@
+<p>&nbsp;</p>
 <% if params[:job_id].present? %>
 	<% job = ActiveJob::Status.get(params[:job_id]) %>
 	<p><%= job[:status] %></p>

@@ -1,4 +1,13 @@
-
+@media (min-width: 1200px) {
+    body {
+    font-size: 120%;
+    }
+}
+@media (min-width: 1500px) {
+    body {
+    font-size: 130%;
+    }
+}
 @media (max-width: 900px) {
 
     h1 {

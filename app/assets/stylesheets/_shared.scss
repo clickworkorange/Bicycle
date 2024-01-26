@@ -38,11 +38,30 @@ body {
 font-family: "Fira Sans", "fira";
 background-color: $colour-body-bg;
 color: $colour-text;
+text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
 font-size: 110%;
 // font-size: clamp(3rem, 25vmin, 8rem)
 line-height: 1.2em;
 min-height: 100vh;
 margin: 0;
+}
+
+body > header {
+display: flex;
+align-items: center;
+min-height: 3em;
+padding: 0 .5em;
+//background: linear-gradient(180deg, $colour-bg 0%, $colour-bg-alt 50%, $colour-bg 100%);
+box-shadow: 0 0 .5em .5em rgba(0,0,0,0.75);
+border-bottom: 1px solid $colour-edges;
+position: relative;
+z-index: 1;
+}
+
+main {
+max-width: 60em;
+margin: 0 auto;
+box-shadow: 0 0 2em 2em rgba(0,0,0,0.75);
 }
 
 header, article {

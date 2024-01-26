@@ -18,7 +18,7 @@ module PagesHelper
   def parse_body(page)
     # TODO: sanitize
     Kramdown::Document.new(
-      inline_images(page),
+      process_tokens(page),
       syntax_highlighter: "rouge",
       syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}
     ).to_html.html_safe
@@ -84,13 +84,21 @@ module PagesHelper
     )
   end
 
+  def process_tokens(page)
+    page.body = inline_images(page)
+    page.body = inline_galleries(page)
+    page.body
+  end
+
   def inline_images(page)
-    # TODO: rewrite this sorry mess - it doesn't even work
     inline = page.images.inline
     page.body.gsub(/fig\[(\d+)\]/).each do
       image = inline[$1.to_i - 1]
-      concat render(partial: "figure", locals: {image: image, version: "thumb"}) if image
+      render(partial: "figure", locals: {image: image, version: "thumb"}) if image
     end
+  end
+
+  def inline_galleries(page)
     page.body.gsub("[gallery]").each do
       gallery = page.images.gallery
       render(partial: "gallery", locals: {page: page, gallery: gallery}) if gallery
