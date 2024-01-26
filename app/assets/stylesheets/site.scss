@@ -266,6 +266,7 @@ border-right: 1px solid $colour-edges;
                 margin: 0 auto;
                 height: 100%;
                 max-width: 100%;
+                object-fit: contain;
                 animation-name: zoom;
                 animation-duration: 0.25s;
                 }
