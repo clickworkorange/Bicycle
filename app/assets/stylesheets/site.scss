@@ -10,6 +10,7 @@ font-family: "Fira Code", "fira-code";
 font-size: clamp(1em, 8vw, 2em);
 margin: 0;
 width: min-content;
+text-shadow: none;
 }
     body > header h1 a {
     display: block;
@@ -190,8 +191,7 @@ border-right: 1px solid $colour-edges;
                 }
 
     article section.gallery {
-    margin-top: 1em;
-    margin-bottom: 2em;
+    margin: 2em 0;
     }
         section.gallery nav {
         display: grid;
@@ -212,6 +212,12 @@ border-right: 1px solid $colour-edges;
             margin-right: .5em;
             margin-bottom: .3em;
             }
+                article > figure.lscp, article > figure.square {
+                width: 240px;
+                }
+                article > figure.port {
+                height: 260px;
+                }
                 article > figure figcaption {
                 font-size: .8em;
                 text-align: center;
@@ -227,18 +233,9 @@ border-right: 1px solid $colour-edges;
                 figure button img {
                 background-image: url("noise.gif");
                 display: block;
-                }
-                section.gallery figure button img {
                 width: 100%;
                 }
-                    // TODO: define image sizes in one place
-                    figure button img.lscp {
-                    width: 240px;
-                    }
-                    figure button img.port {
-                    width: auto;
-                    height: 240px;
-                    }
+
             figure button + div.zoom {
             display: none; // must be display:none to prevent loading of lazy images within
             align-items: center;

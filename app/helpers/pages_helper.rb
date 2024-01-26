@@ -61,13 +61,11 @@ module PagesHelper
     if version == "square"
       url = image.image_file.square.url
       aspect = "1/1"
-      css_class = "square"
     else
       url = image.image_file.thumb.url
       aspect = image.aspect
-      css_class = image.height > image.width ? "port" : "lscp"
     end
-    image_tag(url, alt: image.alt_text, style: "aspect-ratio: #{aspect}", class: css_class, loading: "lazy")
+    image_tag(url, alt: image.alt_text, style: "aspect-ratio: #{aspect}", loading: "lazy")
   end
 
   def fullscreen_image(image)
@@ -94,7 +92,14 @@ module PagesHelper
     inline = page.images.inline
     page.body.gsub(/fig\[(\d+)\]/).each do
       image = inline[$1.to_i - 1]
-      render(partial: "figure", locals: {image: image, version: "thumb"}) if image
+      if image.height > image.width
+        css_class = "port"
+      elsif image.height == image.width
+        css_class = "square"
+      else
+        css_class = "lscp"
+      end
+      render(partial: "figure", locals: {image: image, version: "thumb", css_class: css_class}) if image
     end
   end
 

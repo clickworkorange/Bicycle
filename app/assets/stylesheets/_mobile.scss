@@ -21,6 +21,7 @@
     // }
     body:not(.fullscreen) > header h1 {
     margin-left: 1.5em;
+    margin-top: 1px;
     }
     body > header h2 {
     display: none;
@@ -72,7 +73,12 @@
         main > article header {
         padding-bottom: .5em;
         }
-
+        article > figure.lscp, article > figure.square {
+        width: 200px;
+        }
+        article > figure.port {
+        height: 220px;
+        }
     article section#child_pages nav, article section#gallery nav {
     grid-column-gap: .5em;
     }
