@@ -159,10 +159,6 @@ border-right: 1px solid $colour-edges;
     article section.abstract {
     font-weight: bolder;
     }
-    article img {
-    background-image: url("noise.gif");
-    color: rgba(0,0,0,0);
-    }
 	article p img {
 	float: left;
 	clear: left;
@@ -231,6 +227,7 @@ border-right: 1px solid $colour-edges;
             cursor: zoom-in;
             }
                 figure button img {
+                background-image: url("noise.gif");
                 display: block;
                 }
                 section.gallery figure button img {
