@@ -212,11 +212,11 @@ border-right: 1px solid $colour-edges;
             margin-right: .5em;
             margin-bottom: .3em;
             }
-                article > figure.lscp, article > figure.square {
+                article > figure.lscp button img, article > figure.square button img {
                 width: 240px;
                 }
-                article > figure.port {
-                height: 260px;
+                article > figure.port button img {
+                height: 240px;
                 }
                 article > figure figcaption {
                 font-size: .8em;

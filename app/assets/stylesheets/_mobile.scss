@@ -73,11 +73,11 @@
         main > article header {
         padding-bottom: .5em;
         }
-        article > figure.lscp, article > figure.square {
+        article > figure.lscp button img, article > figure.square button img {
         width: 200px;
         }
-        article > figure.port {
-        height: 220px;
+        article > figure.port button img {
+        height: 200px;
         }
     article section#child_pages nav, article section#gallery nav {
     grid-column-gap: .5em;
