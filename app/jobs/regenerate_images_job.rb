@@ -3,10 +3,13 @@ class RegenerateImagesJob < ApplicationJob
   queue_as :default
   after_perform :done
 
-  def perform(*args)
+  # TODO: we should prevent this job from being started while another instance is running
+
+  def perform
     status[:status] = :working
     progress.total = Image.count
-    Image.all.each do |image| 
+    # TODO: increment never reaches total?
+    Image.all.each do |image|
       image.image_file.recreate_versions!
       progress.increment
     end
@@ -15,6 +18,5 @@ class RegenerateImagesJob < ApplicationJob
   private
   def done
     status[:status] = :done
-    puts "IMAGES REGENERATED!"
   end
 end

@@ -1,12 +1,12 @@
 class Bicycle::ImagesController < Bicycle::ApplicationController
-  before_action :get_page, except: %i[ regenerate ]
-  before_action :set_image, only: %i[ show edit update destroy ]
+  before_action :set_page, except: %i[regenerate]
+  before_action :set_image, only: %i[show edit update destroy]
 
   def regenerate
-    if request.post?
-      job = RegenerateImagesJob.perform_later 
-      redirect_to bicycle_images_regenerate_path(job_id: job.job_id)
-    end
+    return unless request.post?
+
+    job = RegenerateImagesJob.perform_later
+    redirect_to bicycle_images_regenerate_path(job_id: job.job_id)
   end
 
   def index
@@ -47,15 +47,15 @@ class Bicycle::ImagesController < Bicycle::ApplicationController
   end
 
   private
-    def get_page
-      @page = Page.friendly.find(params[:page_id])
-    end
+  def set_page
+    @page = Page.friendly.find(params[:page_id])
+  end
 
-    def set_image
-      @image = @page.images.find(params[:id])
-    end
+  def set_image
+    @image = @page.images.find(params[:id])
+  end
 
-    def image_params
-      params.require(:image).permit(:image_file, :role, :caption, :alt_text, :page_id)
-    end
+  def image_params
+    params.require(:image).permit(:image_file, :role, :caption, :alt_text, :page_id)
+  end
 end

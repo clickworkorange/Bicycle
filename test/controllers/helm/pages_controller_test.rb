@@ -17,7 +17,7 @@ class Bicycle::PagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create page" do
     assert_difference("Page.count") do
-      post bicycle_pages_url, params: { page: {  } }
+      post bicycle_pages_url, params: {page: {}}
     end
 
     assert_redirected_to bicycle_page_url(Page.last)
@@ -34,7 +34,7 @@ class Bicycle::PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update page" do
-    patch bicycle_page_url(@page), params: { page: {  } }
+    patch bicycle_page_url(@page), params: {page: {}}
     assert_redirected_to bicycle_page_url(@page)
   end
 

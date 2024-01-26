@@ -18,7 +18,6 @@ class Bicycle::PagesController < Bicycle::ApplicationController
 
   def create
     @page = Page.new(page_params)
-
     if @page.save
       redirect_to edit_bicycle_page_path(@page), notice: "Page was successfully created."
     else
@@ -49,7 +48,7 @@ class Bicycle::PagesController < Bicycle::ApplicationController
   end
 
   # def toggle
-  #   if @page.live && @page.children.any? 
+  #   if @page.live && @page.children.any?
   #     @page.descendants.update_all({live: false})
   #   end
   #   @page.update({live: @page.live.!})
@@ -57,19 +56,19 @@ class Bicycle::PagesController < Bicycle::ApplicationController
   # end
 
   private
-    def set_page
-      @page = Page.friendly.find(params[:id] || params[:page_id])
-    end
+  def set_page
+    @page = Page.friendly.find(params[:id] || params[:page_id])
+  end
 
-    def expire_menu
-      # TODO: this doesn't even work anymore!
-      Page.all.each do |page|
-        # TODO: this not just crude, but also depends on skip_digest: true 
-        expire_fragment(["menu",page])
-      end
+  def expire_menu
+    # TODO: this doesn't even work anymore!
+    Page.all.each do |page|
+      # TODO: this not just crude, but also depends on skip_digest: true
+      expire_fragment(["menu", page])
     end
+  end
 
-    def page_params
-      params.require(:page).permit(:title, :abstract, :body, :live, :in_menu, :template, :parent_id, :url)
-    end
+  def page_params
+    params.require(:page).permit(:title, :abstract, :body, :live, :in_menu, :template, :parent_id, :url)
+  end
 end

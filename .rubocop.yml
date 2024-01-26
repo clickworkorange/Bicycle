@@ -1,0 +1,84 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**"
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  AllowedIdentifiers: [mswin64, capture3, iso8601, rfc822, rfc2822, rfc3339]
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude: 
+    - "db/migrate/**"
+
+Metrics/AbcSize:
+  #CountRepeatedAttributes: false
+  Exclude:
+    - "db/migrate/**"
+
+Metrics/BlockLength:
+  Exclude: 
+    - "db/schema.rb"
+    - "config/environments/**"
+
+Layout/LineLength:
+  Exclude: 
+    - "db/schema.rb"
+    - "db/migrate/**"
+    - "config/initializers/devise.rb"
+
+Layout/IndentationStyle:
+  EnforcedStyle: spaces
+
+Layout/SpaceInsideBlockBraces:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Layout/EmptyLinesAroundAccessModifier:
+  EnforcedStyle: only_before
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/NumericLiterals:
+  Exclude: 
+    - "db/schema.rb"
+
+Style/SymbolArray:
+  Exclude: 
+    - "db/migrate/**"
+
+Style/WordArray:
+  Exclude: 
+    - "db/schema.rb"
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+

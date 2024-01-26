@@ -1,12 +1,13 @@
 class Image < ApplicationRecord
-  ROLES = ["inline","banner","gallery"]
+  ROLES = %w[inline banner gallery].freeze
   belongs_to :page
   acts_as_list scope: :page, touch_on_update: false
   self.implicit_order_column = "position"
   mount_uploader :image_file, ImageFileUploader
-  scope :banner, -> { where(role: "banner") }
-  scope :inline, -> { where(role: "inline") }
-  scope :gallery, -> { where(role: "gallery") }
+  # TODO: pluralise these scopes
+  scope :banner, -> {where(role: "banner")}
+  scope :inline, -> {where(role: "inline")}
+  scope :gallery, -> {where(role: "gallery")}
   validates :image_file, presence: true
-  validates_inclusion_of :role, :in => ROLES
+  validates_inclusion_of :role, in: ROLES
 end

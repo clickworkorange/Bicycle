@@ -14,8 +14,8 @@ class PagesController < ApplicationController
 
   def show
     if @page
-      unless @page.live || (current_user && current_user.admin)
-        flash[:alert] = "You can't be here!"
+      unless @page.live || current_user&.admin
+        flash[:alert] = t("no_access")
         redirect_to root_path
       end
       render @page.template, locals: {page: @page}
@@ -25,11 +25,7 @@ class PagesController < ApplicationController
   end
 
   private
-    def set_page
-      @page = Page.friendly.find(params[:id], allow_nil: true) || Page.for_url("/#{params[:id]}").first
-    end
-
-    def authorize 
-
-    end
+  def set_page
+    @page = Page.friendly.find(params[:id], allow_nil: true) || Page.for_url("/#{params[:id]}").first
+  end
 end

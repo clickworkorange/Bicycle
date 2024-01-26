@@ -1,10 +1,10 @@
 class Page < ApplicationRecord
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :history]
-  TEMPLATES = ["article","section","gallery","home"]
+  friendly_id :title, use: %i[slugged history]
+  TEMPLATES = %w[article section gallery home].freeze
   has_many :images, dependent: :destroy
   validates :title, presence: true
-  validates_inclusion_of :template, :in => TEMPLATES
+  validates_inclusion_of :template, in: TEMPLATES
   scope :live, -> {where(live: true)}
   scope :in_menu, -> {where(in_menu: true)}
   # scope :for_url, -> (url){where(url: url)}

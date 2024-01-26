@@ -6,11 +6,10 @@
 # You should avoid using cache store that are not shared between web and background processes
 # (ex: :memory_store).
 #
-if Rails.cache.is_a?(ActiveSupport::Cache::NullStore)
-  ActiveJob::Status.store = :file_store, "cache"
-end
+
+ActiveJob::Status.store = :file_store, "tmp/cache" if Rails.cache.is_a?(ActiveSupport::Cache::NullStore)
 
 # Apply a time interval in seconds between every status updates.
 # Default is 0 - no throttling mechanism
 #
-ActiveJob::Status.options = { throttle_interval: 1 }
+ActiveJob::Status.options = {throttle_interval: 1}

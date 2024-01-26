@@ -5,5 +5,3 @@ class DropActiveStorageTables < ActiveRecord::Migration[7.1]
     drop_table :active_storage_blobs
   end
 end
-
-
