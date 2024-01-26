@@ -32,6 +32,7 @@ group :development, :test do
   gem "i18n-debug", "~> 1.2.0"
   gem "rspec"
   gem "rubocop", "~> 1.60", require: false
+  gem "scss_lint", "~> 0.60.0", require: false
 end
 
 group :development do

@@ -1,0 +1,134 @@
+scss_files: "app/assets/stylesheets/**/*.scss"
+exclude: "app/assets/stylesheets/plugins/**"
+
+linters:
+  MergeableSelector:
+    enabled: false
+
+  VendorPrefix:
+    enabled: false
+
+  EmptyRule:
+    enabled: false
+
+  SelectorDepth:
+    enabled: false
+
+  IdSelector:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
+
+  SingleLinePerSelector:
+    enabled: false
+
+  Shorthand: 
+    allowed_shorthands: [1, 2, 4]
+
+  SelectorFormat:
+    convention: snake_case
+
+  StringQuotes:
+    style: double_quotes
+
+  BorderZero:
+    convention: none
+
+  Indentation:
+    enabled: false
+
+  EmptyLineBetweenBlocks:
+    enabled: false
+
+  HexNotation:
+    style: uppercase
+
+  # LeadingZero:
+  #   style: include_zero
+
+  QualifyingElement:
+    enabled: false
+
+  PropertySortOrder:
+    order:
+      - display
+      - position
+      - box-sizing
+      - flex-direction
+      - object-fit
+      - object-position
+      - align-self
+      - align-items
+      - grid-template-columns
+      - grid-column-gap
+      - grid-row-gap
+      - table-layout
+      - border-spacing
+      - float
+      - clear
+      - overflow
+      - overflow-x
+      - overflow-y
+      - top
+      - left
+      - bottom
+      - right
+      - width
+      - height
+      - max-width
+      - min-width
+      - max-height
+      - min-height
+      - margin
+      - margin-top
+      - margin-right
+      - margin-bottom
+      - margin-left
+      - padding
+      - padding-top
+      - padding-right
+      - padding-bottom
+      - padding-left
+      - border
+      - border-top
+      - border-right
+      - border-bottom
+      - border-left
+      - border-radius
+      - border-top-radius
+      - border-right-radius
+      - border-bottom-radius
+      - border-left-radius
+      - border-color
+      - outline
+      - outline-width
+      - outline-offset
+      - background
+      - background-color
+      - background-image
+      - background-position
+      - background-size
+      - background-clip
+      - box-shadow
+      - fill
+      - opacity
+      - color
+      - font-family
+      - font-size
+      - font-weight
+      - line-height
+      - text-align
+      - vertical-align
+      - white-space
+      - text-overflow
+      - text-decoration
+      - text-shadow
+      - cursor
+      - list-style-type
+      - animation
+      - animation-name
+      - animation-duration
+      - transform
+      - transition
+      - z-index

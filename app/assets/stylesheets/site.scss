@@ -2,26 +2,26 @@
 @use "monokai";
 
 body {
-background-image: url("circuit.png")
+background-image: url("circuit.png");
 }
 
 body > header h1 {
+width: min-content;
+margin: 0;
 font-family: "Fira Code", "fira-code";
 font-size: clamp(1em, 8vw, 2em);
-margin: 0;
-width: min-content;
 text-shadow: none;
 }
     body > header h1 a {
     display: block;
     padding-top: 2px;
-    color: transparent;
-    background: linear-gradient(75deg, $orange 0 90%, white 95%, $orange 100%);
+    background: linear-gradient(75deg, $orange 0 90%, $white 95%, $orange 100%);
+    background-position: 0%;
     background-size: 200%;
     -webkit-background-clip: text;
     background-clip: text;
-    background-position: 0%;
-    // TODO: why did tabbing into the opened menu stop working? 
+    color: transparent;
+    // TODO: why did tabbing into the opened menu stop working?
     }
         body > header h1 a:hover, body > header h1 a:focus {
         animation: swish 3s infinite linear;
@@ -39,26 +39,26 @@ text-shadow: none;
     }
 
 main > nav {
-position: sticky; 
-top: 0;
+position: sticky;
 float: left;
+top: 0;
 width: $nav-width;
 }
     main > nav button {
     display: none;
     }
     main > nav > div {
+    min-height: 100vh;
     margin: 0;
     padding: .5em;
     padding-top: 1em;
-    background-color: $colour-bg-alt;
-    min-height: 100vh;
     border-left: 1px solid $colour-edges;
+    background-color: $colour-bg-alt;
     }
         main > nav ul {
-        list-style-type: none;
-        padding: 0;
         margin: 0;
+        padding: 0;
+        list-style-type: none;
         }
             main > nav ul ul {
             padding-left: .7em;
@@ -66,19 +66,19 @@ width: $nav-width;
                 main > nav ul ul ul {
                 padding-left: 1.2em;
                 }
-        main > nav ul li  {
-        padding: 0;
+        main > nav ul li {
         margin: 0;
+        padding: 0;
         }
             main > nav ul li > ul {
             overflow: hidden;
-            max-height: 0; 
+            max-height: 0;
             opacity: 0;
             transition: max-height .5s ease-out 1s, opacity 1s 1s;
             }
-                main > nav ul li:hover > ul, 
-                main > nav ul li:focus-within > ul, 
-                main > nav ul li:is(.current, .parent) > ul, 
+                main > nav ul li:hover > ul,
+                main > nav ul li:focus-within > ul,
+                main > nav ul li:is(.current, .parent) > ul,
                 main > nav ul li > ul:hover {
                 max-height: 300px;
                 opacity: 1;
@@ -89,24 +89,24 @@ width: $nav-width;
             height: 1.8em;
             line-height: 1.8em;
             }
-                main > nav ul li div > svg { 
+                main > nav ul li div > svg {
                 float: left;
-                height: 100%;
                 width: auto;
+                height: 100%;
                 fill: $darker;
                 //shape-rendering: crispEdges;
                 }
                 main > nav ul li a {
                 display: block;
-                white-space: nowrap;
                 overflow: hidden;
-                text-overflow: ellipsis;
                 outline-offset: -2px !important;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 }
                 main > nav ul li a svg {
+                margin-left: .1em;
                 fill: currentColor;
                 vertical-align: text-bottom;
-                margin-left: .1em;
                 //shape-rendering: crispEdges;
                 }
             main > nav ul li.current > div a, main > nav ul li a:hover, main > nav ul li a:focus {
@@ -114,19 +114,19 @@ width: $nav-width;
             }
 
 article {
+overflow: hidden;
 min-height: 100vh;
 margin-left: $nav-width;
 padding: 0 1em 1.5em 1em;
-overflow: hidden;
-border-left: 1px solid $colour-edges;
 border-right: 1px solid $colour-edges;
+border-left: 1px solid $colour-edges;
 }
     article > header {
     display: flex;
+    overflow: hidden;
     height: 15vw;
     min-height: 7.5em;
     margin: 0 -1em 1em -1em;
-    overflow: hidden;
     padding: 1em;
     background-color: $colour-bg-alt;
     background-position: 50% 10%;
@@ -139,7 +139,7 @@ border-right: 1px solid $colour-edges;
         float: left;
         clear: left;
         padding: .2em;
-        background-color: rgba(0,0,0,0.75);
+        background-color: $shadow-colour;
         }
             article > header h1 {
             margin: 0;
@@ -173,8 +173,8 @@ border-right: 1px solid $colour-edges;
     }
         article section.child_pages nav {
         display: grid;
-        grid-column-gap: 1em;
         grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+        grid-column-gap: 1em;
         }
             article section.child_pages nav a {
             display: block;
@@ -195,9 +195,9 @@ border-right: 1px solid $colour-edges;
     }
         section.gallery nav {
         display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
         grid-column-gap: 1em;
         grid-row-gap: 1em;
-        grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
         }
             section.gallery figure {
             max-width: 240px;
@@ -223,17 +223,17 @@ border-right: 1px solid $colour-edges;
                 text-align: center;
                 }
             figure button {
-            background: transparent;
-            border: none;
             width: 100%;
             padding: 0;
+            border: none;
             border-radius: 0;
+            background: transparent;
             cursor: zoom-in;
             }
                 figure button img {
-                background-image: url("noise.gif");
                 display: block;
                 width: 100%;
+                background-image: url("noise.gif");
                 }
 
             figure button + div.zoom {
@@ -242,25 +242,25 @@ border-right: 1px solid $colour-edges;
             overflow: hidden;
             width: 0;
             height: 0;
-            background-color: rgba(0,0,0,0.9);
+            background-color: $modal-bg-colour;
             opacity: 0;
-            transition: opacity 0.25s;
+            transition: opacity .25s;
             }
                 // use keyframes to provide time for repaint after unhiding div.zoom
-                @keyframes zoom { 
-                    from {transform: scale(0.01);}
-                    1% {transform: scale(0.01);}
+                @keyframes zoom {
+                    from {transform: scale(.01);}
+                    1% {transform: scale(.01);}
                     99% {transform: scale(1);}
                     to {transform: scale(1);}
                 }
 
                 figure button + div.zoom img {
-                margin: 0 auto;
+                object-fit: contain;
                 height: 100%;
                 max-width: 100%;
-                object-fit: contain;
+                margin: 0 auto;
                 animation-name: zoom;
-                animation-duration: 0.25s;
+                animation-duration: .25s;
                 }
                     figure button:focus + div.zoom img {
                     transform: scale(1);
@@ -268,8 +268,8 @@ border-right: 1px solid $colour-edges;
             figure button:focus + div.zoom {
             // TODO: enable zooming by keypress (requires JS)
             // also close with Esc
-            position: fixed;
             display: flex;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -286,7 +286,7 @@ body.fullscreen {
     height: 2em;
     margin-right: 1em;
     padding: 0;
-    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
+    box-shadow: 2px 2px 2px 0 $shadow-colour;
     }
         body.fullscreen > header a.back svg {
         fill: currentColor;
@@ -298,9 +298,9 @@ body.fullscreen {
     padding: 0;
     }
     body.fullscreen article > figure {
-    margin: 0 auto;
     width: max-content;
     max-width: 100%;
+    margin: 0 auto;
     }
             body.fullscreen article > figure img {
             height: 92vh;
@@ -327,7 +327,7 @@ body.fullscreen {
     width: 1.5em;
     height: 1.5em;
     padding: .3em;
-    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.8);
+    box-shadow: 2px 2px 2px 0 $shadow-colour;
     }
         body.fullscreen a.next {
         right: .5em;
@@ -343,10 +343,10 @@ body.fullscreen {
 body > footer {
 clear: left;
 height: 8em;
-background-color: $colour-footer;
 padding: .5em;
-// border-radius: 1em;
 border-top: 1px solid $colour-edges;
+// border-radius: 1em;
+background-color: $colour-footer;
 }
 
 figure {
@@ -354,26 +354,25 @@ margin: 0;
 }
 
 pre.highlight {
-padding: 1em;
+clear: left;
 overflow: auto;
 overflow-x: scroll;
-clear: left;
-font-family: "fira-code";
+padding: 1em;
 background-color: $colour-bg-alt;
+font-family: "fira-code";
 }
     pre.highlight {
     //display: table;
     }
     pre pre {
     display: table-cell;
-    
     }
     pre.lineno {
-    color: #C1BEB3;
+    color: $colour-code-line;
     }
 
 address ul {
 list-style-type: none;
 }
 
-@import "mobile"
+@import "mobile";
