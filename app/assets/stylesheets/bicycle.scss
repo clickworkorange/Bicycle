@@ -1,3 +1,4 @@
+@use "global" as *;
 @use "shared" as *;
 
 body.bicycle {
@@ -80,4 +81,4 @@ max-width: 40em;
 	padding: .2em;
 	}
 
-//@import "mobile"
+//@import "media"

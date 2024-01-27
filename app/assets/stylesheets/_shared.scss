@@ -1,5 +1,4 @@
 @use "global" as *;
-@forward "global";
 
 @font-face {
     font-family: "fira";
@@ -159,5 +158,3 @@ cursor: pointer;
 body > header, body > article, body > footer {
 box-sizing: border-box;
 }
-
-// TODO: Stylelint

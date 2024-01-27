@@ -2,6 +2,7 @@
 
 <%= render "form", image: @image %>
 <p>Remember to give images descriptive file names before uploading</p>
+<p>Resize images to max 2400px before uploading</p>
 <p>
   <%= link_to t("bicycle.image.cancel"), edit_bicycle_page_path(@page), class: "button no" %>
 </p>
