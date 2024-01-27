@@ -37,13 +37,10 @@
 body {
 min-height: 100vh;
 margin: 0;
-
-
 background-color: $colour-body-bg;
 color: $colour-text;
 font-family: "Fira Sans", "fira";
 font-size: 110%;
-// font-size: clamp(3rem, 25vmin, 8rem)
 line-height: 1.2em;
 text-shadow: 1px 1px 1px $text-shadow-colour;
 }

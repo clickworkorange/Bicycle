@@ -9,16 +9,6 @@
     }
 }
 @media (max-width: 900px) {
-
-    // h1 {
-    // font-size: 1.5em;
-    // }
-    // h2 {
-    // font-size: 1.2em;
-    // }
-    // h3 {
-    // font-size: 1em;
-    // }
     body:not(.fullscreen) > header h1 {
     margin-top: 1px;
     margin-left: 1.5em;
@@ -35,7 +25,8 @@
     float: none;
     top: .45em;
     left: .5em;
-    width: auto;
+    width: 90%;
+    max-width: 23em;
     z-index: 2;
     }
         main > nav button {
@@ -52,14 +43,12 @@
         main > nav > div {
         display: none;
         position: fixed;
-        width: 90%;
-        max-width: 23em;
         min-height: min-content;
         margin-top: .5em;
         padding-top: .5em;
         border: none;
         box-shadow: .5em .5em .5em 0 $shadow-colour;
-        //margin-left: -.5em;
+        // TODO: why did tabbing into the opened menu stop working?
         }
             main > nav:focus-within > div {
             display: block;
@@ -81,17 +70,5 @@
         }
     article section#child_pages nav, article section#gallery nav {
     grid-column-gap: .5em;
-    }
-
-    body.fullscreen article section {
-    margin: 1em .5em;
-    }
-
-    body.fullscreen article > figure img {
-    width: 100%;
-    height: auto;
-    }
-    body.fullscreen a.next, body.fullscreen a.prev {
-    display: none !important;
     }
 }

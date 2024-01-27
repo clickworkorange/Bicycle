@@ -3,7 +3,7 @@ exclude: "app/assets/stylesheets/plugins/**"
 
 linters:
   MergeableSelector:
-    enabled: false
+    force_nesting: false
 
   VendorPrefix:
     enabled: false
@@ -12,7 +12,7 @@ linters:
     enabled: false
 
   SelectorDepth:
-    enabled: false
+    enabled: enabled
 
   IdSelector:
     enabled: false
@@ -52,6 +52,7 @@ linters:
 
   PropertySortOrder:
     order:
+      - contain
       - display
       - position
       - box-sizing
