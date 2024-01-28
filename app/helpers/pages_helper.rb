@@ -1,5 +1,7 @@
 module PagesHelper
   require "nokogiri"
+  require "net/http"
+  require "json"
 
   def full_page_path(page)
     path = []
@@ -85,7 +87,18 @@ module PagesHelper
   def process_tokens(page)
     page.body = inline_images(page)
     page.body = inline_galleries(page)
+    page.body = inline_repos(page)
     page.body
+  end
+
+  def inline_repos(page)
+    base_url = "https://api.github.com/repos"
+    page.body.gsub(%r{repo\[(([a-zA-Z0-9/\-])+)\]}).each do
+      uri = URI("#{base_url}#{$1}")
+      response = Net::HTTP.get(uri)
+      # TODO: why is it not possible to get a response.boby and check the response code in one go?
+      render(partial: "github_repo", locals: {repo: JSON.parse(response)}) if response
+    end
   end
 
   def inline_images(page)

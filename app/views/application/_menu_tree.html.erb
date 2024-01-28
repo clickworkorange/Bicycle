@@ -6,7 +6,7 @@
 <%= content_tag :li, class: css_class do %>
   <%= content_tag(:div) do %>
     <% if page.child? %>
-      <%= svg_icon(page.id == page.parent.children.last.id ? "last_child" : "child") %>
+      <%= svg_icon(page.id == page.parent.children.live.in_menu.last.id ? "last_child" : "child") %>
       <%= link_to full_page_path(page) do %>
         <%= svg_icon(page.template) %>
         <%= page.title %>

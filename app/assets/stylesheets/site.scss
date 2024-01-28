@@ -207,6 +207,75 @@ margin: 2em 0;
             }
 } // article section.gallery
 
+article section.github_repo {
+padding: .5em;
+border-radius: 1em;
+background-color: $colour-bg-alt;
+    img.avatar {
+    float: left;
+    width: 4em;
+    height: 4em;
+    margin-right: .5em;
+    border-top-left-radius: .6em;
+    }
+    header {
+    overflow: hidden;
+    margin-bottom: .5em;
+    }
+        header svg {
+        float: right;
+        width: 1em;
+        height: 1em;
+        }
+    h2 {
+    margin-bottom: .2em;
+    font-size: 1.2em;
+    }
+    h3 {
+    margin-bottom: .2em;
+    font-size: 1em;
+    }
+        p.meta {
+        margin-bottom: 0;
+        padding-top: .2em;
+        border-top: 1px solid $gray;
+        font-size: .8em;
+        }
+            p.meta span {
+            margin-right: .5em;
+            }
+    p.date {
+    margin: 0;
+    }
+    svg {
+    width: 1em;
+    height: 1em;
+    fill: $colour-text;
+    vertical-align: text-top;
+    }
+        .git.lang.ruby svg {
+        fill: $git-lang-ruby;
+        }
+        .git.lang.python svg {
+        fill: $git-lang-python;
+        }
+        .git.lang.c svg {
+        fill: $git-lang-c;
+        }
+        .git.lang.html svg {
+        fill: $git-lang-html;
+        }
+        .git.lang.javascript svg {
+        fill: $git-lang-javascript;
+        }
+        .git.lang.css svg {
+        fill: $git-lang-css;
+        }
+        .git.lang.scss svg {
+        fill: $git-lang-scss;
+        }
+} // article section.githubrepo
+
 article > figure {
 float: left;
 margin-top: .2em;

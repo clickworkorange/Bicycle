@@ -9,7 +9,7 @@ class ImageFileUploader < CarrierWave::Uploader::Base
 
   # TODO: find out why conditional versions do not work
   # TODO: https://github.com/carrierwaveuploader/carrierwave/wiki/how-to:-secure-upload
-  # TODO: limit aspect ratios to a predefined list by cropping to closest match: 
+  # TODO: limit aspect ratios to a predefined list by cropping to closest match:
   # 2.33 = 2.33/1
   # 1.77 = 16/9
   # 1.60 = 16/10
@@ -39,6 +39,7 @@ class ImageFileUploader < CarrierWave::Uploader::Base
   end
 
   version :large do # , if: :not_banner? do
+    # TODO: just copy original file if smaller
     process resize_to_limit: [1200, 1200]
   end
 

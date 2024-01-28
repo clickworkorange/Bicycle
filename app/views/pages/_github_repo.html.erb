@@ -1,0 +1,16 @@
+
+<section class="github_repo">
+	<header>
+		<%= svg_icon("github") %>
+		<%= image_tag(repo["owner"]["avatar_url"], class: "avatar", alt: repo["owner"]["login"]) %>
+		<h3><%= link_to(repo["owner"]["login"], repo["owner"]["html_url"]) %></h3>
+		<h2><%= link_to(repo["name"], repo["html_url"]) %></h2>
+		<p class="date"><%= t("updated_at") %>: <date><%= l(repo["pushed_at"].to_date, format: :short) %></date></p>
+	</header>
+	<p class="desc"><%= repo["description"] %></p>
+	<p class="meta">
+		<span class="git lang <%= repo["language"].downcase %>"><%= svg_icon("git_lang") %> <%= repo["language"] %></span>
+		<span class="git star"><%= svg_icon("git_star") %> <%= repo["stargazers_count"] %></span>
+		<span class="git fork"><%= svg_icon("git_fork") %> <%= repo["forks_count"] %></span>
+	</p>
+</section>

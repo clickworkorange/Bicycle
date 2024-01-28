@@ -31,6 +31,9 @@ en:
   time:
     formats:
       short: "%d %b %Y"
+  date:
+    formats:
+      short: "%d %b %Y"
   created_at: "Published"
   updated_at: "Updated"
   go_back: "Go back"
