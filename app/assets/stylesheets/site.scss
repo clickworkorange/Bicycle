@@ -259,7 +259,7 @@ margin: 0;
             }
 
             button + div.zoom img {
-            object-fit: contain;
+            object-fit: cover;
             height: 100%;
             max-width: 100%;
             margin: 0 auto;
