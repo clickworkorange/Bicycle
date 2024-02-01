@@ -168,6 +168,10 @@ border-left: 1px solid $colour-edges;
 	font-size: .8em;
 	}
 
+article > h2 {
+margin-top: 1em;
+}
+
 article section.child_pages {
     // TODO: crop banner
     nav {
@@ -208,9 +212,6 @@ margin: 2em 0;
 } // article section.gallery
 
 article section.github_repo {
-padding: .5em;
-border-radius: 1em;
-background-color: $colour-bg-alt;
     img.avatar {
     float: left;
     width: 4em;
@@ -275,6 +276,55 @@ background-color: $colour-bg-alt;
         fill: $git-lang-scss;
         }
 } // article section.githubrepo
+
+ol#markdown-toc ol {
+list-style-type: upper-roman;
+}
+    ol#markdown-toc li {
+    padding: .2em 0;
+    font-style: oblique;
+    }
+
+pre.highlight, section.github_repo {
+padding: .5em;
+border-radius: 1em;
+background-color: $colour-bg-alt;
+}
+
+pre.highlight {
+clear: left;
+overflow: auto;
+overflow-x: scroll;
+font-family: "Fira Code", "fira-code";
+}
+    pre pre {
+    display: table-cell;
+    }
+    pre.lineno {
+    color: $colour-code-line;
+    }
+
+article > table {
+margin-bottom: 1em;
+border-spacing: 0;
+border-collapse: collapse;
+border: 1px solid $gray;
+font-size: .8em;
+    th {
+    
+    }
+    tr {
+    border-bottom: 1px solid $gray;
+    }
+    tr:nth-child(2n) {
+    background-color: lighten($colour-bg, 5%);
+    }
+    td {
+    padding: .2em .5em;
+    
+    }
+
+} // article > table
 
 article > figure {
 float: left;
@@ -360,21 +410,6 @@ padding: .5em;
 border-top: 1px solid $colour-edges;
 background-color: $colour-footer;
 }
-
-pre.highlight {
-clear: left;
-overflow: auto;
-overflow-x: scroll;
-padding: 1em;
-background-color: $colour-bg-alt;
-font-family: "Fira Code", "fira-code";
-}
-    pre pre {
-    display: table-cell;
-    }
-    pre.lineno {
-    color: $colour-code-line;
-    }
 
 address ul {
 list-style-type: none;
