@@ -124,6 +124,7 @@ border-left: 1px solid $colour-edges;
     display: flex;
     overflow: hidden;
     height: 15vw;
+    max-height: 15em;
     min-height: 7.5em;
     margin: 0 -1em 1em -1em;
     padding: 1em;
