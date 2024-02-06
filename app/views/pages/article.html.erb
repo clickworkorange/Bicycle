@@ -16,3 +16,5 @@
 <% end %>
 
 <%= render(partial: "children", locals: {page: page}) if page.children.live.any? %>
+
+<%= render(partial: "comments", locals: {page: page}) %>

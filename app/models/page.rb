@@ -3,6 +3,7 @@ class Page < ApplicationRecord
   friendly_id :title, use: %i[slugged history]
   TEMPLATES = %w[article section gallery home].freeze
   has_many :images, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :title, presence: true
   validates_inclusion_of :template, in: TEMPLATES
   scope :live, -> {where(live: true)}

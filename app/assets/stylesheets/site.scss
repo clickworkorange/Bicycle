@@ -10,7 +10,7 @@ body > header {
     h1 {
     width: min-content;
     margin: 0;
-    font-family: "Fira Code", "fira-code";
+    font-family: $font-family-code;
     font-size: clamp(1em, 8vw, 2em);
     text-shadow: none;
         a {
@@ -46,7 +46,7 @@ position: sticky;
 float: left;
 top: 0;
 width: $nav-width;
-    button {
+    > button {
     display: none;
     }
     > div {
@@ -295,7 +295,7 @@ pre.highlight {
 clear: left;
 overflow: auto;
 overflow-x: scroll;
-font-family: "Fira Code", "fira-code";
+font-family: $font-family-code;
 }
     pre pre {
     display: table-cell;

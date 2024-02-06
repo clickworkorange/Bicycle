@@ -1,0 +1,22 @@
+
+<section class="comments">
+  <h2><%= t("page.comments") %></h2>
+  <% if current_user %>
+    <%= form_for([page, Comment.build]) do |form| %>
+      <p>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </p>
+      <p>
+        <%= form.label :body %>
+        <%= form.text_field :body %>
+      </p>
+      <p>
+        <%= form.submit class: "yes" %>
+      </p>
+    <% end %>
+  <% else %>
+  	<% # TODO: use "it"? %>
+    <p><%= t("page.sign_in_to_comment", href: link_to(t("user.sign_in"), new_user_session_path)).html_safe %></p>
+  <% end %>
+</section>

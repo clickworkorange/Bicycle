@@ -96,8 +96,15 @@ module PagesHelper
     page.body.gsub(%r{repo\[(([a-zA-Z0-9/\-])+)\]}).each do
       uri = URI("#{base_url}#{$1}")
       response = Net::HTTP.get(uri)
-      # TODO: why is it not possible to get a response.boby and check the response code in one go?
-      render(partial: "github_repo", locals: {repo: JSON.parse(response)}) if response
+      # TODO: this is ugly
+      if response 
+        repo = JSON.parse(response)
+        if repo["message"] == "Not Found"
+          # render repo not found?
+        else
+          render(partial: "github_repo", locals: {repo: repo})
+        end
+      end
     end
   end
 

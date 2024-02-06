@@ -38,13 +38,14 @@ min-height: 100vh;
 margin: 0;
 background-color: $colour-body-bg;
 color: $colour-text;
-font-family: "Fira Sans", "fira";
+font-family: $font-family-body;
 font-size: 110%;
-line-height: 1.2em;
+line-height: 1.25em;
 text-shadow: 1px 1px 1px $text-shadow-colour;
 }
 
 body > header {
+// TODO: what's up with the crazy tall header on Simon's screen?
 display: flex;
 position: relative;
 align-items: center;
@@ -70,8 +71,9 @@ h1, h2, h3 {
 margin: 0;
 margin-bottom: .5em;
 //text-wrap: balance;
-font-family: "Fira Sans Light", "fira-light";
-font-weight: normal;
+font-family: $font-family-heading;
+//font-weight: normal;
+font-weight:100;
 }
     h1 {
     font-size: 2em;
@@ -116,7 +118,7 @@ display: block;
 option {
 }
 textarea, select, option, input, button {
-font-family: "Fira Sans", "fira";
+font-family: $font-family-body;
 font-size: 1em;
 }
 textarea, select, option, input:not([type=button],[type=submit]) {

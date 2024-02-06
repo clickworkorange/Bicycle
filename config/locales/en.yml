@@ -62,9 +62,12 @@ en:
     awaiting_confirmation: "Currently awaiting confirmation for: %{email)"
     cancel_account: "Cancel my account"
     cancel_details: "Your account and all associated information will be permanently deleted."
+    signed_in_as: "You are currently signed in as %{email}"
   page: 
     children: "Read more"
     gallery: "Gallery"
+    comments: "Comments"
+    sign_in_to_comment: "You need to %{href} before you can post a comment."
     templates:
       article: "Article"
       section: "Section"
