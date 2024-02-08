@@ -27,9 +27,7 @@ class PagesController < ApplicationController
   end
 
   def comment
-    @comment = Comment.new(comment_params)
-    @comment.page_id = @page.id
-    @comment.user_id = current_user.id
+    @comment = Comment.new(comment_params.merge(page_id: @page.id, user_id: current_user.id))
     if @comment.save
       redirect_to page_path(@page, anchor: "comment-#{@comment.id}"), notice: t("comment.thank_you")
     else
@@ -44,6 +42,6 @@ class PagesController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:title, :body, :page_id)
+    params.require(:comment).permit(:title, :body)
   end
 end

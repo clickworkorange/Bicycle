@@ -153,8 +153,8 @@ border-left: 1px solid $colour-edges;
     } // article > header
 
     article section {
-    margin-bottom: 1em;
     clear: left;
+    margin-bottom: 1em;
     }
     article section.abstract {
     font-weight: bolder;
@@ -297,7 +297,7 @@ article section.comments {
     font-size: .8em;
     font-weight: normal;
     }
-} //article section.comments 
+} //article section.comments
 
 ol#markdown-toc ol {
 list-style-type: upper-roman;
@@ -327,13 +327,12 @@ font-family: $font-family-code;
     }
 
 article > table {
-margin-bottom: 1em;
 border-spacing: 0;
 border-collapse: collapse;
+margin-bottom: 1em;
 border: 1px solid $gray;
 font-size: .8em;
     th {
-    
     }
     tr {
     border-bottom: 1px solid $gray;
@@ -343,7 +342,6 @@ font-size: .8em;
     }
     td {
     padding: .2em .5em;
-    
     }
 
 } // article > table

@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :authenticate_scope!, only: [:show, :edit, :update, :destroy]
+  prepend_before_action :authenticate_scope!, only: %i[show edit update destroy]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-  def show 
-
+  def show
   end
 
   # GET /resource/sign_up
@@ -44,7 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
-
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
