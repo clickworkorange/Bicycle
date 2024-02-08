@@ -69,6 +69,6 @@ class Bicycle::PagesController < Bicycle::ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:title, :abstract, :body, :live, :in_menu, :template, :parent_id, :url)
+    params.require(:page).permit(:title, :abstract, :body, :live, :in_menu, :template, :parent_id, :url, :user_id)
   end
 end

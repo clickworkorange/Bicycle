@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
 
   def default_url_options
-    { path_params: { path: params[:path] } }
+    {path_params: {path: params[:path]}}
   end
 
   def render_404
@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def storable_location?
-      request.get? &&
-        is_navigational_format? &&
-        !devise_controller? &&
-        !request.xhr?
-    end
+  def storable_location?
+    request.get? &&
+      is_navigational_format? &&
+      !devise_controller? &&
+      !request.xhr?
+  end
 
-    def store_location!
-      store_location_for(:user, request.fullpath)
-    end
+  def store_location!
+    store_location_for(:user, request.fullpath)
+  end
 end

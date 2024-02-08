@@ -70,7 +70,7 @@ class ImageFileUploader < CarrierWave::Uploader::Base
 
   def calc_aspect(numerator, denominator)
     swap = false
-    if numerator < denominator 
+    if numerator < denominator
       # swap places
       numerator, denominator = denominator, numerator
       # TODO: get rid of the "swap" flag, it is ugly
@@ -82,12 +82,12 @@ class ImageFileUploader < CarrierWave::Uploader::Base
     end
     gcd = numerator.gcd(denominator)
 
-    if numerator === denominator 
+    if numerator === denominator
       "1/1"
     elsif swap
-      "#{(denominator/gcd)}/#{(numerator/gcd)}"
-    else 
-      "#{(numerator/gcd)}/#{(denominator/gcd)}"
+      "#{denominator / gcd}/#{numerator / gcd}"
+    else
+      "#{numerator / gcd}/#{denominator / gcd}"
     end
   end
 

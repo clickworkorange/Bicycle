@@ -8,18 +8,18 @@
         <input type="text" name="q" />
       </form>
     </search> %>
-    <% # TODO: use <menu> tag? %>
-    <% # TODO: leverage self_and_descendants to reduce db queries %>
     <% cache ["menu",@page], skip_digest: true do %>
+      <% # TODO: leverage self_and_descendants to reduce db queries %>
       <ul>
         <%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
       </ul>
     <% end %>
+
     <% if current_user %>
-      <p><%= t("user.signed_in_as", email: current_user.email) %></p>
+      <p><%= t("user.signed_in_as") %><br /><%= link_to(current_user.email, user_registration_path) %></p>
       <%= button_to(t("user.sign_out"), destroy_user_session_path, method: :delete) %>
-    <% else %>
-      <p><%= link_to(t("user.sign_in"), new_user_session_path, class: "button yes") %></p>
+    <% elsif false %>
+      <p><% link_to(t("user.sign_in"), new_user_session_path, class: "button yes") %></p>
     <% end %>
   </div>
 </nav>

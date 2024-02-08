@@ -1,5 +1,6 @@
 class Page < ApplicationRecord
   extend FriendlyId
+  belongs_to :user, optional: true 
   friendly_id :title, use: %i[slugged history]
   TEMPLATES = %w[article section gallery home].freeze
   has_many :images, dependent: :destroy

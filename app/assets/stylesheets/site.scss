@@ -56,9 +56,8 @@ width: $nav-width;
     padding-top: 1em;
     border-left: 1px solid $colour-edges;
     background-color: $colour-bg-alt;
-    }
         ul {
-        margin: 0;
+        margin-top: 0;
         padding: 0;
         list-style-type: none;
         }
@@ -110,10 +109,14 @@ width: $nav-width;
                 fill: $darker;
                 //shape-rendering: crispEdges;
                 }
+
+        a.button {
+        float: left;
+        }
+    } // div
 } // main > nav
 
 article {
-overflow: hidden;
 min-height: 100vh;
 margin-left: $nav-width;
 padding: 0 1em 1.5em 1em;
@@ -149,7 +152,6 @@ border-left: 1px solid $colour-edges;
     } // article > header
 
     article section {
-    clear: left;
     margin-bottom: 1em;
     }
     article section.abstract {
@@ -164,13 +166,18 @@ border-left: 1px solid $colour-edges;
 	article form {
 	max-width: 20em;
 	}
+    article p.author {
+    margin-bottom: .2em;
+    }
 	article p.date {
     display: inline-block;
 	font-size: .8em;
 	}
 
-article > h2 {
+article > h2, section > h2, article > h3, section > h3 {
 margin-top: 1em;
+padding-bottom: .2em;
+border-bottom: 1px dotted $colour-text;
 }
 
 article section.child_pages {
@@ -278,6 +285,18 @@ article section.github_repo {
         }
 } // article section.githubrepo
 
+article section.comments {
+    h3 {
+    margin-top: 0;
+    }
+    h4 {
+    margin: 0;
+    margin-bottom: .2em;
+    font-size: .8em;
+    font-weight: normal;
+    }
+} //article section.comments 
+
 ol#markdown-toc ol {
 list-style-type: upper-roman;
 }
@@ -286,7 +305,7 @@ list-style-type: upper-roman;
     font-style: oblique;
     }
 
-pre.highlight, section.github_repo {
+pre.highlight, section.github_repo, section.comments section {
 padding: .5em;
 border-radius: 1em;
 background-color: $colour-bg-alt;
@@ -404,6 +423,11 @@ margin: 0;
                     }
 } // figure
 
+p.buttons {
+display: flex;
+column-gap: 1em;
+} // p.split
+
 body > footer {
 clear: left;
 height: 8em;
@@ -415,5 +439,12 @@ background-color: $colour-footer;
 address ul {
 list-style-type: none;
 }
+
+body.users {
+    article h1 {
+    margin-top: .5em;
+    }
+
+} // devise pages
 
 @import "media";

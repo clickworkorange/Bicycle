@@ -1,0 +1,18 @@
+<h1><%= t("user.show") %></h1>
+
+<dl>
+  <dt><%= t("user.created_at") %></dt>
+  <dd><%= content_tag(:time, "#{l(current_user.created_at, format: :short)}", datetime: current_user.created_at) %></dd>
+  <dt><%= t("activerecord.attributes.user.name") %></dt>
+  <dd><%= current_user.name %></dd>
+  <dt><%= t("activerecord.attributes.user.email") %></dt>
+  <dd><%= current_user.email %></dd>
+  <dt><%= t("user.status.title") %></dt>
+  <% if devise_mapping.confirmable? && current_user.pending_reconfirmation? %>
+    <dd><%= t("user.status.awaiting_confirmation") %></dd>
+  <% else %>
+    <dd><%= t("user.status.confirmed") %></dd>
+  <% end %>
+</dl>
+
+<%= render "users/shared/links" %>

@@ -1,0 +1,5 @@
+<section id="comment-<%= comment.id %>">
+	<h4><%= comment.user.name %> <%= t("comment.posted_on", date: l(comment.created_at, format: :short)) %></h4>
+	<h3><%= comment.title %></h3>
+	<%= parse_comment(comment.body) %>
+</section>

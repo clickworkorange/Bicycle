@@ -28,17 +28,17 @@
     top: .45em;
     left: .5em;
     width: 90%;
-    max-width: 23em;
+    max-width: min-content;
     z-index: 2;
     }
-        main > nav button {
+        main > nav button#menu {
         display: block;
         width: 2em;
         height: 2em;
         padding: 0;
         box-shadow: 2px 2px 2px 0 $shadow-colour;
         }
-            main > nav button svg {
+            main > nav button#menu svg {
             fill: currentColor;
             shape-rendering: crispEdges;
             }
@@ -72,5 +72,14 @@
         }
     article section#child_pages nav, article section#gallery nav {
     grid-column-gap: .5em;
+    }
+
+    p.notice, p.alert {
+    position: fixed;
+    top: .5em;
+    right: .5em;
+    left: 3em;
+    margin: 0;
+    border-radius: .2em;
     }
 }

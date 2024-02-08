@@ -67,6 +67,30 @@ article {
 background-color: $colour-bg;
 }
 
+p.notice, p.alert {
+position: sticky;
+top: 0;
+height: 1.2em;
+margin: 0 -1em;
+margin-bottom: -2em;
+padding: .35em .5em;
+z-index: 2;
+color: $colour-button-text;
+animation: shrink .3s ease-in 8s forwards;
+// TODO: delay sibling animations by a further n seconds
+}
+    p.notice {
+    background-color: $green;
+    }
+    p.alert {
+    background-color: $orange;
+    }
+    @keyframes shrink {
+    from {transform: scaleX(1); transform: scaleY(1);}
+    25% {transform: scaleX(1);}
+    to {transform: scaleX(0); transform: scaleY(0);}
+    }
+
 h1, h2, h3 {
 margin: 0;
 margin-bottom: .5em;
@@ -101,17 +125,21 @@ text-decoration: none;
 b {
 font-weight: bolder;
 }
-article > form {
-display: flex;
-flex-direction: column;
+dl {
+
+max-width: min-content;
 }
-input, textarea {
-box-sizing: border-box;
-width: 100%;
-}
-    input[type=checkbox] {
-    width: auto;
+    dt {
+    margin-bottom: .5em;
+    border-bottom: 1px dotted $colour-text;
+    font-family: $font-family-heading;
     }
+    dd {
+    margin-left: 0;
+    margin-bottom: 1em;
+    padding: 0 .5em;
+    }
+
 label {
 display: block;
 }
@@ -122,11 +150,20 @@ font-family: $font-family-body;
 font-size: 1em;
 }
 textarea, select, option, input:not([type=button],[type=submit]) {
+box-sizing: border-box;
+width: 100%;
 padding: .5em;
 border: 1px solid $darker;
 background-color: $colour-bg-alt;
 color: $colour-text;
 }
+    textarea:valid, select:valid, input:valid {
+    //border: 1px solid $green;
+    }
+    // TODO: use :invalid along with ~ (subsequent-sibling) to make a form appear in stages
+    textarea:user-invalid, select:user-invalid, input:user-invalid {
+    border-color: $orange;
+    }
 button, input[type=submit], input[type=button], a.button, body > nav label {
 display: block;
 padding: .5em;

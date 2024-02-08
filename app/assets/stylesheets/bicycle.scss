@@ -28,6 +28,13 @@ padding: .5em;
 background-color: $colour-bg;
 //border-radius: 1em;
 }
+	article > form {
+	display: flex;
+	flex-direction: column;
+	}
+	    input[type=checkbox] {
+	    width: auto;
+	    }
 
 body.images.edit article img {
 width: 100px;
@@ -81,4 +88,10 @@ max-width: 40em;
 	padding: .2em;
 	}
 
+h1 {
+margin-top: .5em;
+}
+p.notice, p.alert { 
+margin: 0 -.5em;
+}
 //@import "media"

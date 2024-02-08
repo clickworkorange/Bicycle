@@ -40,9 +40,14 @@
 
     <div style="width: 50%; float: left; margin-left: 5%;">
       <p>
+        <%= form.label :user_id %>
+        <%= form.select(:user_id, User.admin.all.map {|user| [user.name, user.id]}, include_blank: "-") %>
+      <p>
+      <p>
         <%= form.label :abstract %>
         <%= form.text_area :abstract, rows: 8 %>
       </p>
+      <p><em>Avoid using Markdown in the abstract; it's used in the meta description.</em></p>
     </div>
   </div>
 
@@ -51,7 +56,7 @@
     <%= form.text_area :body, rows: 12 %>
   </p>
   <p><em>Use fig[1], fig[2], etc to insert inline images and [gallery] to insert gallery images.</em></p>
-  <p><em>Use repo[/gituser/gitrepo] to insert a Github repository</em></p>
+  <p><em>Use repo[/gituser/gitrepo] to insert a Github repository.</em></p>
 
   <p>
     <%= form.submit class: "yes" %>

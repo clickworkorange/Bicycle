@@ -15,7 +15,7 @@
     <link rel="manifest" href="/site.webmanifest">
   </head>
 
-  <body class="<%= @page.template if @page.present? %>">
+  <body class="<%= "#{@page.template} " if @page.present? %><%= page_class %>">
     <header>
       <h1><a href="/">=clickworkorange=</a></h1>
       <h2>connecting the dots</h2>

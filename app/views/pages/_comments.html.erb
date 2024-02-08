@@ -1,15 +1,17 @@
 
-<section class="comments">
+<section class="comments" id="comments">
   <h2><%= t("page.comments") %></h2>
+  <p><%= t("comment.intro") %></p>
+  <%= render partial: "comment", collection: page.comments, locals: {page: page}, cached: true %>
   <% if current_user %>
-    <%= form_for([page, Comment.build]) do |form| %>
+    <%= form_for([page, @comment], :url => page_comments_path(page, :anchor => "new_comment")) do |form| %>
       <p>
         <%= form.label :title %>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, required: true, minlength: 5, maxlength: 500 %>
       </p>
       <p>
         <%= form.label :body %>
-        <%= form.text_field :body %>
+        <%= form.text_area :body, required: true, minlength: 20, maxlength: 500, rows: 8 %>
       </p>
       <p>
         <%= form.submit class: "yes" %>

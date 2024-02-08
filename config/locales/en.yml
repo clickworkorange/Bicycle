@@ -37,6 +37,7 @@ en:
   created_at: "Published"
   updated_at: "Updated"
   go_back: "Go back"
+  cancel: "Cancel"
   no_access: "Access denied"
   return_to: "Return to %{title}"
   are_you_sure: "Are you sure?"
@@ -51,19 +52,26 @@ en:
     forgot_password: "I forgot my password!"
     send_password_reset: "Reset my password"
     change_password: "Change password"
-    resend_unlock_instructions: "Resend unlock instructions"
+    #resend_unlock_instructions: "Resend unlock instructions"
     missed_confirmation: "I didn't receive a confirmation email"
-    missed_unlock_instructions: "I haven't received unlock instructions"
+    #missed_unlock_instructions: "I haven't received unlock instructions"
     password_requirement: "Minimum %{length} characters"
-    edit: "Edit %{resource}"
+    show: "My account"
+    edit: "Edit my account"
     update: "Update"
+    created_at: "Registered on"
+    status:
+        title: "Account status"
+        confirmed: "Confirmed"
+        awaiting_confirmation: "Awaiting confirmation"
     new_password: "New password"
     confirm_new_password: "Confirm new password"
     awaiting_confirmation: "Currently awaiting confirmation for: %{email)"
     cancel_account: "Cancel my account"
-    cancel_details: "Your account and all associated information will be permanently deleted."
-    signed_in_as: "You are currently signed in as %{email}"
+    cancel_details: "Your account and all associated information will be permanently deleted, except for any comments you have posted that have been replied to, which instead will have your name removed."
+    signed_in_as: "You are currently signed in as"
   page: 
+    author: "Author"
     children: "Read more"
     gallery: "Gallery"
     comments: "Comments"
@@ -78,6 +86,11 @@ en:
       inline: "Inline"
       banner: "Banner"
       gallery: "Gallery"
+  comment: 
+    intro: "Please share your thoughts on this article, but note that at present you won't be able to edit or delete your comment after posting."
+    thank_you: "Thank you for posting!"
+    failed: "Sorry, your comment could not be posted"
+    posted_on: "posted on %{date}"
   bicycle:
     page:
       index: "Pages"
@@ -93,13 +106,19 @@ en:
       regenerate: 
         start: "Regenerate images"
         status: "Check status"
+  helpers:
+    submit:
+      comment:
+        create: "Post comment"
   activerecord:
     models:
       user: "User"
       page: "Page"
       image: "Image"
+      comment: "Comment"
     attributes:
       user:
+        name: "Display name"
         email: "Email address"
         password: "Password"
         password_confirmation: "Confirm password"
@@ -114,15 +133,21 @@ en:
         url: "URL override"
         live: "Live"
         in_menu: "Show in menu"
+        user_id: "Author"
       image:
         image_file: "Image file"
         role: "Role"
         caption: "Caption"
         alt_text: "Alt text"
+      comment:
+        title: "Title"
+        body: "Your comment"
     errors:
       models:
         user:
           attributes:
+            name:
+              blank: "You must enter a %{attribute}"
             email:
               blank: "You must enter an %{attribute}"
             password:
@@ -130,4 +155,7 @@ en:
               too_short: "%{attribute} is too short"
             password_confirmation:
               confirmation: "%{attribute}s do not match"
+            current_password:
+              blank: "You must enter your current password"
+              invalid: "Password does not match your current password"
           not_found: "Email address not found"

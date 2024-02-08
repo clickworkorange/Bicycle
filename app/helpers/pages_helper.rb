@@ -26,6 +26,10 @@ module PagesHelper
     ).to_html.html_safe
   end
 
+  def parse_comment(comment)
+    Kramdown::Document.new(strip_tags(comment)).to_html.html_safe
+  end
+
   def banner_background_css(page, switch = 600)
     first_banner = page.images.banner.first
     if first_banner
@@ -95,15 +99,11 @@ module PagesHelper
     base_url = "https://api.github.com/repos"
     page.body.gsub(%r{repo\[(([a-zA-Z0-9/\-])+)\]}).each do
       uri = URI("#{base_url}#{$1}")
-      response = Net::HTTP.get(uri)
-      # TODO: this is ugly
-      if response 
+      result = Rails.cache.fetch($1, expires_in: 24.hours) do
+        response = Net::HTTP.get(uri)
         repo = JSON.parse(response)
-        if repo["message"] == "Not Found"
-          # render repo not found?
-        else
-          render(partial: "github_repo", locals: {repo: repo})
-        end
+        break if repo["message"] # something went wrong
+        render(partial: "github_repo", locals: {repo: repo})
       end
     end
   end
