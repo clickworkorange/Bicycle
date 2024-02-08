@@ -18,17 +18,21 @@ module PagesHelper
   end
 
   def parse_body(page)
-    # TODO: sanitize
     Kramdown::Document.new(
       process_tokens(page),
+      input: "GFM",
       syntax_highlighter: "rouge",
       syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}
     ).to_html.html_safe
   end
 
   def parse_comment(comment)
-    # TODO: https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb#L75
-    Kramdown::Document.new(strip_tags(comment)).to_html.html_safe
+    Kramdown::Document.new(
+      strip_tags(comment),
+      input: "GFM",
+      syntax_highlighter: "rouge",
+      syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}
+    ).to_html.html_safe
   end
 
   def banner_background_css(page, switch = 600)

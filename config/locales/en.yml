@@ -94,7 +94,16 @@ en:
     posted_on: "posted on %{date}"
     formatting:
       summary: "Formatting help"
-      help: "\\*\\***bold**\\*\\*\n\n\\**italics*\\*\n\n[\\[link text\\]]()\\(link address\\)"
+      help: 
+        "\\*\\***bold**\\*\\*\n\n
+        \\**italic*\\*\n\n
+        \\~\\~~~strikethrough~~\\~\\~\n\n
+        [\\[link text\\]]()\\(link address\\)\n\n
+        \\- unordered  \n\\- list\n\n
+        1\\. ordered  \n2\\. list\n\n
+        \\``inline code`\\`\n\n
+        \\`\\`\\` `lang`\n\n``` c\nmulti line\ncode block\n```\n\n\\`\\`\\`\n\n
+        |\\||table|\\||header|\\||\n|-|----|-|-----|-|\n|\\||\\-\\-\\-\\-\\-\\-\\-|\\||\\-\\-\\-\\-\\-\\-\\-\\-\\-|\\||\n|\\||table|\\||cell|\\||"
   devise:
     failure:
       unauthenticated: "You must be signed in to do that"

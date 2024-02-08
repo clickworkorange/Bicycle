@@ -74,7 +74,7 @@ margin: 0 -1em;
 margin-bottom: -2em;
 padding: .35em .5em;
 color: $colour-button-text;
-animation: shrink .3s ease-in 8s forwards;
+animation: hyperjump .3s ease-in 8s forwards;
 // TODO: delay sibling animations by a further n seconds
 z-index: 2;
 }
@@ -84,11 +84,12 @@ z-index: 2;
     p.alert {
     background-color: $orange;
     }
-    @keyframes shrink {
-    from {transform: scaleX(1) scaleY(1);}
-    50% {transform: scaleX(1) scaleY(.3); filter: blur(5px);}
-    to {transform: scaleX(0) scaleY(0); filter: blur(10px); color: white; background-color: white;}
-    }
+    
+@keyframes hyperjump {
+from {transform: scaleX(1) scaleY(1);}
+50% {transform: scaleX(1) scaleY(.3);}
+to {transform: scaleX(0) scaleY(0); filter: blur(10px); color: white; background-color: white;}
+}
 
 h1, h2, h3 {
 margin: 0;
@@ -196,9 +197,34 @@ cursor: pointer;
 
 details {
     margin-bottom: 1em;
-    p {
+    summary {
     margin-bottom: .5em;
+    }
+    p, table {
+    margin-bottom: .8em;
     margin-left: 2em;
+    }
+    p + div {
+    margin-bottom: .5em;
+    }
+    p:has(code) {
+    margin-bottom: 1em;
+    }
+    p:has(+ div) {
+    margin-bottom: 0;
+    }
+    div.highlighter-rouge {
+    width: min-content;
+    margin-left: 2em;
+    }
+    table.rouge-table {
+    margin-right: 2em;
+    margin-bottom: .5em;
+    margin-left: .5em;
+    }
+    pre.highlight {
+    margin: 0;
+    padding: 0;
     }
 }
 
