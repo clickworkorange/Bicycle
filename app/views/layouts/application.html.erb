@@ -25,7 +25,6 @@
       <article>
         <%= content_tag(:p, notice, class: "notice") if notice.present? %>
         <%= content_tag(:p, alert, class: "alert") if alert.present? %>
-        <p class="notice">Hello world!</p>
         <%= yield %>
       </article>
     </main>
