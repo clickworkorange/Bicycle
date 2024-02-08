@@ -87,10 +87,17 @@ en:
       banner: "Banner"
       gallery: "Gallery"
   comment: 
+    sign_in_first: "You must be signed in to post comments"
     intro: "Please share your thoughts on this article, but note that at present you won't be able to edit or delete your comment after posting."
     thank_you: "Thank you for posting!"
     failed: "Sorry, your comment could not be posted"
     posted_on: "posted on %{date}"
+    formatting:
+      summary: "Formatting help"
+      help: "\\*\\***italics**\\*\\*\n\n\\**bold*\\*\n\n[\\[link text\\]]()\\(link address\\)"
+  devise:
+    failure:
+      unauthenticated: "You must be signed in to do that"
   bicycle:
     page:
       index: "Pages"

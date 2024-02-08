@@ -149,7 +149,7 @@ textarea, select, option, input, button {
 font-family: $font-family-body;
 font-size: 1em;
 }
-textarea, select, option, input:not([type=button],[type=submit]) {
+textarea, select, option, input:not([type=button],[type=submit],[type=checkbox],[type=radio]) {
 box-sizing: border-box;
 width: 100%;
 padding: .5em;
@@ -194,6 +194,14 @@ cursor: pointer;
     background-color: $gray;
     cursor: default;
     }
+
+details {
+    margin-bottom: 1em;
+    p {
+    margin-left: 2em;
+    margin-bottom: .5em;
+    }
+}
 
 body > header, body > article, body > footer {
 box-sizing: border-box;

@@ -2,6 +2,7 @@
 <section class="comments" id="comments">
   <h2><%= t("page.comments") %></h2>
   <p><%= t("comment.intro") %></p>
+  <% # TODO: we could have hidden input & textarea fields for posts belonging to current_user and show these on focus (for editing comments). Caching will be tricky though... %>
   <%= render partial: "comment", collection: page.comments, locals: {page: page}, cached: true %>
   <% if current_user %>
     <%= form_for([page, @comment], :url => page_comments_path(page, :anchor => "new_comment")) do |form| %>
@@ -12,6 +13,10 @@
       <p>
         <%= form.label :body %>
         <%= form.text_area :body, required: true, minlength: 20, maxlength: 500, rows: 8 %>
+        <details>
+          <summary><%= t("comment.formatting.summary") %></summary>
+          <p><%= parse_comment(t("comment.formatting.help")) %></p>
+        </details>
       </p>
       <p>
         <%= form.submit class: "yes" %>

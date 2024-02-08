@@ -117,6 +117,7 @@ width: $nav-width;
 } // main > nav
 
 article {
+display: flow-root;
 min-height: 100vh;
 margin-left: $nav-width;
 padding: 0 1em 1.5em 1em;
@@ -153,6 +154,7 @@ border-left: 1px solid $colour-edges;
 
     article section {
     margin-bottom: 1em;
+    clear: left;
     }
     article section.abstract {
     font-weight: bolder;
@@ -442,7 +444,7 @@ list-style-type: none;
 
 body.users {
     article h1 {
-    margin-top: .5em;
+    padding-top: 1em;
     }
 
 } // devise pages

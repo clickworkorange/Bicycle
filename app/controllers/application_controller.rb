@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :store_location!, if: :storable_location?
-  # before_action :authenticate_user!
 
   def default_url_options
     {path_params: {path: params[:path]}}

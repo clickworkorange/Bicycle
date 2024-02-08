@@ -27,6 +27,7 @@ module PagesHelper
   end
 
   def parse_comment(comment)
+    # TODO: https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb#L75
     Kramdown::Document.new(strip_tags(comment)).to_html.html_safe
   end
 
