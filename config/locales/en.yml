@@ -94,7 +94,7 @@ en:
     posted_on: "posted on %{date}"
     formatting:
       summary: "Formatting help"
-      help: "\\*\\***italics**\\*\\*\n\n\\**bold*\\*\n\n[\\[link text\\]]()\\(link address\\)"
+      help: "\\*\\***bold**\\*\\*\n\n\\**italics*\\*\n\n[\\[link text\\]]()\\(link address\\)"
   devise:
     failure:
       unauthenticated: "You must be signed in to do that"
