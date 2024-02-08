@@ -14,12 +14,18 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # TODO: return to previous page
-  # def destroy
-  #   super
-  # end
+  def destroy
+    # TODO: flash message gets lost
+    # set_flash_message :notice, :signed_out
+    # flash.keep(:notice)
+    sign_out_and_redirect(current_user)
+  end
 
-  # protected
+  protected
+
+  def after_sign_out_path_for(resource_or_scope)
+    stored_location_for(resource_or_scope)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -1,6 +1,6 @@
 <% cache page do %>
   <%= render partial: "header", locals: {page: page} %>
-  <% # TODO: find a use for the <meter> and <details> tags! %>
+  <% # TODO: find a use for the <meter> tag %>
   <%= content_tag(:p, "#{t("page.author")}: #{page.user.name}", class: "author") if page.user %> 
   <%= content_tag(:p, class: "date created_at") do 
     concat(content_tag(:span, "#{t("created_at")}: "))
