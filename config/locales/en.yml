@@ -37,6 +37,7 @@ en:
   created_at: "Published"
   updated_at: "Updated"
   go_back: "Go back"
+  accept: "Ok"
   cancel: "Cancel"
   no_access: "Access denied"
   return_to: "Return to %{title}"
@@ -105,6 +106,9 @@ en:
         \\`\\`\\` `lang`\n\n``` c\nmulti line\ncode block\n```\n\n\\`\\`\\`\n\n
         |\\||table|\\||header|\\||\n|-|----|-|-----|-|\n|\\||\\-\\-\\-\\-\\-\\-\\-|\\||\\-\\-\\-\\-\\-\\-\\-\\-\\-|\\||\n|\\||table|\\||cell|\\||"
   devise:
+    sessions:
+      signed_in: "You have signed in"
+      signed_out: "You have signed out"
     failure:
       unauthenticated: "You must be signed in to do that"
   bicycle:

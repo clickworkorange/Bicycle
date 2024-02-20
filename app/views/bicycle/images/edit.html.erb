@@ -2,7 +2,7 @@
 
 <%= render "form", image: @image %>
 
-<p><%= button_to t("bicycle.image.destroy"), [:bicycle, @page, @image], method: :delete, class: "no" %></p>
+<p><%= button_to t("bicycle.image.destroy"), [:bicycle, @page, @image], method: :delete, form: {data: {confirm: t("are_you_sure"), accept: t("accept"), cancel: t("cancel")}}, class: "no" %></p>
 
 <p><%= link_to t("bicycle.image.cancel"), edit_bicycle_page_path(@page), class: "button no" %></p>
 

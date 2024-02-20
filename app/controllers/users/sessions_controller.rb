@@ -15,10 +15,12 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    # TODO: flash message gets lost
     # set_flash_message :notice, :signed_out
     # flash.keep(:notice)
-    sign_out_and_redirect(current_user)
+    # sign_out_and_redirect(current_user)
+    flash[:notice] = t("devise.sessions.signed_out")
+    sign_out current_user
+    redirect_to after_sign_out_path_for(:user)
   end
 
   protected

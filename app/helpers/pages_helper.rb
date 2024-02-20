@@ -29,7 +29,7 @@ module PagesHelper
   def parse_comment(comment)
     Kramdown::Document.new(
       strip_tags(comment),
-      input: "GFM",
+      input: "Comment",
       syntax_highlighter: "rouge",
       syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}
     ).to_html.html_safe

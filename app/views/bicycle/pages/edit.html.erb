@@ -2,7 +2,7 @@
 
 <%= render "form", page: @page %>
 
-<%= button_to t("bicycle.page.destroy"), [:bicycle, @page], method: :delete, class: "no" %>
+<%= button_to t("bicycle.page.destroy"), [:bicycle, @page], method: :delete, form: {data: {confirm: t("are_you_sure"), accept: t("accept"), cancel: t("cancel")}}, class: "no"%>
 
 <h2>Images</h2>
 
