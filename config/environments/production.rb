@@ -2,6 +2,18 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.default_url_options = {host: "dev.clickworkorange.com"}
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "mail.smtp2go.com",
+    port: 2525, # 8025, 587 and 25 can also be used.
+    domain: "clickworkorange.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: Rails.application.credentials.dig(:smtp2go, :user),
+    password: Rails.application.credentials.dig(:smtp2go, :pass)
+  }
 
   config.i18n.available_locales = :en
   config.i18n.raise_on_missing_translations = false
