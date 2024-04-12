@@ -55,6 +55,7 @@ en:
     change_password: "Change password"
     #resend_unlock_instructions: "Resend unlock instructions"
     missed_confirmation: "I didn't receive a confirmation email"
+    resend_confirmation: "Resend confirmation instructions"
     #missed_unlock_instructions: "I haven't received unlock instructions"
     password_requirement: "Minimum %{length} characters"
     show: "My account"

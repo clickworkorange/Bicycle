@@ -118,14 +118,16 @@ module PagesHelper
     inline = page.images.inline
     page.body.gsub(/fig\[(\d+)\]/).each do
       image = inline[$1.to_i - 1]
-      if image.height > image.width
-        css_class = "port"
-      elsif image.height == image.width
-        css_class = "square"
-      else
-        css_class = "lscp"
+      if image
+        if image.height > image.width
+          css_class = "port"
+        elsif image.height == image.width
+          css_class = "square"
+        else
+          css_class = "lscp"
+        end
+        render(partial: "figure", locals: {image: image, version: "thumb", css_class: css_class}) if image
       end
-      render(partial: "figure", locals: {image: image, version: "thumb", css_class: css_class}) if image
     end
   end
 

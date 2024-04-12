@@ -6,4 +6,7 @@ class Comment < ApplicationRecord
   validates :title, length: {maximum: 50}
   validates :body, presence: true
   validates :body, length: {maximum: 500}
+  after_create do
+    NotificationMailer.with(comment: self).comment_notification.deliver_later
+  end
 end

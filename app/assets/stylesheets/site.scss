@@ -327,6 +327,16 @@ font-family: $font-family-code;
     color: $colour-code-line;
     }
 
+p code {
+margin: -1px;
+padding: .2em .3em .1em .3em;
+border-radius: .3em;
+background-color: $colour-inline-code-bg;
+font-family: $font-family-code;
+font-size: .8em;
+color: $colour-inline-code;
+}
+
 article > table {
 border-spacing: 0;
 border-collapse: collapse;
@@ -437,6 +447,16 @@ padding: .5em;
 border-top: 1px solid $colour-edges;
 background-color: $colour-footer;
 }
+    body > footer p {
+    width: fit-content;
+    margin: 0 auto;
+    }
+    body > footer img.icon {
+    width: 1em;
+    height: 1em;
+    margin-right: .2em;
+    vertical-align: middle;
+    }
 
 address ul {
 list-style-type: none;

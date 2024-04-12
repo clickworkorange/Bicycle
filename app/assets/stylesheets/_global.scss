@@ -7,6 +7,8 @@ $colour-text: #C1BEB3;
 $colour-edges: #000;
 $colour-button-text: #000;
 $colour-code-line: #C1BEB3;
+$colour-inline-code: lighten($colour-text, 10);
+$colour-inline-code-bg: darken($colour-bg, 10);
 $orange: #DC5B00;
 $blue: #259CC8;
 $green: #4ABB32;
@@ -26,5 +28,5 @@ $font-family-heading: "Fira Sans Light", "fira-light", "Raleway", "Calibri", "My
 $font-family-code: "Fira Code", "fira-code", "Courier New", "Courier", "Monospace";
 $text-shadow-colour: rgba(0, 0, 0, .25);
 $shadow-colour: rgba(0, 0, 0, .8);
-$modal-bg-colour: rgba(0, 0, 0, .25);
-$nav-width: 16em;
+$modal-bg-colour: rgba(0, 0, 0, .5);
+$nav-width: 17em;
