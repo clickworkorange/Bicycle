@@ -1,5 +1,5 @@
 class NotificationMailer < ApplicationMailer
-  layout "notification"
+  # layout "notification"
 
   def registration_notification
     @user = params[:user]
