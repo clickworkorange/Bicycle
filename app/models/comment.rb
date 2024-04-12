@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
+  belongs_to :page
   self.implicit_order_column = "lft"
   acts_as_nested_set
   validates :title, presence: true
