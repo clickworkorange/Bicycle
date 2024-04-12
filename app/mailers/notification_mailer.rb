@@ -9,7 +9,7 @@ class NotificationMailer < ApplicationMailer
   end
 
   def comment_notification
-    @user = params[:user]
+    @comment = params[:comment]
     User.admin.each do |admin|
     	mail(to: admin.email, subject: "Comment notification")
     end
