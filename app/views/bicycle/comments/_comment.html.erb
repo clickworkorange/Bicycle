@@ -1,0 +1,14 @@
+<tr>
+	<td colspan="2"><em><%= comment.page.title %></em></td>
+	<td rowspan="2"><%= button_to t("bicycle.comment.destroy"), [:bicycle, comment], method: :delete, form: {data: {confirm: t("are_you_sure"), accept: t("accept"), cancel: t("cancel")}}, class: "no"%></td>
+</tr>
+<tr>
+	<td><%= comment.user.name %></td>
+	<td><%= t("comment.posted_on", date: l(comment.created_at, format: :short)) %></td>
+</tr>
+<tr>
+	<td colspan="3">
+		<h3><%= comment.title %></h3>
+		<%= parse_comment(comment.body) %>
+	</td>
+</tr>

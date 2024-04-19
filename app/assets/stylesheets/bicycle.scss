@@ -40,7 +40,7 @@ body.images.edit article img {
 width: 100px;
 }
 
-body.pages.index table {
+body.index table {
 box-sizing: border-box;
 table-layout: fixed;
 border-spacing: 0;
@@ -48,13 +48,19 @@ width: 100%;
 max-width: 40em;
 //margin: 0 auto;
 }
-	body.pages.index table tr:nth-child(odd) {
-	}
 	body.pages.index table td {
 	width: 2em;
 	padding: .2em;
-	border-bottom: 1px dashed $colour-edges;
 	white-space: nowrap;
+	}
+	body.comments.index table td {
+	padding: .5em;
+	}
+		body.comments.index table td p:last-child {
+		margin-bottom: 0;
+		}
+	body.pages.index table td, body.comments.index table tr:nth-child(3n) td {
+	border-bottom: 1px dashed $colour-edges;
 	}
 	body.pages.index table td.status {
 	width: 1.08em; //19px

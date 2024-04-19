@@ -127,6 +127,10 @@ en:
       regenerate: 
         start: "Regenerate images"
         status: "Check status"
+    comment:
+      index: "Comments"
+      destroy: "Delete"
+      page: "Page"
   helpers:
     submit:
       comment:
