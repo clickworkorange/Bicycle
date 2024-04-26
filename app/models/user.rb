@@ -5,6 +5,6 @@ class User < ApplicationRecord
   scope :admin, -> {where(admin: true)}
   validates :name, presence: true
   after_create do
-    NotificationMailer.with(user: self).registration_notfication.deliver_later
+    NotificationMailer.with(user: self).registration_notification.deliver_later
   end
 end
