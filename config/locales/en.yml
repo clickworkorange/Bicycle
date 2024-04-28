@@ -43,6 +43,8 @@ en:
   return_to: "Return to %{title}"
   are_you_sure: "Are you sure?"
   menu: "Menu"
+  affirmative: "Yes"
+  negative: "No"
   errors:
     format: "%{message}"
     #format: "%{attribute} %{message}"
@@ -72,6 +74,8 @@ en:
     cancel_account: "Cancel my account"
     cancel_details: "Your account and all associated information will be permanently deleted, except for any comments you have posted that have been replied to, which instead will have your name removed."
     signed_in_as: "You are currently signed in as"
+    newsletter: "Subscribe to my newsletter"
+    subscribed: "Subscribed to newsletter"
   page: 
     author: "Author"
     children: "Read more"

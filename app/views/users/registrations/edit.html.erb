@@ -35,6 +35,13 @@
     <%= f.password_field :current_password, required: true, minlength: @minimum_password_length, autocomplete: "current-password" %>
   </p>
 
+  <p>
+    <%= f.label :newsletter do %>
+      <%= f.check_box :newsletter %>
+      <%= t("user.newsletter") %>
+    <% end %>
+  </p>
+
   <p class="buttons">
     <%= link_to(t("cancel"), user_registration_path(resource), class: "button no") %>
     <%= f.submit t("user.update"), class: "yes" %>

@@ -13,6 +13,8 @@
   <% else %>
     <dd><%= t("user.status.confirmed") %></dd>
   <% end %>
+  <dt><%= t("user.subscribed") %></dt>
+  <dd><%= current_user.newsletter ? t("affirmative") : t("negative") %></dd>
 </dl>
 
 <%= render "users/shared/links" %>
