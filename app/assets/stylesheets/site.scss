@@ -469,4 +469,13 @@ body.users {
 
 } // devise pages
 
+body.errors {
+    article > h1 {
+    margin-top: 1em;
+    }
+    article > img {
+        width: 100%;
+    }
+}
+
 @import "media";

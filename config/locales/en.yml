@@ -48,6 +48,12 @@ en:
   errors:
     format: "%{message}"
     #format: "%{attribute} %{message}"
+    not_found:
+      title: "Page not found"
+      message: "Your navigation has led you to a region of space where immense gravitational force 
+                has caused the very fabric of spacetime to collapse into a point-like singularity. 
+                Perhaps the page you were looking for has already been swallowed by it, perhaps it 
+                never existed; the von Neumann entropy of the Hawking radiation makes it hard to tell."
   user:
     sign_in: "Sign in"
     sign_out: "Sign out"
@@ -74,7 +80,7 @@ en:
     cancel_account: "Cancel my account"
     cancel_details: "Your account and all associated information will be permanently deleted, except for any comments you have posted that have been replied to, which instead will have your name removed."
     signed_in_as: "You are currently signed in as"
-    newsletter: "Subscribe to my newsletter"
+    newsletter: "Subscribe to newsletter"
     subscribed: "Subscribed to newsletter"
   page: 
     author: "Author"
@@ -101,7 +107,8 @@ en:
     formatting:
       summary: "Formatting help"
       help: 
-        "\\*\\***bold**\\*\\*\n\n
+        "Comments can be formatted using Markdown, for example: \n\n
+        \\*\\***bold**\\*\\*\n\n
         \\**italic*\\*\n\n
         \\~\\~~~strikethrough~~\\~\\~\n\n
         [\\[link text\\]]()\\(link address\\)\n\n
