@@ -49,10 +49,10 @@ en:
     format: "%{message}"
     #format: "%{attribute} %{message}"
     not_found:
-      title: "Page not found"
+      title: "404 not found"
       message: "Your navigation has led you to a region of space where immense gravitational force 
                 has caused the very fabric of spacetime to collapse into a point-like singularity. 
-                Perhaps the page you were looking for has already been swallowed by it, perhaps it 
+                Perhaps the content you were looking for has already been swallowed by it, perhaps it 
                 never existed; the von Neumann entropy of the Hawking radiation makes it hard to tell."
   user:
     sign_in: "Sign in"

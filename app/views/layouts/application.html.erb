@@ -34,14 +34,6 @@
         <%= yield %>
       </article>
     </main>
-    <footer>
-      <address>
-        <ul>
-          <li>clickworkorange Ltd</li>
-          <li>info@clickworkorange.com</li>
-        </ul>
-      </address>
-      <p><%= image_tag("icons/cookie.svg", alt: "A yummy cookie", class: "icon") %>The only third-party cookies used here are the edible kind.</p>
-    </footer>
+    <%= render partial: "footer" %>
   </body>
 </html>
