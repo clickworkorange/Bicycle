@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :images, only: %i[new create edit update destroy]
     end
     resources :users
+    get "statistics", to: "statistics#index"
     get "images/regenerate(/:job_id)", to: "images#regenerate"
     post "images/regenerate", to: "images#regenerate"
   end

@@ -14,6 +14,7 @@
 
 Rails.application.configure do
   config.content_security_policy do |policy|
+    # app/controllers/bicycle/application_controller.rb overrides script_src
     policy.default_src :self # , :https
     policy.font_src    :self # , :https, :data
     policy.img_src     :self, "https://avatars.githubusercontent.com" # , :https, :data

@@ -9,9 +9,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    ahoy.track "Signed in"
+  end
 
   # DELETE /resource/sign_out
   def destroy
@@ -20,6 +21,7 @@ class Users::SessionsController < Devise::SessionsController
     # sign_out_and_redirect(current_user)
     flash[:notice] = t("devise.sessions.signed_out")
     sign_out current_user
+    ahoy.track "Signed out"
     redirect_to after_sign_out_path_for(:user)
   end
 
