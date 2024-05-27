@@ -1,1 +1,36 @@
-<%= line_chart Ahoy::Visit.group_by_day(:started_at).count %>
+<h1><%= t("bicycle.statistics.index") %></h1>
+<nav>
+	<%= link_to t("bicycle.statistics.hourly"), bicycle_statistics_path(period: "hourly"), class: "button" %>
+	<%= link_to t("bicycle.statistics.daily"), bicycle_statistics_path(period: "daily"), class: "button" 
+	%>
+	<%= link_to t("bicycle.statistics.weekly"), bicycle_statistics_path(period: "weekly"), class: "button" %>
+	<%= link_to t("bicycle.statistics.monthly"), bicycle_statistics_path(period: "monthly"), class: "button" %>
+</nav>
+
+<section>
+	<h2><%= t("bicycle.statistics.#{@period}") %></h2>
+	<%= line_chart @visits %>
+</section>
+<section>
+	<h2><%= t("bicycle.statistics.most_visited") %></h2>
+	<table class="page_list">
+	<% @most_visited.each do |visited| %>
+		<tr>
+			<td><%= svg_icon(visited.template) %></td>
+			<td><%= visited.title %></td>
+			<td><%= visited.visits %></td>
+		</tr>
+	<% end %>
+	</table>
+</section>
+<section>
+	<h2><%= t("bicycle.statistics.referrers") %></h2>
+	<table class="referrers">
+	<% @referrers.each do |referrer| %>
+		<tr>
+			<td><%= link_to(referrer.referrer, referrer.referrer) %></td>
+			<td><%= referrer.referrals %></td>
+		</tr>
+	<% end %>
+	</table>
+</section>

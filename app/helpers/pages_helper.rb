@@ -18,6 +18,7 @@ module PagesHelper
   end
 
   def parse_body(page)
+    # TODO: include "gallery" section in toc if present
     Kramdown::Document.new(
       process_tokens(page),
       input: "GFM",
@@ -33,6 +34,11 @@ module PagesHelper
       syntax_highlighter: "rouge",
       syntax_highlighter_opts: {line_numbers: true, theme: "monokai"}
     ).to_html.html_safe
+  end
+
+  def plaintext(markdown)
+    Kramdown::Document.new(strip_tags(markdown), input: "Plaintext").to_html
+    #strip_tags(markdown)
   end
 
   def banner_background_css(page, switch = 600)

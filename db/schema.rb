@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_25_095813) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_153200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_095813) do
     t.string "name"
     t.jsonb "properties"
     t.datetime "time"
+    t.virtual "page_id", type: :integer, as: "((properties ->> 'page_id'::text))::bigint", stored: true
     t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
     t.index ["properties"], name: "index_ahoy_events_on_properties", opclass: :jsonb_path_ops, using: :gin
     t.index ["user_id"], name: "index_ahoy_events_on_user_id"

@@ -144,6 +144,12 @@ en:
       page: "Page"
     statistics:
       index: "Statistics"
+      hourly: "Hourly"
+      daily: "Daily"
+      weekly: "Weekly"
+      monthly: "Monthly"
+      most_visited: "Most visited"
+      referrers: "Referrers"
   helpers:
     submit:
       comment:

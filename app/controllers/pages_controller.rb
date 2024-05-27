@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   require "rouge"
   prepend_before_action :authenticate_user!, only: %i[comment]
   before_action :set_page, only: %i[show comment]
+  after_action :track_view, only: %i[index show]
 
   def index
     @page = Page.for_url("/").first
@@ -39,6 +40,12 @@ class PagesController < ApplicationController
   private
   def set_page
     @page = Page.friendly.find(params[:id], allow_nil: true) || Page.for_url("/#{params[:id]}").first
+  end
+
+  def track_view
+    if not Ahoy::Event.where(name: "Page view").where_properties(page_id: @page.id, visit_id: current_visit.id).exists?
+       ahoy.track("Page view", {page_id: @page.id, visit_id: current_visit.id})
+    end
   end
 
   def comment_params

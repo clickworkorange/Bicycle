@@ -2,7 +2,7 @@
 <html lang="<%= I18n.locale %>">
   <head>
     <title>clickworkorange<%= " - #{@page.title}" if @page.present? %></title>
-    <%= tag(:meta, name: "description", content: @page.abstract) if @page.present? %>
+    <%= tag(:meta, name: "description", content: plaintext(@page.abstract)) if @page.present? %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="CCBot" content="nofollow">
     <meta name="robots" content="noai, noimageai">
