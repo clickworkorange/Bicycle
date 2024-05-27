@@ -37,7 +37,7 @@ module PagesHelper
   end
 
   def plaintext(markdown)
-    strip_tags(Kramdown::Document.new(markdown, input: "Plaintext").to_html)
+    strip_tags(Kramdown::Document.new(markdown, input: "GFM").to_html)
     #strip_tags(markdown)
   end
 
