@@ -43,8 +43,10 @@ class PagesController < ApplicationController
   end
 
   def track_view
-    if not Ahoy::Event.where(name: "Page view").where_properties(page_id: @page.id, visit_id: current_visit.id).exists?
-       ahoy.track("Page view", {page_id: @page.id, visit_id: current_visit.id})
+    if current_visit
+      unless Ahoy::Event.where(name: "Page view").where_properties(page_id: @page.id, visit_id: current_visit.id).exists?
+         ahoy.track("Page view", {page_id: @page.id, visit_id: current_visit.id})
+      end
     end
   end
 
