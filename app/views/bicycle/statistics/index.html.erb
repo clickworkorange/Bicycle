@@ -18,7 +18,7 @@
 		<tr>
 			<td><%= svg_icon(visited.template) %></td>
 			<td><%= visited.title %></td>
-			<td><%= visited.visits %></td>
+			<td><%= visited.count %></td>
 		</tr>
 	<% end %>
 	</table>
@@ -29,7 +29,7 @@
 	<% @locations.each do |location| %>
 		<tr>
 			<td><%= location.location %></td>
-			<td><%= location.visits %></td>
+			<td><%= location.count %></td>
 		</tr>
 	<% end %>
 	</table>
@@ -40,7 +40,19 @@
 	<% @referrers.each do |referrer| %>
 		<tr>
 			<td><%= link_to(referrer.referrer, referrer.referrer) %></td>
-			<td><%= referrer.referrals %></td>
+			<td><%= referrer.count %></td>
+		</tr>
+	<% end %>
+	</table>
+</section>
+<section>
+	<h2><%= t("bicycle.statistics.errors") %></h2>
+	<table class="errors">
+	<% @errors.each do |error| %>
+		<tr>
+			<td><%= error.properties["message"] %></td>
+			<td><%= error.properties["path"] %></td>
+			<td><%= error.count %></td>
 		</tr>
 	<% end %>
 	</table>

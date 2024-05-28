@@ -1,6 +1,11 @@
 # Do not track admin users
 Ahoy.exclude_method = lambda do |controller, request|
-  controller.current_user && controller.current_user&.admin
+  # TODO: This is a bit messy
+  if controller && request
+    controller.current_user && controller.current_user&.admin
+  else
+    false
+  end
 end
 # GDPR compliance
 class Ahoy::Store < Ahoy::DatabaseStore

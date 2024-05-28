@@ -44,10 +44,11 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.fullpath)
   end
 
-  def track_error(error, path)
+  def track_error(message, path)
     # Admin users do not generate a visit
+    # TODO: track 500 errors etc
     if current_visit
-      ahoy.track(error, {path: path})
+      ahoy.track("Error", {message: message, path: path})
     end
   end
 end
