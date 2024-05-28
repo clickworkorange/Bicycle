@@ -150,6 +150,7 @@ en:
       monthly: "Monthly"
       most_visited: "Most visited"
       referrers: "Referrers"
+      locations: "Locations"
   helpers:
     submit:
       comment:

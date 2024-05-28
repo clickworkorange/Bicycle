@@ -24,6 +24,17 @@
 	</table>
 </section>
 <section>
+	<h2><%= t("bicycle.statistics.locations") %></h2>
+	<table class="locations">
+	<% @locations.each do |location| %>
+		<tr>
+			<td><%= location.location %></td>
+			<td><%= location.visits %></td>
+		</tr>
+	<% end %>
+	</table>
+</section>
+<section>
 	<h2><%= t("bicycle.statistics.referrers") %></h2>
 	<table class="referrers">
 	<% @referrers.each do |referrer| %>

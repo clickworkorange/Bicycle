@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_153200) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_095407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_153200) do
     t.string "os_version"
     t.string "platform"
     t.datetime "started_at"
+    t.virtual "location", type: :string, as: "(((((country)::text || ','::text) || (region)::text) || ','::text) || (city)::text)", stored: true
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
