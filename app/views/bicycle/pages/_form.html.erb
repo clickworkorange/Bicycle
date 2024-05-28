@@ -45,19 +45,18 @@
       <p>
       <p>
         <%= form.label :abstract %>
-        <%= form.text_area :abstract, rows: 8 %>
+        <%= form.text_area :abstract, rows: 9 %>
       </p>
-      <p><em>Avoid using Markdown in the abstract; it's used in the meta description.</em></p>
     </div>
   </div>
-
-  <p>
-    <%= form.label :body %>
-    <%= form.text_area :body, rows: 12 %>
-  </p>
-  <p><em>Use fig[1], fig[2], etc to insert inline images and [gallery] to insert gallery images.</em></p>
-  <p><em>Use repo[/gituser/gitrepo] to insert a Github repository.</em></p>
-
+  <div style="clear: left">
+    <p>
+      <%= form.label :body %>
+      <%= form.text_area :body, rows: 12 %>
+    </p>
+    <p><em>Use fig[1], fig[2], etc to insert inline images and [gallery] to insert gallery images.</em></p>
+    <p><em>Use repo[/gituser/gitrepo] to insert a Github repository.</em></p>
+  </div>
   <p>
     <%= form.submit class: "yes" %>
   </p>
