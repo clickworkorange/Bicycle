@@ -118,6 +118,7 @@ width: $nav-width;
 
 article {
 display: flow-root;
+overflow: hidden;
 min-height: 100vh;
 margin-left: $nav-width;
 padding: 0 1em 1.5em 1em;
@@ -129,6 +130,7 @@ border-left: 1px solid $colour-edges;
     overflow: hidden;
     height: 15vw;
     max-height: 15em;
+    max-width: 100%;
     min-height: 7.5em;
     margin: 0 -1em 1em -1em;
     padding: 1em;
