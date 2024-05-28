@@ -12,21 +12,21 @@ class ApplicationController < ActionController::Base
   # TODO: improve ahoy tracking
   def render_404
     if request.xhr?
-      ahoy.track "XHR not found"
+      track_error("XHR not found", request.fullpath)
       head :not_found, content_type: "text/plain" 
     else
       respond_to do |format|
         format.any(:html, :pdf, :zip) do
-          ahoy.track "File not found"
+          track_error("File not found", request.fullpath)
           @page_title = t("errors.not_found.title")
           render "errors/not_found", formats: :html, content_type: "text/html", layout: "error", status: 404 
         end
         format.any(:gif, :png, :jpeg) do
-          ahoy.track "Image not found"
+          track_error("Image not found", request.fullpath)
           render file: "#{Rails.root}/public/not_found.png", content_type: "image/png", layout: false, status: 404
         end
         format.all do
-          ahoy.track "Resource not found"
+          track_error("Resource not found", request.fullpath)
           head :not_found, content_type: "text/plain" 
         end
       end
@@ -42,5 +42,12 @@ class ApplicationController < ActionController::Base
 
   def store_location!
     store_location_for(:user, request.fullpath)
+  end
+
+  def track_error(error, path)
+    # Admin users do not generate a visit
+    if current_visit
+      ahoy.track(error, {path: path})
+    end
   end
 end
