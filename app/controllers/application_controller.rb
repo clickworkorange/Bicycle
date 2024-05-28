@@ -1,22 +1,26 @@
 class ApplicationController < ActionController::Base
   before_action :store_location!, if: :storable_location?
 
-  # TODO: implement traffic logging with https://github.com/ankane/ahoy
-
   def default_url_options
     {path_params: {path: params[:path]}}
   end
 
   # TODO: how does this handle pages that aren't live?
   # TODO: include page suggestions
-  # TODO: improve ahoy tracking
+  # TODO: track 500 errors etc
+  # TODO: track bot 404s separately from genuine traffic
   def render_404
     if request.xhr?
       track_error("XHR not found", request.fullpath)
       head :not_found, content_type: "text/plain" 
     else
       respond_to do |format|
-        format.any(:html, :pdf, :zip) do
+        format.any(:html) do
+          track_error("Page not found", request.fullpath)
+          @page_title = t("errors.not_found.title")
+          render "errors/not_found", formats: :html, content_type: "text/html", layout: "error", status: 404 
+        end
+        format.any(:pdf, :zip) do
           track_error("File not found", request.fullpath)
           @page_title = t("errors.not_found.title")
           render "errors/not_found", formats: :html, content_type: "text/html", layout: "error", status: 404 
@@ -32,6 +36,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  # TODO: does this cause the 404 to render twice?
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
@@ -46,7 +51,6 @@ class ApplicationController < ActionController::Base
 
   def track_error(message, path)
     # Admin users do not generate a visit
-    # TODO: track 500 errors etc
     if current_visit
       ahoy.track("Error", {message: message, path: path})
     end

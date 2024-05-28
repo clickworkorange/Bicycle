@@ -44,7 +44,7 @@ class PagesController < ApplicationController
 
   def track_view
     # Admin users do not generate a visit, errors do not have a Page
-    # TODO: errors should have a page
+    # TODO: should errors have a page?
     if current_visit && @page.present?
       unless Ahoy::Event.where(name: "Page view", visit_id: current_visit.id).where_properties(page_id: @page.id).exists?
          ahoy.track("Page view", {page_id: @page.id, visit_id: current_visit.id})
