@@ -1,6 +1,5 @@
 /*
- *= require_tree .
- *= require_self
+ *= require main.js
 */
 //= require chartkick
 //= require Chart.bundle
