@@ -1,9 +1,10 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.host_name = "dev.clickworkorange.com"
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_options = {from: "\"clickworkorange\" <no-reply@clickworkorange.com>"}
-  config.action_mailer.default_url_options = {host: "dev.clickworkorange.com"}
+  config.action_mailer.default_url_options = {host: config.host_name, :protocol => "https"}
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

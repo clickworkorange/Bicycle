@@ -1,0 +1,7 @@
+<% if @contact.errors.any? %>
+  <ul class="errors">
+    <% @contact.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -8,10 +8,16 @@
         <input type="text" name="q" />
       </form>
     </search> %>
-    <% cache ["menu",@page], skip_digest: true do %>
+    <% cache ["menu", @page], skip_digest: true do %>
       <% # TODO: leverage self_and_descendants to reduce db queries %>
       <ul>
         <%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
+        <li><div>
+        <%= link_to contact_path do %>
+          <%= svg_icon("contact") %>
+          <%= t("contact.title") %>
+        <% end %>
+        </div></li>
       </ul>
     <% end %>
 

@@ -2,9 +2,9 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  config.hosts << "dev.clickworkorange.com"
-  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+  config.host_name = "localhost"
+  config.hosts << config.host_name
+  config.action_mailer.default_url_options = {host: config.host_name, port: 3000}
 
   config.i18n.available_locales = :en
   config.i18n.raise_on_missing_translations = true
@@ -35,7 +35,6 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
-
     config.cache_store = :null_store
   end
 

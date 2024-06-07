@@ -123,6 +123,10 @@ en:
       signed_out: "You have signed out"
     failure:
       unauthenticated: "You must be signed in to do that"
+  contact:
+    title: "Contact"
+    send: "Send"
+    sent: "Your message has been sent"
   bicycle:
     page:
       index: "Pages"
@@ -156,12 +160,35 @@ en:
     submit:
       comment:
         create: "Post comment"
+  activemodel:
+    models:
+      contact: "Contact"
+    attributes:
+      contact:
+        email: "Email address"
+        name: "Your name"
+        subject: "Subject"
+        message: "Message"
+    errors:
+      models:
+        contact:
+          attributes:
+            email:
+              blank: "Email address cannot be blank"
+              invalid: "The email address is not valid"
+            name:
+              blank: "Your name cannot be blank"
+            subject:
+              blank: "Subject cannot be blank"
+            message:
+              blank: "Message cannot be blank"
   activerecord:
     models:
       user: "User"
       page: "Page"
       image: "Image"
       comment: "Comment"
+      contact: "Contact"
     attributes:
       user:
         name: "Display name"
@@ -180,6 +207,7 @@ en:
         live: "Live"
         in_menu: "Show in menu"
         user_id: "Author"
+        reset_date: "Reset published date"
       image:
         image_file: "Image file"
         role: "Role"

@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     post "images/regenerate", to: "images#regenerate"
   end
 
+  #resource :contact, only: %i[new create]
+  get "contact", to: "contact#new"
+  post "contact", to: "contact#create"
+
+  get "/sitemap.xml", to: "sitemap#index"
   root "pages#index"
   # post "(*path)/:id/comments", to: "comments#create", as: :page_comments
   post "(*path)/:id", to: "pages#comment", as: :page_comments

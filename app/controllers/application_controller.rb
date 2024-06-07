@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   # TODO: how does this handle pages that aren't live?
   # TODO: include page suggestions
   # TODO: track 500 errors etc
-  # TODO: track bot 404s separately from genuine traffic
   def render_404
     if request.xhr?
       track_error("XHR not found", request.fullpath)
@@ -28,6 +27,11 @@ class ApplicationController < ActionController::Base
         format.any(:gif, :png, :jpeg) do
           track_error("Image not found", request.fullpath)
           render file: "#{Rails.root}/public/not_found.png", content_type: "image/png", layout: false, status: 404
+        end
+        format.any(:xml) do
+          track_error("Page not found", request.fullpath)
+          #render "errors/not_found", formats: :xml, content_type: "text/xml", layout: false, status: 404 
+          render xml: {:error => t("errors.not_found.title")}, status: 404
         end
         format.all do
           track_error("Resource not found", request.fullpath)

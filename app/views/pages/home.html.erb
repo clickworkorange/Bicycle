@@ -1,4 +1,6 @@
 <% cache page do %>
+  <% # TODO: content_for meta tags %>
+  <% # TODO: replace "header" with something... better %>
   <%= render partial: "header", locals: {page: page} %>
 
   <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>

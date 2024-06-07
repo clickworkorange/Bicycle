@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 202405280133543) do
     t.string "os_version"
     t.string "platform"
     t.datetime "started_at"
-    t.virtual "location", type: :string, as: "(((((country)::text || ','::text) || (region)::text) || ','::text) || (city)::text)", stored: true
+    t.virtual "location", type: :string, as: "(((((COALESCE(country, '?'::character varying))::text || ', '::text) || (COALESCE(region, '?'::character varying))::text) || ', '::text) || (COALESCE(city, '?'::character varying))::text)", stored: true
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"

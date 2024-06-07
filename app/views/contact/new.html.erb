@@ -1,0 +1,27 @@
+<h1><%= t("contact.title") %></h1>
+
+<%= form_for @contact, :url => contact_path do |f| %>
+  <%= render "contact/error_messages" %>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email  , autocomplete: "email" %>
+  </p>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name  , autocomplete: "name" %>
+  </p>
+
+  <p>
+    <%= f.label :subject %>
+    <%= f.text_field :subject   %>
+  </p>
+
+  <p>
+    <%= f.label :message %>
+    <%= f.text_area :message   %>
+  </p>
+
+  <p><%= f.submit t("contact.send") %></p>
+<% end %>

@@ -1,4 +1,5 @@
 <% cache page do %>
+  <% # TODO: content_for meta tags %>
   <%= render partial: "header", locals: {page: page} %>
   <% # TODO: find a use for the <meter> tag %>
   <%= content_tag(:p, "#{t("page.author")}: #{page.user.name}", class: "author") if page.user %> 

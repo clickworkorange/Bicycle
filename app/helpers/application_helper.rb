@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def page_class
-    controller.class.name.split("::").first.sub("Controller", "").downcase
+  def controller_name
+    controller.class.name.split("::").last.sub("Controller", "").downcase
   end
 end

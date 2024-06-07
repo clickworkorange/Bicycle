@@ -1,0 +1,15 @@
+<% content_for :head do %>
+    <title>clickworkorange<%= " - #{@page.title}" if @page.present? %></title>
+    <%= tag(:meta, name: "description", content: plaintext(@page.abstract)) if @page.present? %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="CCBot" content="nofollow">
+    <meta name="robots" content="noai, noimageai">
+    <meta name="tdm-reservation" content="1">
+    <% if page_class == "users" %>
+      <meta name="robots" content="noindex,nofollow">
+    <% end %>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+<% end %>

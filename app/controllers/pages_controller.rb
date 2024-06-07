@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   prepend_before_action :authenticate_user!, only: %i[comment]
   before_action :set_page, only: %i[show comment]
   after_action :track_view, only: %i[index show]
+  layout "page"
 
   def index
     @page = Page.for_url("/").first
