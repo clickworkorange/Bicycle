@@ -1,0 +1,21 @@
+<% cache @page do %>
+<title>clickworkorange - <%= @page.title %></title>
+    <%= tag(:meta, name: "description", content: @page.page_description) %>
+    <%- tag(:meta, name: "author", content: @page.user.name) if @page.user.present? %>
+    <meta property="og:url" content="<%= full_page_url(@page) %>">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<%= @page.title %>">
+    <meta property="og:description" content="<%= @page.page_description %>">
+    <meta property="og:image" content="<%= social_image(@page, "facebook") %>">
+    <meta property="twitter:domain" content="<%= Rails.application.config.host_name %>">
+    <meta property="twitter:url" content="<%= full_page_url(@page) %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= @page.title %>">
+    <meta name="twitter:description" content="<%= @page.page_description %>">
+    <meta name="twitter:image" content="<%= social_image(@page, "twitter") %>">
+    <% if not @page.live? %>
+    <meta name="robots" content="noindex, nofollow, noai, noimageai">
+    <% else %>
+    <meta name="robots" content="noai, noimageai">
+    <% end %>
+<% end %>

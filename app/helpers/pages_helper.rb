@@ -17,6 +17,14 @@ module PagesHelper
     File.join(path)
   end
 
+  def full_page_url(page)
+    "https://#{Rails.application.config.host_name}#{full_page_path(page)}"
+  end
+
+  def full_image_url(image)
+    "https://#{Rails.application.config.host_name}#{image}"
+  end
+
   def parse_body(page)
     # TODO: include "gallery" section in toc if present
     Kramdown::Document.new(
@@ -42,20 +50,33 @@ module PagesHelper
   end
 
   def banner_background_css(page, switch = 600)
-    first_banner = page.images.banner.first
-    if first_banner
-      large = first_banner.image_file.large_banner.url
-      medium = first_banner.image_file.medium_banner.url
-    else
-      # fall back to default banners
-      large = asset_path("#{page.template}_banner.jpg")
-      medium = asset_path("#{page.template}_banner_medium.jpg")
-    end
+    large = banner_image(page, "large")
+    medium = banner_image(page, "medium")
     style = "article > header { background-image: url(\"#{large}\"); }"
     style += "@media (max-width: #{switch}px) { article > header {"
     style += "background-image: url(\"#{medium}\");"
     style += "}}"
     style.html_safe
+  end
+
+  def banner_image(page, format)
+    first_banner = page.images.banner.first
+    if first_banner
+      case format 
+      when "large"
+        first_banner.image_file.large_banner.url
+      when "medium"
+        medium = first_banner.image_file.medium_banner.url
+      end
+    else
+      # fall back to default banners
+      case format 
+      when "large"
+        asset_path("#{page.template}_banner.jpg")
+      when "medium"
+        asset_path("#{page.template}_banner_medium.jpg")
+      end
+    end
   end
 
   def banner_thumb(page)
@@ -97,6 +118,20 @@ module PagesHelper
       style: "aspect-ratio: #{image.aspect};",
       loading: "lazy"
     )
+  end
+
+  def social_image(page, format)
+    first_social = page.images.social.first
+    if first_social
+      case format 
+      when "facebook"
+        full_image_url(first_social.image_file.facebook.url)
+      when "twitter"
+        full_image_url(first_social.image_file.twitter.url)
+      end
+    else
+      full_image_url(banner_image(page, "large"))
+    end
   end
 
   def process_tokens(page)

@@ -2,13 +2,15 @@
 <html lang="<%= I18n.locale %>">
   <head>
     <title>clickworkorange</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="CCBot" content="nofollow">
     <meta name="robots" content="noindex, nofollow, noai, noimageai">
+    <meta name="CCBot" content="nofollow">
     <meta name="tdm-reservation" content="1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags.gsub("\n", "\n    ").html_safe %>
+    <% # csp_meta_tag %>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site" %>
   </head>

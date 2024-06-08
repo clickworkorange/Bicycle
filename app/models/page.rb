@@ -20,4 +20,18 @@ class Page < ApplicationRecord
   def self.for_url(url)
     Page.where(url: url)
   end
+
+  # TODO: this date stuff is not elegant
+  def page_published_at
+    read_attribute(:meta_published_at) || self.created_at
+  end
+
+  def page_updated_at
+    read_attribute(:meta_updated_at) || self.updated_at
+  end
+
+  def page_description
+    # TODO: trim to some length (full sentence)
+    read_attribute(:meta_description) || self.abstract
+  end
 end

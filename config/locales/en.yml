@@ -125,6 +125,7 @@ en:
       unauthenticated: "You must be signed in to do that"
   contact:
     title: "Contact"
+    details: "If you have a question or would like to know more, or maybe report an error on the site, please use the form below."
     send: "Send"
     sent: "Your message has been sent"
   bicycle:

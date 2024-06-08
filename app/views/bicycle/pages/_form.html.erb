@@ -25,6 +25,16 @@
         <%= form.text_field :url %>
       <p>
 
+      <p style="width: 50%; float: left;">
+        <%= form.label :meta_published_at %>
+        <%= form.datetime_field :meta_published_at %>
+      <p>
+
+      <p style="width: 50%; float: left;">
+        <%= form.label :meta_updated_at %>
+        <%= form.datetime_field :meta_updated_at %>
+      <p>
+
       <p>
         <%= form.label :live, :live do %>
           <%= form.check_box :live, { checked: page.live } %> <%= t("live", scope: tscope) %>
@@ -44,8 +54,12 @@
         <%= form.select(:user_id, User.admin.all.map {|user| [user.name, user.id]}, include_blank: "-") %>
       <p>
       <p>
+        <%= form.label :meta_description %>
+        <%= form.text_area :meta_description, rows: 3 %>
+      </p>
+      <p>
         <%= form.label :abstract %>
-        <%= form.text_area :abstract, rows: 9 %>
+        <%= form.text_area :abstract, rows: 10 %>
       </p>
     </div>
   </div>

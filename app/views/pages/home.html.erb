@@ -9,7 +9,7 @@
 
   <%= content_tag(:p, class: "date updated_at") do 
     concat(content_tag(:span, "#{t("updated_at")}: "))
-    concat(content_tag(:time, "#{l(page.updated_at, format: :short)}", datetime: page.updated_at))
+    concat(content_tag(:time, "#{l(page.page_updated_at, format: :short)}", datetime: page.page_updated_at))
   end %>
 <% end %>
 

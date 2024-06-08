@@ -1,26 +1,26 @@
 <h1><%= t("contact.title") %></h1>
-
+<p><%= t("contact.details") %></p>
 <%= form_for @contact, :url => contact_path do |f| %>
   <%= render "contact/error_messages" %>
 
   <p>
     <%= f.label :email %>
-    <%= f.email_field :email  , autocomplete: "email" %>
+    <%= f.email_field :email, required: true, autocomplete: "email" %>
   </p>
 
   <p>
     <%= f.label :name %>
-    <%= f.text_field :name  , autocomplete: "name" %>
+    <%= f.text_field :name, required: true, autocomplete: "name" %>
   </p>
 
   <p>
     <%= f.label :subject %>
-    <%= f.text_field :subject   %>
+    <%= f.text_field :subject, required: true   %>
   </p>
 
   <p>
     <%= f.label :message %>
-    <%= f.text_area :message   %>
+    <%= f.text_area :message, required: true, rows: 6 %>
   </p>
 
   <p><%= f.submit t("contact.send") %></p>

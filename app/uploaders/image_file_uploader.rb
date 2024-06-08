@@ -55,6 +55,14 @@ class ImageFileUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [900, 250]
   end
 
+  version :twitter do # , if: :banner? do
+    process resize_to_fill: [1024, 512]
+  end
+
+  version :facebook do # , if: :banner? do
+    process resize_to_fill: [1200, 630]
+  end
+
   def banner?
     model.role == "banner"
   end

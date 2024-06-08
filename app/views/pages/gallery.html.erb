@@ -4,12 +4,12 @@
 
   <%= content_tag(:p, class: "date created_at") do 
     concat(content_tag(:span, "#{t("created_at")}: "))
-    concat(content_tag(:time, "#{l(page.created_at, format: :short)}", datetime: page.created_at))
+    concat(content_tag(:time, "#{l(page.page_published_at, format: :short)}", datetime: page.page_published_at))
   end %>
   <%= content_tag(:p, class: "date updated_at") do 
     concat(content_tag(:span, " | #{t("updated_at")}: "))
-    concat(content_tag(:time, "#{l(page.updated_at, format: :short)}", datetime: page.updated_at))
-  end if page.updated_at > page.created_at %>
+    concat(content_tag(:time, "#{l(page.page_updated_at, format: :short)}", datetime: page.page_updated_at))
+  end if page.page_updated_at > page.page_published_at %>
 
   <%= content_tag(:section, sanitize(Kramdown::Document.new(page.abstract).to_html), class: "abstract") if page.abstract.present? %>
 
