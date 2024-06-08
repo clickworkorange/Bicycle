@@ -1,29 +1,26 @@
-
 <% 
   css_class = "current" if @page.present? && (@page.id == page.id)
   css_class = "parent" if @page.present? && page.is_ancestor_of?(@page)
 %>
-<%= content_tag :li, class: css_class do %>
-  <%= content_tag(:div) do %>
-    <% if page.child? %>
-      <%= svg_icon(page.id == page.parent.children.live.in_menu.last.id ? "last_child" : "child") %>
-      <%= link_to full_page_path(page) do %>
-        <%= svg_icon(page.template) %>
-        <%= page.title %>
-      <% end %>
-    <% else %>
-      <%= link_to full_page_path(page) do %>
-        <%= svg_icon(page.template) %>
-        <%= page.title %>
-      <% end %>
-    <% end %>
-  <% end %>
 
-  <% # if @page.present? && page.children.live.in_menu.any? && (@page.id == page.id || @page.is_descendant_of?(page)) %>
-  <% # , class: ("current" if @page.id == page.id) %>
-  <% if page.children.live.in_menu.any? %>
-    <%= content_tag :ul do %>
-      <%= render :partial => "menu_tree", collection: page.children.live.in_menu, as: :page %>
-    <% end %>
-  <% end %>
-<% end %>
+            <%= content_tag :li, class: css_class do -%>
+<%= content_tag(:div) do -%>
+<% if page.child? -%>
+<%= svg_icon(page.id == page.parent.children.live.in_menu.last.id ? "last_child" : "child") -%>
+<%= link_to full_page_path(page) do -%>
+<%= svg_icon(page.template) -%>
+<%= page.title -%>
+<% end -%>
+<% else -%>
+<%= link_to full_page_path(page) do -%>
+<%= svg_icon(page.template) -%>
+<%= page.title -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% if page.children.live.in_menu.any? -%>
+<%= content_tag :ul do -%>
+<%= render :partial => "menu_tree", collection: page.children.live.in_menu, as: :page -%>
+<% end -%>
+<% end -%>
+<% end -%>

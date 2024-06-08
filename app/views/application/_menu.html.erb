@@ -1,31 +1,25 @@
 <nav>
-  <button id="menu" aria-label="<%= t("menu") %>" tabindex="1">
-    <%= svg_icon("menu") %>
-  </button>
-  <div>
-    <%# <search>
-      <form action="">
-        <input type="text" name="q" />
-      </form>
-    </search> %>
-    <% cache ["menu", @page], skip_digest: true do %>
-      <% # TODO: leverage self_and_descendants to reduce db queries %>
-      <ul>
-        <%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
-        <li><div>
-        <%= link_to contact_path do %>
-          <%= svg_icon("contact") %>
-          <%= t("contact.title") %>
-        <% end %>
-        </div></li>
-      </ul>
-    <% end %>
+        <button id="menu" aria-label="<%= t("menu") %>" tabindex="1"><%= svg_icon("menu") %></button>
+        <div>
+          <% cache ["menu", @page], skip_digest: true do %>
+            <% # TODO: leverage self_and_descendants to reduce db queries %>
+            <ul><%= render partial: "menu_tree", collection: Page.roots.live.in_menu, as: :page %>
+            <%= content_tag(:li) do -%>
+<%= content_tag(:div) do -%>
+<%= link_to contact_path do -%>
+<%= svg_icon("contact") -%>
+<%= t("contact.title") -%>
+<% end -%>
+<% end -%>
+<% end -%>
 
-    <% if current_user %>
-      <p><%= t("user.signed_in_as") %><br /><%= link_to(current_user.email, user_registration_path) %></p>
-      <%= button_to(t("user.sign_out"), destroy_user_session_path, method: :delete) %>
-    <% elsif false %>
-      <p><% link_to(t("user.sign_in"), new_user_session_path, class: "button yes") %></p>
-    <% end %>
-  </div>
-</nav>
+            </ul>
+          <% end %>
+          <% if current_user %>
+            <p><%= t("user.signed_in_as") %><br /><%= link_to(current_user.email, user_registration_path) %></p>
+            <%= button_to(t("user.sign_out"), destroy_user_session_path, method: :delete) %>
+          <% elsif false %>
+            <p><% link_to(t("user.sign_in"), new_user_session_path, class: "button yes") %></p>
+          <% end %>
+        </div>
+      </nav>
