@@ -93,11 +93,14 @@ en:
       section: "Section"
       gallery: "Gallery"
       home: "Homepage"
+  gallery:
+    author: "By"
   image:
     roles:
       inline: "Inline"
       banner: "Banner"
       gallery: "Gallery"
+      social: "Social"
   comment: 
     sign_in_first: "You must be signed in to post comments"
     intro: "Please share your thoughts on this article, but note that at present you won't be able to edit or delete your comment after posting."
@@ -105,7 +108,7 @@ en:
     failed: "Sorry, your comment could not be posted"
     posted_on: "posted on %{date}"
     formatting:
-      summary: "Formatting help"
+      summary: "Comments can be formatted using [Markdown](https://github.github.com/gfm/)"
       help: 
         "Comments can be formatted using Markdown, for example: \n\n
         \\*\\***bold**\\*\\*\n\n

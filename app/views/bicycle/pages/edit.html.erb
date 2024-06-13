@@ -7,8 +7,20 @@
 <h2>Images</h2>
 
 <% # TODO: make use of the <dialog> element! %>
-
-<% @page.images.each do |image| %>
+<h3>Banners</h3>
+<% @page.images.banner.each do |image| %>
+    <%= link_to image_tag(image.image_file.square.url), edit_bicycle_page_image_path(@page, image) %>
+<% end %>
+<h3>Social</h3>
+<% @page.images.social.each do |image| %>
+    <%= link_to image_tag(image.image_file.square.url), edit_bicycle_page_image_path(@page, image) %>
+<% end %>
+<h3>Inline</h3>
+<% @page.images.inline.each do |image| %>
+    <%= link_to image_tag(image.image_file.square.url), edit_bicycle_page_image_path(@page, image) %>
+<% end %>
+<h3>Gallery</h3>
+<% @page.images.gallery.each do |image| %>
     <%= link_to image_tag(image.image_file.square.url), edit_bicycle_page_image_path(@page, image) %>
 <% end %>
 

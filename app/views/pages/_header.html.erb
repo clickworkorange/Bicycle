@@ -1,7 +1,5 @@
 
-<%= content_tag(:style) do
-  banner_background_css(page) 
-end %>
+<%= content_tag(:style, banner_background_css(page)) %>
 <header>
   <div><%= content_tag(:h2, link_to(page.parent.title, full_page_path(page.parent))) if page.parent.present? %>
   <h1><%= page.title %></h1></div>

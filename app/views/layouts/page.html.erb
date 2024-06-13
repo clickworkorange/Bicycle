@@ -22,9 +22,9 @@
     <main>
       <%= render partial: "menu" %>
       <article>
-        <%= content_tag(:p, notice, class: "notice") if notice.present? %>
-        <%= content_tag(:p, alert, class: "alert") if alert.present? %>
-        <%= yield %>
+<%= content_tag(:p, notice, class: "notice") if notice.present? -%>
+<%= content_tag(:p, alert, class: "alert") if alert.present? -%>
+<%= yield %>
       </article>
     </main>
     <%= render partial: "footer" %>

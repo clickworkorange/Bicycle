@@ -149,7 +149,6 @@ module PagesHelper
         response = Net::HTTP.get(uri)
         repo = JSON.parse(response)
         break if repo["message"] # something went wrong
-
         render(partial: "github_repo", locals: {repo: repo})
       end
     end

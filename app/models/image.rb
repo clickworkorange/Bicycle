@@ -6,8 +6,9 @@ class Image < ApplicationRecord
   mount_uploader :image_file, ImageFileUploader
   # TODO: pluralise these scopes
   scope :banner, -> {where(role: "banner")}
-  scope :inline, -> {where(role: "inline")}
-  scope :gallery, -> {where(role: "gallery")}
+  scope :inline, -> {where(role: "inline").order(position: :asc)}
+  # TODO: merge "gallery" and "inline" scopes
+  scope :gallery, -> {where(role: "gallery").order(position: :asc)}
   scope :social, -> {where(role: "social")}
   validates :image_file, presence: true
   validates_inclusion_of :role, in: ROLES

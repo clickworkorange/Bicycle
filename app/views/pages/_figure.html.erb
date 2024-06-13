@@ -2,5 +2,6 @@
 <figure class="<%= css_class %>">
     <button><%= thumbnail_image(image, version) %></button>
     <div class="zoom"><%= fullscreen_image(image) %></div>
-    <figcaption><%= image.caption %></figcaption>
+    <figcaption><%= image.caption.html_safe %></figcaption>
 </figure>
+
