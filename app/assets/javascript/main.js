@@ -5,9 +5,8 @@ function init() {
 }
 
 function addConfirmations() {
-	// TODO: autofocus
-	const forms = document.querySelectorAll("form[data-confirm]");
-	forms.forEach((form) => {
+	const confirmables = document.querySelectorAll("form[data-confirm]");
+	confirmables.forEach((confirmable) => {
 		const confirm = document.createElement("dialog");
 		const message = document.createElement("p");
 		const cancel  = document.createElement("button");
@@ -15,14 +14,14 @@ function addConfirmations() {
 		cancel.type = "button";
 		cancel.className = "yes"
 		accept.className = "no"
-		message.innerText = form.dataset.confirm;
-		cancel.innerText = form.dataset.cancel;
-		accept.innerText = form.dataset.accept;
+		message.innerText = confirmable.dataset.confirm;
+		cancel.innerText = confirmable.dataset.cancel;
+		accept.innerText = confirmable.dataset.accept;
 		confirm.appendChild(message);
 		confirm.appendChild(cancel);
 		confirm.appendChild(accept);
-		form.appendChild(confirm);
-		form.onsubmit = (event) => {
+		confirmable.appendChild(confirm);
+		confirmable.onsubmit = (event) => {
 			event.preventDefault();
 			confirm.showModal();
 		}
@@ -30,7 +29,7 @@ function addConfirmations() {
 			confirm.close();
 		}
 		accept.onclick = () => {
-			form.submit();
+			confirmable.submit();
 		}
 	});
 }

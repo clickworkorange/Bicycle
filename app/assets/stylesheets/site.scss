@@ -217,22 +217,23 @@ article section.child_pages {
             }
 } // article section.child_pages
 
+article section.sections {
+    
+}
+
 article section section {
-    // TODO: crop banner
+    // TODO: crop banner 
+    padding-top: 1em;
     header {
     margin-bottom: .5em;
     padding: 0;
     background-color: $colour-bg-alt;
     background-position: 50% 10%;
     background-size: cover;
-    //mask-image: linear-gradient(to right, rgba(0, 0, 0, 1.0) 50%, transparent 100%);
-    filter: grayscale(100%);
     }
-        header:hover {
-        filter: none;
-        }
     header h2 {
     float: left;
+    margin-bottom: 1em;
     font-weight: bold;
     background-color: $shadow-colour;
     }
@@ -240,12 +241,12 @@ article section section {
     display: block;
     width: 100%;
     margin: 0;
-    padding: .5em;
+    padding: .5rem;
     }
     header p {
     clear: left;
     margin: 0;
-    padding: .5em;
+    padding: .5rem;
     background-color: $shadow-colour;
     }
 } // article section section
