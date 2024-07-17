@@ -129,9 +129,9 @@ border-left: 1px solid $colour-edges;
     article > header {
     display: flex;
     overflow: hidden;
-    height: 15vw;
     max-height: 15em;
     max-width: 100%;
+    height: 15vw;
     min-height: 7.5em;
     margin: 0 -1em 1em -1em;
     padding: 1em;
@@ -216,6 +216,39 @@ article section.child_pages {
             margin: 0;
             }
 } // article section.child_pages
+
+article section section {
+    // TODO: crop banner
+    header {
+    margin-bottom: .5em;
+    padding: 0;
+    background-color: $colour-bg-alt;
+    background-position: 50% 10%;
+    background-size: cover;
+    //mask-image: linear-gradient(to right, rgba(0, 0, 0, 1.0) 50%, transparent 100%);
+    filter: grayscale(100%);
+    }
+        header:hover {
+        filter: none;
+        }
+    header h2 {
+    float: left;
+    font-weight: bold;
+    background-color: $shadow-colour;
+    }
+    header h2 a {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: .5em;
+    }
+    header p {
+    clear: left;
+    margin: 0;
+    padding: .5em;
+    background-color: $shadow-colour;
+    }
+} // article section section
 
 article section.gallery {
 margin: 2em 0;

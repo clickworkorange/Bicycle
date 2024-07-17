@@ -1,0 +1,9 @@
+
+<section>
+<%= content_tag(:style, banner_background_css(section)) %>
+<header id="h<%= section.id %>">
+  <h2><%= link_to(section.title, full_page_path(section)) %></h2></div>
+  <p><%= section.abstract %></p>
+  <p><%= link_to("Read more...", full_page_path(section)) %></p>
+</header>
+</section>

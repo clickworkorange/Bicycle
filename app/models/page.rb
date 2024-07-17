@@ -7,8 +7,9 @@ class Page < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :title, presence: true
   validates_inclusion_of :template, in: TEMPLATES
-  scope :live, -> {where(live: true)}
+  scope :live, -> {where(live: true).order(lft: :asc)}
   scope :in_menu, -> {where(in_menu: true)}
+  scope :sections,  -> {where(template: "section").order(lft: :asc)}
   # scope :for_url, -> (url){where(url: url)}
   self.implicit_order_column = "lft"
   acts_as_nested_set

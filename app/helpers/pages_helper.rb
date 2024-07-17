@@ -52,8 +52,8 @@ module PagesHelper
   def banner_background_css(page, switch = 600)
     large = banner_image(page, "large")
     medium = banner_image(page, "medium")
-    style = "article > header { background-image: url(\"#{large}\"); }"
-    style += "@media (max-width: #{switch}px) { article > header {"
+    style = "header#h#{page.id} { background-image: url(\"#{large}\"); }"
+    style += "@media (max-width: #{switch}px) { header#h#{page.id} {"
     style += "background-image: url(\"#{medium}\");"
     style += "}}"
     style.html_safe
