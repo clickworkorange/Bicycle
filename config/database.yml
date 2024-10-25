@@ -21,14 +21,14 @@ default: &default
 
 development:
   <<: *default
-  database: clickworkorange_development
+  database: bicycle_development
 
 test:
   <<: *default
-  database: clickworkorange_test
+  database: bicycle_test
 
 production:
   <<: *default
-  database: clickworkorange_production
+  database: bicycle_production
   username: <%= Rails.application.credentials.dig(:postgres, :user) %>
   password: <%= Rails.application.credentials.dig(:postgres, :pass) %>
