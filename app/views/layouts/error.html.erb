@@ -16,10 +16,7 @@
   </head>
 
   <body class="errors">
-    <header>
-      <h1><a href="/">=clickworkorange=</a></h1>
-      <h2>connecting the dots</h2>
-    </header>
+    <%= render partial: "application/header" %>
     <main>
       <%= render partial: "menu" %>
       <article>
@@ -28,6 +25,6 @@
         <%= yield %>
       </article>
     </main>
-    <%= render partial: "footer" %>
+    <%= render partial: "application/footer" %>
   </body>
 </html>
