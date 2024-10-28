@@ -1,20 +1,42 @@
-$colour-bg: #091D33;
-$colour-bg-alt: #030F1B;
-$colour-body-bg: #020F17;
-$colour-footer: #01070B;
-$colour-dialog: #0D2A49;
-$colour-text: #C1BEB3;
-$colour-edges: #000;
-$colour-button-text: #000;
-$colour-code-line: #C1BEB3;
-$colour-inline-code: lighten($colour-text, 10);
-$colour-inline-code-bg: darken($colour-bg, 10);
+/* app/assets/_global.scss */
+
 $orange: #DC5B00;
 $blue: #259CC8;
 $green: #4ABB32;
 $darker: #275461;
 $gray: #58646B;
 $white: #FFF;
+$body-background-image: none;
+$colour-bg: #091D33;
+$colour-bg-alt: #030F1B;
+$colour-body-bg: #020F17;
+$colour-bg-nav: $colour-bg-alt;
+$colour-bg-header: $colour-bg-alt;
+$colour-bg-footer: #01070B;
+$colour-field-bg: $colour-bg-alt;
+$colour-bg-dialog: #0D2A49;
+$colour-text: #C1BEB3;
+$colour-field-text: $colour-text;
+$colour-link: $blue;
+$colour-link-active: $green;
+$colour-edges: #000;
+$colour-button-bg: $blue;
+$colour-button-text: #000;
+$colour-code-line: #C1BEB3;
+$colour-inline-code: lighten($colour-text, 10);
+$colour-inline-code-bg: darken($colour-bg, 10);
+$colour-no: $orange;
+$colour-yes: $green;
+$colour-disabled: $gray;
+$colour-error: $colour-no;
+$colour-notice: $colour-yes;
+$colour-notice-text: $colour-button-text;
+$colour-alert: $colour-no;
+$colour-alert-text: $colour-notice-text;
+$heading-border: 1px dotted $colour-text;
+$field-border: 1px solid $darker;
+$dialog-border: 2px solid $darker;
+$focus-outline: 2px $orange dashed;
 $git-lang-ruby: #701516;
 $git-lang-javascript: #F1E05A;
 $git-lang-python: #3572A5;
@@ -26,7 +48,41 @@ $git-lang-cpp: #F34B7D;
 $font-family-body: "Fira Sans", "fira", "Calibri", "Myriad", "Arial", "Helvetica", "sans-serif";
 $font-family-heading: "Fira Sans Light", "fira-light", "Raleway", "Calibri", "Myriad", "Arial", "Helvetica", "sans-serif";
 $font-family-code: "Fira Code", "fira-code", "Courier New", "Courier", "Monospace";
+$font-family-field: $font-family-body;
 $text-shadow-colour: rgba(0, 0, 0, .25);
 $shadow-colour: rgba(0, 0, 0, .8);
 $modal-bg-colour: rgba(0, 0, 0, .5);
 $nav-width: 17em;
+
+@font-face {
+    font-family: "fira";
+    src: local("Fira Sans");
+    src: local("FiraSans-Regular");
+    src: local("Fira Sans Regular");
+    src: url("firasans-regular-cwo.woff2") format("woff2"),
+         url("firasans-regular-cwo.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "fira-light";
+    src: local("Fira Sans Light");
+    src: local("FiraSans-Light");
+    src: url("firasans-light-cwo.woff2") format("woff2"),
+         url("firasans-light-cwo.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "fira-code";
+    src: local("Fira Code");
+    src: local("FiraCode-Regular");
+    src: local("Fira Code Regular");
+    src: url("firacode-regular-cwo.woff2") format("woff2"),
+         url("firacode-regular-cwo.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}

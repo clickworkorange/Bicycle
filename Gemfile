@@ -6,6 +6,8 @@ ruby "3.1.2"
 gem "rails", "~> 7.1.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+# TODO: Go back to Sprockets 4, if possible
+gem "sprockets", "~> 3"
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record

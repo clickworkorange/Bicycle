@@ -1,9 +1,11 @@
-@use "global" as *;
+@use "<%= Rails.application.site_asset("_global.scss") %>" as *;
 @use "shared" as *;
 @use "monokai";
 
+/* app/assets/site.scss */
+
 body {
-background-image: url("circuit.png");
+background-image: $body-background-image;
 }
 
 body > header {
@@ -55,7 +57,7 @@ width: $nav-width;
     padding: .5em;
     padding-top: 1em;
     border-left: 1px solid $colour-edges;
-    background-color: $colour-bg-alt;
+    background-color: $colour-bg-nav;
         ul {
         margin-top: 0;
         padding: 0;
@@ -135,7 +137,7 @@ border-left: 1px solid $colour-edges;
     min-height: 7.5em;
     margin: 0 -1em 1em -1em;
     padding: 1em;
-    background-color: $colour-bg-alt;
+    background-color: $colour-bg-header;
     background-position: 50% 10%;
     background-size: cover;
         > div {
@@ -192,7 +194,7 @@ article > h2, section > h2, article > h3, section > h3 {
 clear: left;
 margin-top: 1em;
 padding-bottom: .2em;
-border-bottom: 1px dotted $colour-text;
+border-bottom: $heading-border;
 }
 
 article section.child_pages {
@@ -492,7 +494,7 @@ clear: left;
 height: 8em;
 padding: .5em;
 border-top: 1px solid $colour-edges;
-background-color: $colour-footer;
+background-color: $colour-bg-footer;
 }
     body > footer p {
     width: fit-content;

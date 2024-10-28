@@ -1,5 +1,7 @@
-@use "global" as *;
+@use "<%= Rails.application.site_asset("_global.scss") %>" as *;
 @use "shared" as *;
+
+/* app/assets/bicycle.scss */
 
 body.bicycle {
 background-image: url("bicycle.png");

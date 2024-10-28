@@ -1,37 +1,7 @@
-@use "global" as *;
 
-@font-face {
-    font-family: "fira";
-    src: local("Fira Sans");
-    src: local("FiraSans-Regular");
-    src: local("Fira Sans Regular");
-    src: url("firasans-regular-cwo.woff2") format("woff2"),
-         url("firasans-regular-cwo.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
-@font-face {
-    font-family: "fira-light";
-    src: local("Fira Sans Light");
-    src: local("FiraSans-Light");
-    src: url("firasans-light-cwo.woff2") format("woff2"),
-         url("firasans-light-cwo.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
-@font-face {
-    font-family: "fira-code";
-    src: local("Fira Code");
-    src: local("FiraCode-Regular");
-    src: local("Fira Code Regular");
-    src: url("firacode-regular-cwo.woff2") format("woff2"),
-         url("firacode-regular-cwo.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
+@use "<%= Rails.application.site_asset("_global.scss") %>" as *;
+
+/* app/assets/_shared.scss */
 
 body {
 min-height: 100vh;
@@ -73,16 +43,17 @@ height: 1.2em;
 margin: 0 -1em;
 margin-bottom: -2em;
 padding: .35em .5em;
-color: $colour-button-text;
 animation: hyperjump .3s ease-in 8s forwards;
 // TODO: delay sibling animations by a further n seconds
 z-index: 2;
 }
     p.notice {
-    background-color: $green;
+    color: $colour-notice-text;
+    background-color: $colour-notice;
     }
     p.alert {
-    background-color: $orange;
+    color: $colour-alert-text;
+    background-color: $colour-alert;
     }
     
 @keyframes hyperjump {
@@ -116,21 +87,20 @@ margin: 0;
 margin-bottom: 1em;
 }
 a {
-color: $blue;
+color: $colour-link;
 text-decoration: none;
 }
         a:visited, a:active {
-        color: $green;
+        color: $colour-link-active;
         }
         *:focus-visible {
-        outline: 2px $orange dashed;
+        outline: $focus-outline;
         outline-offset: 1px;
         }
 b {
 font-weight: bolder;
 }
 dl {
-
 max-width: min-content;
 }
     dt {
@@ -150,60 +120,60 @@ display: block;
 option {
 }
 textarea, select, option, input, button {
-font-family: $font-family-body;
+font-family: $font-family-field;
 font-size: 1em;
 }
 textarea, select, option, input:not([type=button],[type=submit],[type=checkbox],[type=radio]) {
 box-sizing: border-box;
 width: 100%;
 padding: .5em;
-border: 1px solid $darker;
-background-color: $colour-bg-alt;
-color: $colour-text;
+border: $field-border;
+background-color: $colour-field-bg;
+color: $colour-field-text;
 }
     textarea:valid, select:valid, input:valid {
     //border: 1px solid $green;
     }
     // TODO: use :invalid along with ~ (subsequent-sibling) to make a form appear in stages
     textarea:user-invalid, select:user-invalid, input:user-invalid {
-    border-color: $orange;
+    border-color: $colour-error;
     }
 button, input[type=submit], input[type=button], a.button, body > nav label {
 display: block;
 padding: .5em;
 border: none;
 border-radius: .2em;
-background-color: $blue;
+background-color: $colour-button-bg;
 color: $colour-button-text;
 text-align: center;
 cursor: pointer;
 }
     button:hover, input[type=submit]:hover, input[type=button]:hover, a.button:hover {
-    background-color: lighten($blue, 10%);
+    background-color: lighten($colour-button-bg, 10%);
     }
     button.yes, input[type=submit].yes, input[type=button].yes, a.button.yes {
-    background-color: $green;
+    background-color: $colour-yes;
     }
         button.yes:hover, input[type=submit].yes:hover, input[type=button].yes:hover, a.button.yes:hover {
-        background-color: lighten($green, 10%);
+        background-color: lighten($colour-yes, 10%);
         }
     button.no, input[type=submit].no, input[type=button].no, a.button.no {
-    background-color: $orange;
+    background-color: $colour-no;
     }
         button.no:hover, input[type=submit].no:hover, input[type=button].no:hover, a.button.no:hover {
-        background-color: lighten($orange, 10%);
+        background-color: lighten($colour-no, 10%);
         }
 
     button:disabled, input[type=submit]:disabled, input[type=button]:disabled, a.button.disabled {
-    background-color: $gray;
+    background-color: $colour-disabled;
     cursor: default;
     }
 
 dialog {
-border: 2px solid $darker;
+border: $dialog-border;
 border-radius: .5em;
 box-shadow: .2em .2em .5em 0 $shadow-colour;
-background-color: $colour-dialog;
+background-color: $colour-bg-dialog;
 color: $colour-text;
 }
     dialog::backdrop {

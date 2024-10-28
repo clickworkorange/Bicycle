@@ -24,6 +24,7 @@ Bundler.require(*Rails.groups)
 ROOT = File.expand_path('../..', __FILE__)
 # Use Rails application parent directory name as site identifier 
 SITE = YAML.load_file(File.join(ROOT, "sites", File.basename(ROOT), "config/site.yml"))
+# TODO: fall back to default "bicycle" configuration (including DB) unless site.yml found
 
 module Clickworkorange
   class Application < Rails::Application
@@ -47,8 +48,22 @@ module Clickworkorange
     config.generators.system_tests = nil
 
     def site_path(path)
+      # TODO: move this and site_asset helpers out of the Rails::Application class (to a Site class?)
       # Rails.root / "sites" / SITE["root"] / path # this doesn't return a string
       "#{Rails.root}/sites/#{SITE["root"]}/#{path}"
+    end
+
+    def site_asset(asset)
+      # Fall back to app/assets/[type]/[asset] unless site overrides the file. 
+      # TODO: Use SassC::Rails::Importer from dartsass-rails to resolve stylesheets?
+      # TODO: Incomplete filename support (e.g. "global" vs "_global.scss")
+      # TODO: Extend to types other than stylesheets
+      case File.extname(asset)
+      when ".css", ".scss"
+        type = "stylesheets"
+      end
+      site_asset = site_path(File.join("assets", type, File.basename(asset)))
+      File.file?(site_asset) ? site_asset : asset
     end
 
     config.credentials.content_path = site_path("config/credentials.yml.enc")
@@ -64,12 +79,12 @@ module Clickworkorange
       carrierwave.root = site_path("public")
     end
 
-    config.assets.configure do |env|
+    config.assets.configure do |assets|
       ["stylesheets", "javascript", "images", "fonts"].each do |type|
-        env.prepend_path(site_path("assets/#{type}"))
+        assets.prepend_path(site_path("assets/#{type}"))
       end
     end
-    config.assets.precompile += %w(site.js site.css bicycle.js bicycle.css icons/*.svg)
+    config.assets.precompile += %w(site.js site.css bicycle.js bicycle.css *.jpg *.png *.svg)
 
     config.after_initialize do
       ActionController::Base.prepend_view_path(site_path("views"))

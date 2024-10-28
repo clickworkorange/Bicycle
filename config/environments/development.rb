@@ -36,6 +36,10 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
     config.cache_store = :null_store
+    # Also disable Sprockets caching
+    config.assets.configure do |env|
+      env.cache = ActiveSupport::Cache.lookup_store(:null_store)
+    end
   end
 
   # Print deprecation notices to the Rails logger.
@@ -54,7 +58,10 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
+  config.assets.quiet = false
+
+  # When enabled, fingerprints will be added to asset filenames.
+  # config.assets.digest = false
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
