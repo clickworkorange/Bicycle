@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         end
         format.any(:gif, :png, :jpeg) do
           track_error("Image not found", request.fullpath)
-          render file: "#{Rails.root}/public/not_found.png", content_type: "image/png", layout: false, status: 404
+          render file: "#{Rails.public_path}/not_found.png", content_type: "image/png", layout: false, status: 404
         end
         format.any(:xml) do
           track_error("Page not found", request.fullpath)
