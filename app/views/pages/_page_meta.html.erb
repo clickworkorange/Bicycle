@@ -1,5 +1,5 @@
 <% cache @page do %>
-<title>clickworkorange - <%= @page.title %></title>
+<title><%= SITE["title"] %> - <%= @page.title %></title>
     <%= tag(:meta, name: "description", content: @page.page_description) %>
     <%= tag(:meta, name: "author", content: @page.user.name) if @page.user.present? %>
     <meta property="og:url" content="<%= full_page_url(@page) %>">
