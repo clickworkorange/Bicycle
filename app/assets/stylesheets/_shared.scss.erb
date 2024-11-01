@@ -11,7 +11,7 @@ color: $colour-text;
 font-family: $font-family-body;
 font-size: 110%;
 line-height: 1.35em;
-text-shadow: 1px 1px 1px $text-shadow-colour;
+text-shadow: $text-shadow;
 }
 
 body > header {
@@ -22,14 +22,14 @@ min-height: 3em;
 padding: 0 .5em;
 border-bottom: 1px solid $colour-edges;
 background-color: $colour-bg;
-box-shadow: 0 0 .5em .5em $shadow-colour;
+box-shadow: $header-shadow;
 z-index: 1;
 }
 
 main {
 max-width: 60em;
 margin: 0 auto;
-box-shadow: 0 0 2em 2em $shadow-colour;
+box-shadow: $main-shadow;
 }
 
 article {
@@ -172,7 +172,7 @@ cursor: pointer;
 dialog {
 border: $dialog-border;
 border-radius: .5em;
-box-shadow: .2em .2em .5em 0 $shadow-colour;
+box-shadow: $dialog-shadow;
 background-color: $colour-bg-dialog;
 color: $colour-text;
 }
