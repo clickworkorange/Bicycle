@@ -20,11 +20,20 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# Rails.root is not yet defined, so we set our own constant
-ROOT = File.expand_path('../..', __FILE__)
-# Use Rails application parent directory name as site identifier 
-SITE = YAML.load_file(File.join(ROOT, "sites", File.basename(ROOT), "config/site.yml"))
-# TODO: fall back to default "bicycle" configuration (including DB) unless site.yml found
+def load_site()
+  # Check if there's a config for this site
+  root = File.expand_path('../..', __FILE__)
+  # Use Rails application parent directory name as site identifier 
+  site_config = File.join(root, "sites", File.basename(root), "config/site.yml")
+  if File.file?(site_config)
+    YAML.load_file(site_config)
+  else 
+    # Load default config
+    YAML.load_file("#{root}/config/site.yml")
+  end
+end
+
+SITE = load_site()
 
 module Clickworkorange
   class Application < Rails::Application
@@ -50,7 +59,7 @@ module Clickworkorange
     def site_path(path)
       # TODO: move this and site_asset helpers out of the Rails::Application class (to a Site class?)
       # Rails.root / "sites" / SITE["root"] / path # this doesn't return a string
-      "#{Rails.root}/sites/#{SITE["root"]}/#{path}"
+      "#{Rails.root}#{SITE["root"]}/#{path}"
     end
 
     def site_asset(asset)
@@ -62,7 +71,7 @@ module Clickworkorange
       when ".css", ".scss"
         type = "stylesheets"
       end
-      site_asset = site_path(File.join("assets", type, File.basename(asset)))
+      site_asset = site_path(File.join("app", "assets", type, File.basename(asset)))
       File.file?(site_asset) ? site_asset : asset
     end
 
@@ -81,13 +90,13 @@ module Clickworkorange
 
     config.assets.configure do |assets|
       ["stylesheets", "javascript", "images", "fonts"].each do |type|
-        assets.prepend_path(site_path("assets/#{type}"))
+        assets.prepend_path(site_path("app/assets/#{type}"))
       end
     end
     config.assets.precompile += %w(site.js site.css bicycle.js bicycle.css *.jpg *.png *.svg)
 
     config.after_initialize do
-      ActionController::Base.prepend_view_path(site_path("views"))
+      ActionController::Base.prepend_view_path(site_path("app/views"))
     end
   end
 end
