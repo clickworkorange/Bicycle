@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.1.2"
+ruby "3.3.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
@@ -22,7 +22,7 @@ gem "ahoy_matey", "~> 5.1.0"
 gem "awesome_nested_set", "~> 3.6.0"
 gem "carrierwave", git: "https://github.com/clickworkorange/carrierwave", branch: "master"
 gem "chartkick", "~> 5.0.7"
-gem "dartsass-sprockets", "~> 3.1.0"
+gem "dartsass-sprockets", "~> 3.2.0"
 gem "devise", "~> 4.9.2"
 gem "friendly_id", "~> 5.5.0"
 gem "geocoder", "~> 1.8.3"
