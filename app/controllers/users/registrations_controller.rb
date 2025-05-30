@@ -15,8 +15,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    ahoy.track "Signed up"
+    # completely disable registrations for now (because bots)
+    redirect_to root_path
+    # super
+    # ahoy.track "Signed up"
   end
 
   # GET /resource/edit
