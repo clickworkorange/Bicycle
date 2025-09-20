@@ -1,2 +1,2 @@
 
-It's rough, it's ugly, and it's incomplete - but it's a fully functional site with a hyperminimalistic content management system. And look Ma, *no JavaScript*! No node.js, no React, no Angular, or any other such nonsense. "Are you insane? Why?" To which I say quite probably, and *why not?* - before laughing maniacally. Don't worry though, we'll be adding lots of JS wizardry later, including Turbo. You know, as a *bonus*. No functionality will be lost if you don't want to run any client-side code. Join the revolution! 
+It's rough, it's ugly, and it's incomplete - but it's a fully functional site with a hyperminimalistic content management system. Trusty as a rusty old bicycle. And look Ma, *no JavaScript*!
